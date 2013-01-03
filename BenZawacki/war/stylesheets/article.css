@@ -1,0 +1,9 @@
+#mainDIV{
+	width: 100%;
+	
+}
+#articlesDIV{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1em;
+}

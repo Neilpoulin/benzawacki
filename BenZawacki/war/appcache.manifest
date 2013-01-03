@@ -1,0 +1,9 @@
+CACHE MANIFEST
+#2012-05-08 12:09AM
+
+
+NETWORK:
+*
+
+FALLBACK:
+/serve* /data/images/img-placeholder.jsp

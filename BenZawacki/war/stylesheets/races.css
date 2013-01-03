@@ -1,0 +1,62 @@
+#dataStoreDIV{
+	display: none;	
+}
+
+
+#container{
+	border: 0px solid red;
+	position: ;
+	top: 22em;
+	bottom: 0;
+	right: 1em;
+	left: 1em;
+}
+
+#map_canvas{
+	width: 100%;
+	height: 50%;
+
+}
+
+
+body { 
+
+}
+div#users-contain {  
+	width: 100%;
+	 
+}
+div#users-contain table { 
+	font-size: 14;
+	margin: 0em 0; 
+	border-collapse: collapse; 
+	width: 100%; 
+}
+div#users-contain table td, div#users-contain table th {
+	 border: 1px solid #eee; 
+	 padding: ; 
+	 text-align: left; 
+}
+
+div.infowindow{
+	width: 100%;	
+}
+.infowindow h1 {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	font-size: 20;
+	width: 100%;
+	text-align: center;
+}
+
+.infowindow div.center{
+	width: 100%;
+	text-align: center;	
+}
+
+.infowindow address{
+	display: inline;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;	
+}
+

@@ -1,0 +1,223 @@
+.nodisplay{
+	display: none;
+}
+
+span.tag {
+	font-style: italic;
+	margin: 0 0 1em 0;
+	cursor: pointer;
+}
+span.tag:hover, #clearTags:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+p.tag {
+	margin-before: 0;
+	margin-after: 0;
+	margin: 0 0 1em 0;
+}
+p.date {
+	margin: 0 0 0em 0;
+}
+
+#articlesDIV{
+	padding-bottom: 1em;
+}
+
+#articlesDIV div.content{
+	font-family: sans-serif;
+	text-align: justify;
+}
+
+#articlesDIV div.content:first-letter { 
+	float: left; 
+	color: #903; 
+	font-size: 75px; 
+	line-height: 60px; 
+	padding-top: 4px; 
+	padding-right: 8px; 
+	font-family: Georgia; 
+	text-transform: capitalize; 
+}
+
+#articlesDIV div.content:first-line {
+	font-variant: small-caps;
+}
+
+#articlesDIV div.summary{
+	font-variant:small-caps;
+	margin: 1em 0 1em 0;
+}
+
+#articlesDIV h2{
+	font-size: 1.8em;
+	letter-spacing: 1px;
+	text-transform: capitalize;
+}
+
+#articlesDIV DIV.article{
+	padding: 1em 1em .5em 1em;
+	border: 2px solid black;
+	border-radius: 10px;
+	margin: 0em 0em .5em 0;	
+	min-height: 140px;
+}
+
+h1, h2, h3, h4, h5 {
+
+	margin-before: 0em;
+	margin-after: 0em;
+	margin-start: 0px;
+	margin-end: 0px;
+	font-weight: bold;
+	
+}
+
+img.thumb.article {
+	max-width: 200px;
+	max-height: 200px;
+	float: left;
+	margin: 0 1em 1em 0;
+}
+
+p.article {
+	padding: 1em;
+}
+*.or {
+	color: #0078AE;
+}
+*.and {
+	color: #F7A50D;
+}
+#tagsUL {
+	list-style: none;
+	padding: 0 0 0em 0;
+	margin: 0 0 0em 0;
+	border-bottom: 1px solid grey;
+}
+
+#tagsUL li{
+	padding: 0 0 0 1em;
+	margin: 0 0 0 .5em;
+	position: relative;
+	top: 0;
+	border-top: 1px dotted black;
+}
+
+#tagsUL li a{
+	position: relative;
+	width: 100%;
+	cursor: pointer;
+	display:inline-block;
+
+}
+
+#tagsUL li a.hover{
+	text-decoration: underline;
+}
+
+#tagsDIV ul li.filter{
+	
+}
+
+#tagsUL li.and{
+	list-style: none;
+	background: url(../data/images/orange_add2.png) no-repeat left center;
+}
+
+#tagsUL li.or{
+	list-style: none;
+	background: url(../data/images/blue_or.png) no-repeat  left center;
+}
+
+#legendUL {
+	padding: 0;
+	margin: 0 0 0em 0;
+}
+#legendUL li{
+	cursor: defualt;
+	float: left;
+	list-style: none;
+	padding: 0 0 0 1em;
+	margin: 0 1em 0 0em;
+}
+#legendUL li.and{
+	background: url(../data/images/orange_add2.png) no-repeat left center;
+	
+}
+#legendUL li.or{
+	background: url(../data/images/blue_or.png) no-repeat  left center;
+	
+}
+div.noResults{
+	text-align: center;
+}
+
+div.content {
+	padding: 0em 0 0 0;
+	opacity: 1;
+	overflow: hidden;
+}
+
+div.content.animateHeight{
+	transition: height 1.5s 0;
+}
+
+div.content hr{
+	clear: both;
+}
+
+img.small{
+	max-width: 30%;
+	margin-top: 0em;
+	margin-bottom: 1em;
+}
+
+img.small.left{
+	float: left;
+	margin-right: 1em;
+	clear: left;
+}
+
+img.small.right{
+	float: right;
+	margin-left: 1em;
+	clear: right;
+}
+
+img.full, div.full{
+	display: block;
+	margin: 0em 0 0em 0;
+	width: 100%;
+}
+div.clear{
+	clear: both;
+}
+div.fb-comments{
+	clear: both;
+	position: relative;
+	
+}
+div.container-plusone {
+	float: left;
+	width: 6em;
+}
+
+
+div.fb-like{
+	float: left;
+	width: 18em;
+	text-align: left;
+}
+
+div.socialDIV{
+	margin-top: 1em;
+	height: 30px;
+	position: relative;	
+	clear: both;
+}
+
+div.container-tweet{
+	float: left;
+}
+

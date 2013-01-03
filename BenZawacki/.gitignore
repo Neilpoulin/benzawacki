@@ -1,0 +1,8 @@
+.DS_Store
+/lib
+/.project
+/.settings
+/.metadata
+.classpath
+/war/WEB-INF/appengine-generated
+/war/WEB-INF/classes

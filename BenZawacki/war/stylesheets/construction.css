@@ -1,0 +1,40 @@
+.hidden{
+	display: none;
+}
+.clear{
+	clear: both;
+}
+
+#logo{
+	width: 50%;
+}
+#mainDIV.h1{
+	width: 50%;
+	padding: 0;
+}
+#mainDIV{
+	width: ;
+	margin-left: auto;
+	margin-right:auto;
+	padding: 3em 0 0 0;
+	text-align: center;
+	margin-bottom: 200px;
+	
+}
+
+
+#fb-subscribe_const{
+	float: ;
+	width: ;
+}
+
+#twitFollow_const{
+	float: ;	
+}
+
+#headerDIV_const{
+	text-align: right;
+	padding: .5em;
+	border-bottom: 1px solid black;
+}
+

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+	<servlet>
+		<servlet-name>users</servlet-name>
+		<servlet-class>users.UserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>users</servlet-name>
+		<url-pattern>/users</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>raceJSON</servlet-name>
+		<servlet-class>benzawacki.RaceJsonServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>raceJSON</servlet-name>
+		<url-pattern>/raceJSON</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>Upload</servlet-name>
+	    <servlet-class>benzawacki.UploadBlob</servlet-class>
+	  </servlet>
+	  <servlet-mapping>
+	    <servlet-name>Upload</servlet-name>
+	    <url-pattern>/upload</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>Serve</servlet-name>
+	    <servlet-class>benzawacki.ServeBlob</servlet-class>
+	  </servlet>
+	  <servlet-mapping>
+	    <servlet-name>Serve</servlet-name>
+	    <url-pattern>/serve</url-pattern>
+	  </servlet-mapping>
+	
+	  <servlet>
+	    <servlet-name>QueryBlobs</servlet-name>
+	    <servlet-class>benzawacki.QueryBlobs</servlet-class>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>QueryBlobs</servlet-name>
+	    <url-pattern>/queryBlobs</url-pattern>
+	  </servlet-mapping>
+	
+	  <servlet>
+	    <servlet-name>DeleteBlob</servlet-name>
+	    <servlet-class>benzawacki.DeleteBlob</servlet-class>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>DeleteBlob</servlet-name>
+	    <url-pattern>/deleteBlob</url-pattern>
+	  </servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>ArticleServlet</servlet-name>
+	    <servlet-class>benzawacki.ArticleServlet</servlet-class>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>ArticleServlet</servlet-name>
+	    <url-pattern>/articleServlet</url-pattern>
+	  </servlet-mapping>
+	
+	  <servlet>
+	    <servlet-name>TwitterServlet</servlet-name>
+	    <servlet-class>benzawacki.Twitter</servlet-class>
+	  </servlet>
+		  <servlet-mapping>
+	    <servlet-name>TwitterServlet</servlet-name>
+	    <url-pattern>/twitter</url-pattern>
+	  </servlet-mapping>
+	
+	<servlet>
+		<servlet-name>social</servlet-name>
+	    <jsp-file>/social.jsp</jsp-file>
+	</servlet>
+ 	<servlet-mapping>
+	    <servlet-name>social</servlet-name>
+	    <url-pattern>/home</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>contact</servlet-name>
+	    <jsp-file>/contact.jsp</jsp-file>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>contact</servlet-name>
+	    <url-pattern>/contact</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>races</servlet-name>
+	    <jsp-file>/races.jsp</jsp-file>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>races</servlet-name>
+	    <url-pattern>/races</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>strava</servlet-name>
+	    <jsp-file>/strava.jsp</jsp-file>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>strava</servlet-name>
+	    <url-pattern>/strava</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>dashboard</servlet-name>
+	    <jsp-file>/admin/admin.jsp</jsp-file>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>dashboard</servlet-name>
+	    <url-pattern>/admin/dashboard</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>adminRaces</servlet-name>
+	    <jsp-file>/admin/races_admin.jsp</jsp-file>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>adminRaces</servlet-name>
+	    <url-pattern>/admin/races</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>adminArticles</servlet-name>
+	    <jsp-file>/admin/articleData.jsp</jsp-file>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>adminArticles</servlet-name>
+	    <url-pattern>/admin/articles</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>adminImages</servlet-name>
+	    <jsp-file>/admin/imageData.jsp</jsp-file>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>adminImages</servlet-name>
+	    <url-pattern>/admin/images</url-pattern>
+	  </servlet-mapping>
+	  
+	
+	
+	<!-- <security-constraint>
+		<web-resource-collection>
+			<url-pattern>/admin/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint> -->
+	
+<!-- 	<mime_mapping>
+	    <extension>manifest</extension>
+	    <mime-type>text/cache-manifest</mime-type>
+	</mime_mapping> -->
+	
+	
+	<welcome-file-list>
+		<welcome-file>/home</welcome-file>
+	</welcome-file-list>
+</web-app>

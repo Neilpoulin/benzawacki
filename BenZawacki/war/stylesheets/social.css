@@ -1,0 +1,88 @@
+/* global display classes */
+
+.hidden{
+	display: none;
+}
+ /* Page Layout Styles */
+
+#socialSidebar{
+	float: left;
+	padding: .5em;
+}
+
+#navSidebar{
+	padding: .5em;
+	float: left;
+}
+
+#articlesDIV{
+	float: left;
+	padding: .5em;
+	
+}
+
+/* Social Sidebar sub-styles */
+div.twitter {
+	margin-bottom: 1em;
+}
+
+#tweets, #twitFeed{
+	height: 700px;	
+}
+
+/* navSidebar sub-styles */
+
+#tagsDIV{
+	display: inline-block;
+	border: 2px solid black;
+	width: 100%;
+	border-radius: 10px;
+	padding: 5px;
+	box-sizing:border-box;
+	
+}
+
+/* formatting styles */
+
+#ads h2 {
+	text-shadow: 0px 1px #FFF;
+	text-align: center;
+	font-family: sans-serif;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+}
+
+
+
+/* border Classes */
+.borderRed{
+	border-color: red;
+}
+
+.borderGreen{
+	border-color: green;
+}
+
+.borderBlue{
+ 	border-color: blue;
+}
+
+.border1px{
+	border-width: 1px;
+}
+.border2px{
+	border-width: 2px;
+}
+.border3px{
+	border-width: 3px;
+}
+
+.borderSolid{
+	border-style: solid;
+}
+
+.borderDashed{
+	border-style: dashed;
+}
