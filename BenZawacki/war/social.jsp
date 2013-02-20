@@ -42,34 +42,35 @@
 	</head>
 	<jsp:include page="header.jsp" />
 	<body id="socialBody">
-		
-		
-		<div id="navSidebar" class="  ">
-			<div class="" id="tagsDIV">
-				<b>Filter by tag:</b><br>
-				<span id="clearTags">Show All</span>
-				<ul id="tagsUL"></ul>
-				<ul id="legendUL">
-					<li class="and"> - and</li>
-					<li class="or"> - or</li>
-				</ul>
-			</div>			
-		</div>
-		
-		<div id="articlesDIV" class="  "></div>
-		
-		<div id="socialSidebar" class="  ">
-			<div class="twitterDIV">	
-				<div class="twitter">
-					<jsp:include page="twitter.jsp" />
-				</div>
-				<div class="twitter">
-					<jsp:include page="twitFeed.jsp" />
-				</div>	
-			</div>		
-		</div>	
+	
+		<!-- <div class="container-fluid"> -->
+		<div class="row-fluid">
+			<div id="navSidebar" class="span3">
+				<div class="" id="tagsDIV">
+					<b>Filter by tag:</b><br>
+					<span id="clearTags">Show All</span>
+					<ul id="tagsUL"></ul>
+					<ul id="legendUL">
+						<li class="and"> - and</li>
+						<li class="or"> - or</li>
+					</ul>
+				</div>			
+			</div>
 			
-		
+			<div id="articlesDIV" class="span6"></div>
+			
+			<div id="socialSidebar" class="span3">
+				<div class="twitterDIV">	
+					<div class="twitter">
+						<jsp:include page="twitter.jsp" />
+					</div>
+					<div class="twitter">
+						<jsp:include page="twitFeed.jsp" />
+					</div>	
+				</div>		
+			</div>	
+		</div>	
+		<!-- </div> -->
 		<div id="fb-root"></div>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/header.js"></script>

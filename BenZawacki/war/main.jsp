@@ -3,7 +3,7 @@
 	<head>
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<link rel="apple-touch-icon" href="/data/images/logo-114x114.png"/>
-		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
 		
 		<!-- <link rel="stylesheet" type="text/css" href="/stylesheets/header.css" /> -->
@@ -38,7 +38,7 @@
 		<div id="fb-root"></div>
 		
 		<!-- Facebook -->	
-			<script>
+			<!-- <script>
 			  window.fbLoaded = false;
 			  window.fbAsyncInit = function() {
 			    FB.init({
@@ -59,17 +59,18 @@
 				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=309409452466916";
 				  fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
-			</script>
+			</script> -->
 		<!-- Google +1 -->
-			<script type="text/javascript">
+			<!-- <script type="text/javascript">
 			  (function() {
 			    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
 			    po.src = 'https://apis.google.com/js/plusone.js';
 			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 			  })();
-			</script>		
+			</script>	 -->	
 		<!-- Twitter -->
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			<!-- <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+			
 	</body>
 	
 </html>

@@ -42,9 +42,8 @@
 		</script>
 	</head>
 	<body>		
-		<div id="container">
-			<input type="button" id="toggle-map" value="Hide Map"></input><br>
-			<div id="map_canvas"></div>		
+		<div id="container" class="container">
+			<input type="button" id="toggle-map" value="Hide Map"></input><br>					
 			<div id="users-contain" class="ui-widget">
 				<table id="users" class="ui-widget ui-widget-content">
 					<thead>
@@ -61,8 +60,12 @@
 					</tbody>
 				</table>
 			</div>
+			
+			<div id="map_canvas"></div>
 		</div>
-	
+		
+		
+		
 		<div id="fb-root"></div>
 		<!-- Facebook -->	
 			<script>

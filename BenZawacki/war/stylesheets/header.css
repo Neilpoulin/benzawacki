@@ -2,6 +2,14 @@ div.clear {
 	clear:both;	
 }
 
+.nav li{
+	line-height: 24px;
+}
+
+.nav a, .brand {
+	text-decoration: none;
+}
+
 .hidden{
 	display: none;	
 }
@@ -9,6 +17,7 @@ div.clear {
 	padding: .5em;
 	text-align: right;
 	border: 0px dashed blue;
+	height: 55px;
 }
 
 #twitFollow{
@@ -35,7 +44,8 @@ div.clear {
 	background-color: ;		
 }
 #titleImg{
-	max-height: 350px;
+	max-height: 150px;
+	display:none;
 }
 #titleText{
 	font-size: 75;
@@ -170,6 +180,9 @@ body{
 	margin: 0;
 	margin: 1em;
 	box-sizing: border-box;
+	padding-top: 45px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 	
 }

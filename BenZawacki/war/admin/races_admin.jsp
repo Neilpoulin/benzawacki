@@ -18,7 +18,6 @@
 	<head>
 		<title>Race Data Admin Page</title>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>		
-		<link rel="stylesheet" type="text/css" href="../stylesheets/header.css" />
 		<link rel="stylesheet" href="/stylesheets/ben-ui/jquery-ui-1.8.19.custom.css" />
 		<link rel="stylesheet" href="/admin/stylesheets/races_admin.css" />
 		<script type="text/javascript"> //Google Analytics
@@ -37,75 +36,60 @@
 	</head>
 	
 	<body>
-		<jsp:include page="../header.jsp" />
+		<jsp:include page="/header.jsp" />
 		
-		<div class="dataEntry">
+		<div class="dataEntry container">
 			<div id="dialog-form" title="">
 				<p class="validateTips">All form fields are required.</p>
-				<form>
-				<fieldset>
-					<table>
-						<tr>
-							<td colspan=2>
-								<label for="race">Race Name</label>
-								<input type="text" name="race" id="race" class="text-long ui-widget-content ui-corner-all" />			
-							</td>
-							<td>
-								<label for="date">Date</label>
-								<input type="date" name="date" readonly="readyonly" id="date" class="text-short ui-widget-content ui-corner-all"/>
-							</td>	
-						</tr>
-						<tr>
-							<td colspan=2>
-								<label for="website">Website</label>
-								<input type="text" name="website" id="website" class="text-long ui-widget-content ui-corner-all" />			
-							</td>	
-						</tr>
-						<tr>
-							<td>
-								<label for="address">Address</label>
-								<input type="address" name="address" id="address" value="" class="text-short ui-widget-content ui-corner-all"/>
-							</td>
-							<td>
-								<label for="city">City</label>
-								<input type="text" name="city" id="city" value="" class="text-short ui-widget-content ui-corner-all" />
-							</td>
-							<td>
-								<label for="state">State</label>
-								<input type="text" name="state" id="state" value="" class="text-state ui-widget-content ui-corner-all"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="length">Length</label>
-								<input type="text" name="length" id="length" value="" class="text-short ui-widget-content ui-corner-all"/>
-							</td>
-							<td>
-								<label for="type">Type</label>
-								<input type="text" name="type" id="type" value="" class="text-short ui-widget-content ui-corner-all"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label class="hidden" for="lat">lat</label>
-								<input type="text" name="lat" id="lat" value="" readonly="" class="hidden readonly text-short ui-widget-content ui-corner-all"/>
-							</td>
-							<td>
-								<label class="hidden" for="lng">lng</label>
-								<input type="text" name="lng" readonly="" id="lng" value="" class="hidden readonly text-short ui-widget-content ui-corner-all"/>
-							</td>
-							<td>
-								
-							</td>
-						</tr>
-					</table>	
-				</fieldset>
+				<form class="form-horizontal">				
+					<div class="control-group">
+						<label for="race" class="control-label">Race Name</label>
+						<div class="controls">
+							<input class="input-xlarge" name="race" id="race" class="" />
+						</div>
+					</div>					
+					<div class="control-group">
+						<label class="control-label" for="date">Date</label>
+						<div class="controls">
+							<input name="date" id="date" class=""/>
+						</div>
+					</div>					
+					<div class="control-group">
+						<label class="control-label" for="website">Website</label>
+						<div class="controls">
+							<input class="input-xlarge" name="website" id="website" class="" />
+						</div>
+					</div>					
+					<div class="control-group">
+						<label class="control-label" for="address">Address</label>
+						<!-- <label for="city">City</label> -->
+						<!-- <label for="state">State</label> -->
+						<div class="controls">
+							<input  name="address" class="input-xlarge" id="address" value="" class="" placeholder="Street"/>
+							<input  name="city" id="city" value="" class="" placeholder="City"/>
+							<input name="state" class="input-mini" id="state" value="" class="" placeholder="State"/>							
+						</div>
+					</div>						
+					<div class="control-group">
+						<label class="control-label" for="length">Race Details</label>
+						<div class="controls">
+							<input name="length" class="input-mini" id="length" value="" class="" placeholder="Length"/>
+							<input name="type" id="type" value="" class="" placeholder="Type"/>
+						</div>
+					</div>	
+
+					<label class="hidden" for="lat">lat</label>
+					<input name="lat" id="lat" value="" readonly="" class="hidden readonly "/>
+			
+					<label class="hidden" for="lng">lng</label>
+					<input name="lng" readonly="" id="lng" value="" class="hidden readonly text-short"/>
+				
+				
 				</form>
 			</div>
 			<button id="create-race">Add a Race</button>
 			<input type="button" id="toggle-map" value="Show Map"></input><br>
-			<div id="map_canvas"></div>	
-			
+						
 			<div id="displayDataDIV" class="ui-widget large">
 				<table id="displayDataTABLE" class="ui-widget ui-widget-content">
 					<thead>
@@ -117,7 +101,7 @@
 					</tbody>
 				</table>
 			</div>
-			
+			<div id="map_canvas"></div>	
 		</div><!-- End demo -->
 
 				

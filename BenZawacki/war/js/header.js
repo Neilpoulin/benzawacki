@@ -29,8 +29,8 @@ $(document).ready(function(){
 		e.preventDefault();
 	})
 	
-	$("a").filter("[href='" + pathname + "']").addClass("ui-state-active selected").closest("ul.subnav").siblings("a").addClass("ui-state-active selected");	
-	
+//	$("a").filter("[href='" + pathname + "']").addClass("ui-state-active selected").closest("ul.subnav").siblings("a").addClass("ui-state-active selected");	
+	$("a").filter("[href='" + pathname + "']").parent().addClass("active");
 	window.winW = 630;
 	window.winH = 460;
 	windowSize();
@@ -83,7 +83,7 @@ $(document).ready(function(){
 	//$("ul.subnav").parent().append("<span class='ui-icon ui-icon-triangle-1-s'></span>"); //Only shows drop down trigger when js is enabled (Adds empty span tag after ul.subnav*)
 	$("ul.subnav").parent().hover(function(){
 		$(this).find("a span").css({ //mouse hovering 
-			'background-image': 'url(../stylesheets/ui-lightness/images/ui-icons_ffffff_256x240.png)', 
+			'background-image': 'url("/stylesheets/ui-lightness/images/ui-icons_ffffff_256x240.png")', 
 			'background-position': '-64px -16px',
 			'margin': '.3em 0 0 0'
 			});

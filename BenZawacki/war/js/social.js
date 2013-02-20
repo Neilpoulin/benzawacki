@@ -3,10 +3,10 @@ $("#socialSidebar").hide();
 $("#navSidebar").hide();
 $(document).ready(function(){
 	getArticles();
-	formatPage();
+//	formatPage();
 	
 	$(window).resize(function(){
-		formatPage();
+//		formatPage();
 		buildArticle(false, $("#articlesDIV"), true, 1000, function(){
 			$("#articlesDIV").css({ opacity: 1 });
 		});
@@ -17,7 +17,7 @@ $(document).ready(function(){
 		$("#articlesDIV").fadeIn("fast");
 		$("#socialSidebar").fadeIn("fase");
 		$("#navSidebar").fadeIn("fast");
-		formatPage();
+//		formatPage();
 		$("#articlesDIV button").hover(function(){
 			$(window).resize();
 		}, function(){});

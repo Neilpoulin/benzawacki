@@ -5,21 +5,10 @@
 }
  /* Page Layout Styles */
 
-#socialSidebar{
-	float: left;
-	padding: .5em;
+#socialSidebar, #navSidebar, #articlesDIV{
+	margin-top: 10px;	
 }
 
-#navSidebar{
-	padding: .5em;
-	float: left;
-}
-
-#articlesDIV{
-	float: left;
-	padding: .5em;
-	
-}
 
 /* Social Sidebar sub-styles */
 div.twitter {
@@ -27,7 +16,7 @@ div.twitter {
 }
 
 #tweets, #twitFeed{
-	height: 700px;	
+
 }
 
 /* navSidebar sub-styles */
@@ -39,7 +28,7 @@ div.twitter {
 	border-radius: 10px;
 	padding: 5px;
 	box-sizing:border-box;
-	
+	background-image:  -webkit-linear-gradient(top,#fff,#f2f4f2);
 }
 
 /* formatting styles */
