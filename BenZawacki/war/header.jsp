@@ -5,9 +5,9 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="/stylesheets/header.css"/>	
-		<link type="text/css" rel="stylesheet" href="/lib/bootstrap 2.3/css/bootstrap.min.css"/>
+		<link type="text/css" rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"/>
 		<!-- <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap-custom.css"/> -->
-		<link type="text/css" rel="stylesheet" href="/lib/bootstrap 2.3/css/bootstrap-responsive.min.css"/>	
+		<link type="text/css" rel="stylesheet" href="/lib/bootstrap/css/bootstrap-responsive.min.css"/>	
 		<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-active/jquery-ui.css" />
 	</head>
 <%
@@ -24,7 +24,7 @@
     	//logoutURL = "/construction.jsp";
     } else{
     	/* logoutURL = request.getRequestURI(); */
-    	logoutURL = "/main";
+    	logoutURL = "/";
     }
   	
     boolean loggedIn = false;
@@ -129,7 +129,7 @@
 		<div id="loginURL" class="hidden"><%= userService.createLoginURL(request.getRequestURI()) %></div>
 		
 		<script type="text/javascript" src="/lib/jquery.js"></script>
-		<script type="text/javascript" src="/lib/bootstrap 2.3/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="/js/header.js"></script>	
 		<script type="text/javascript" src="/js/prefix-free.js" ></script>
 	</body>

@@ -1,8 +1,8 @@
 <!DOCTYPE>
 <html>
 <head>
-	<!-- <link rel="stylesheet" href="/lib/bootstrap 2.3/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="/lib/bootstrap 2.3/css/bootstrap-responsive.min.css" /> -->
+	<!-- <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap-responsive.min.css" /> -->
 	<link rel="stylesheet/less" href="/css/main.less" />
 </head>
 <body>
@@ -100,7 +100,7 @@
 	</div><!-- /.container -->
 
 	<!-- <script type="text/javascript" src="/lib/jquery.js"></script>
-	<script type="text/javascript" src="/lib/bootstrap 2.3/js/bootstrap.min.js"></script> -->
+	<script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script> -->
 	<script type="text/javascript" src="/lib/less.js"></script>
 </body>
 </html>
