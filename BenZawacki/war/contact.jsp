@@ -1,11 +1,10 @@
 <!DOCTYPE>
 <html>
-	<head>
-		<script type="text/javascript" src="../js/jquery.js"></script>
+	<head>		
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<link rel="apple-touch-icon" href="data/images/logo-114x114.png"/>
-		<link rel="stylesheet" type="text/css" href="stylesheets/header.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/contact.css" />
+		<link rel="apple-touch-icon" href="/data/images/logo-114x114.png"/>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/header.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/contact.css" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-active/jquery-ui.css" />
 		<script type="text/javascript"> //Google Analytics
 		  var _gaq = _gaq || [];
@@ -23,14 +22,15 @@
 	</head>
 	<body>
 		<jsp:include page="header.jsp" />
-		<div>
-			<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
-			<script type="IN/MemberProfile" data-id="http://www.linkedin.com/pub/benjamin-zawacki/6/102/b53" data-format="inline" data-related="false"></script>
+		<div class="container" id="mainContainer">
+			<div id="linkedin">
+				<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+				<script type="IN/MemberProfile" data-id="http://www.linkedin.com/pub/benjamin-zawacki/6/102/b53" data-format="inline" data-related="false"></script>
+			</div>
+			<p id="email" class="space"><a href="mailto:ben@benzawacki.com">ben@benzawacki.com</a></p>
+			<div id="facebook" class="fb-subscribe space" data-href="https://www.facebook.com/benzawacki" data-show-faces="false" data-width="450" ></div>
+			<p><a id="twitter" href="https://twitter.com/benzawacki" class="twitter-follow-button space" data-show-count="false" data-size="large">Follow @benzawacki</a></p>
 		</div>
-		<p><a href="mailto:ben@benzawacki.com">ben@benzawacki.com</a></p>
-		<div id="" class="fb-subscribe" data-href="https://www.facebook.com/benzawacki" data-show-faces="false" data-width="450" ></div>
-		<p><a id="" href="https://twitter.com/benzawacki" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @benzawacki</a></p>
-		
 		
 		<script type="text/javascript" src="js/contact.js"></script>
 		<script type="text/javascript" src="js/prefix-free.js"></script>
