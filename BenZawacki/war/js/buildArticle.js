@@ -1,82 +1,31 @@
 
-function insertArticle(data){
-	var tagList = tags(data.tags);
-		var html = "";
-		
-		var taghtml = "<p>";
-		if (tagList.length > 0){
-			taghtml = "<p class='tag'>tags: ";
-		}
-		for (var j=0; j<tagList.length; j++){
-			taghtml += "<span class='tag'>" + tagList[j] + "</span>";
-			if (j != tagList.length-1){
-				taghtml += ", ";
-			}
-		}
-		taghtml += "</p>";
-		
-		var img = "";
-		if (data.blobKey == ""){
-		} else {
-			img = "<img class='thumb article title"+ "'src='/serve?blobKey="+ data.blobKey + "'/>";
-		}
-		
-		var href = '/article.jsp?num=1&amp;index='+data.index+'&amp;dir=descending'
-		var url = 'http://www.benzawacki.com' + href;
-		var shorturl = data.shortUrl; 
-		
-		html += img
-			+"<h2>"+data.title + "</h2>"
-			+ "<p class='date'>" + data.postDate + " | "+ data.location +"</p>"
-			+ taghtml;
-			
-			if (data.summary == ""){
-				html += "<div class='summary nodisplay'> " + data.summary + "</div>";
-			} else{
-				html += "<div class='summary'> " + data.summary + "</div>";
-			}
-			
-		
-		if (data.content == ""){
-			html += 	
-				 "<div class='clear'></div>"
-				+ "<div class='content nodisplay'>" + "</div>"
-				+ "<div class='fb-comments' data-href='"+ shorturl +"' data-num-posts='7' data-width='400'></div>";
-		} else {
-			html += 
-				"<div class='clear'></div>" 
-				+ "<button class='expand'>Toggle Content</button>"
-				+ "<div class='clear'></div>"
-				+ "<div class='content'>" 
-					+ data.content 
-					+ "<br><hr>"
-					+"<div class='fb-comments' data-href='"+ shorturl +"' data-num-posts='7' data-width='400'></div>"
-				+ "</div>";
-		}
-		
-		html += 
-			'<div class="socialDIV">'
-				+ '<div class="container-tweet"><a href="https://twitter.com/share?url='+shorturl+'&text='+"Check out this article from Ben Zawacki\'s website"+'&via=benzawacki" class="twitter-share-button" data-url="' + shorturl + '" data-text="Check out this article from Ben Zawacki\'s website" data-via="BenZawacki" data-size="medium" data-lang="en"  data-counturl="'+ url +'">Tweet</a></div>'
-				+ '<div class="container-plusone"><div class="g-plusone" data-size="medium" data-href="' + shorturl + '"></div></div>'
-				+ '<div class="fb-like" data-href="' + shorturl + '" data-send="true" data-layout="button_count" data-width="150" data-show-faces="false"></div>'
-			+'</div>';
-	
-		return html;
+function setButtonText($parent, text){
+	$parent.find("button.expand").each(function(){
+		$(this).html(text);
+	});
+}
+
+function refreshArticles(){
+	buildArticle(false, $("#articlesDIV"), true, 1000, function(){
+		$("#articlesDIV").css({ opacity: 1 });
+	});
 }
 
 function buildArticle(setup, $container, hideInitial, time, callback){
 		$container.find("div.article:not(.server)").each(function(index, elm){
 			if (setup){
-				$(elm).waitForImages(function(){	
-					
+				$(elm).waitForImages(function(){						
 					var $elm = $(elm);
+					var text;
 					if (setup && hideInitial){
 						$("div.content").addClass("hiding").removeClass("showing");
-						$elm.find("button.expand span").html("See More");
+						text = "Show More";
 					} else if (setup && !hideInitial){
 						$("div.content").addClass("showing").removeClass("hiding").show();
-						$elm.find("button.expand span").html("See Less");		
+						
+						text = "Show Less";
 					}
+					setButtonText($elm, text);
 					if (! $elm.find("div.content div:last").hasClass("clear full")){
 						$elm.find("div.content").append($("<div>").addClass("clear full"));
 					}
@@ -84,20 +33,25 @@ function buildArticle(setup, $container, hideInitial, time, callback){
 					var height = build($elm, setup, hideInitial);
 					bind($elm, height, setup);
 					
-					$elm.find("button.expand").hover(function(){
-						$(window).resize();
-					}, function(){});
+					$elm.find("button.expand").each(function(){
+						$(this).on("click mouseover", function(){
+							refreshArticles();
+						});
+					});
 					loadSocial();
 					callback();	
 				});	//end wait for images
 			} else{
 				var $elm = $(elm);
+				var text;
 				if ($elm.find("div.content").hasClass("hiding")){
-					$elm.find("button.expand span").html("See More");
+//					$elm.find("button.expand").html("See More");
+					text = "Show More";
 				} else{
-					$elm.find("button.expand span").html("See Less");
+//					$elm.find("button.expand").html("See Less");
+					text = "Show Less";
 				}
-				
+				setButtonText($elm, text);				
 				
 				$elm.unbind("click");
 				var height = build($elm, setup, hideInitial);
@@ -126,7 +80,8 @@ function buildArticle(setup, $container, hideInitial, time, callback){
 			var contentHeight = height;
 			var $content = $elm.children(".content");
 			
-			$elm.children("button:first").unbind("click").bind("click", function(){					
+			$elm.find("button.expand").each(function(){
+				$(this).unbind("click").bind("click", function(){								
 				$text = $elm.children(".content");
 					if($text.height() > 0){
 						$text.css({height: contentHeight});
@@ -136,16 +91,21 @@ function buildArticle(setup, $container, hideInitial, time, callback){
 				
 				setTimeout(function(){
 					$content.addClass("animateHeight");
+					var text;
 					if ($text.hasClass("showing")){
 						$text.removeClass("showing").addClass("hiding").css({height: 0, opacity: 1});
-						$elm.find("button.expand span").html("See More");
+//						$elm.find("button.expand").html("See More");
+						text = "Show More";
 	
 					} else if ($text.hasClass("hiding")){
 						$text.removeClass("hiding").addClass("showing").css({height: contentHeight, opacity: 1});
-						$elm.find("button.expand span").html("See Less");
+//						$elm.find("button.expand").html("See Less");
+						text = "Show Less";
 					}
+					setButtonText($elm, text);
 				}, 100);				
-			}); //end bind
+			});
+		}); //end bind
 			
 			$container.find("div.article:not(.server)")
 				.hover(function(){

@@ -56,7 +56,7 @@ public class ArticleServlet extends HttpServlet{
 		int count = pq.countEntities(FetchOptions.Builder.withDefaults());
 		String sCount = Integer.toString(count);
 		if (action.equals("add")){
-			System.out.println("content: " + content);
+//			System.out.println("content: " + content);
 			Entity article = new Entity("Articles", title+uploadDateString);
 				article.setProperty("blobKey", blobKey);
 				article.setProperty("title", title);
@@ -76,7 +76,7 @@ public class ArticleServlet extends HttpServlet{
 			try {
 				Entity get = datastore.get(getKey);
 				String getTitle = (String)get.getProperty("title");
-				System.out.println("deleteing article: " + getTitle);
+//				System.out.println("deleteing article: " + getTitle);
 				datastore.delete(getKey);	
 			} catch (EntityNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -93,7 +93,7 @@ public class ArticleServlet extends HttpServlet{
 		
 		HtmlGenerator htmlGenerator = new HtmlGenerator();
 		String json = htmlGenerator.generateHtml(num, start, direction);
-		System.out.println(json);
+//		System.out.println(json);
 		resp.getWriter().println(json);
 		
 	} //end doGet	

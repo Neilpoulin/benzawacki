@@ -1,14 +1,28 @@
 /* global display classes */
-
 .hidden{
 	display: none;
 }
  /* Page Layout Styles */
 
-#socialSidebar, #navSidebar, #articlesDIV{
-	margin-top: 10px;	
+#articlesDIV{
+	padding-left: 70px;
 }
 
+#navSidebar{
+	position: fixed;
+	top: 45px;
+	left: -5px;
+}
+
+#socialSidebar, #navSidebar, #articlesDIV{
+	margin-top: 10px;		
+	border: 0px;
+}
+
+div.twitter, #tagsDIV, #articlesDIV DIV.article{
+	box-shadow: 0px 0px 11px -3px;
+	border-radius: 6px;
+}
 
 /* Social Sidebar sub-styles */
 div.twitter {
@@ -19,16 +33,22 @@ div.twitter {
 
 }
 
+#toolbar button{
+	z-index: 1;
+}
+
 /* navSidebar sub-styles */
 
 #tagsDIV{
 	display: inline-block;
-	border: 2px solid black;
-	width: 100%;
-	border-radius: 10px;
+	width: 100%;	
 	padding: 5px;
 	box-sizing:border-box;
 	background-image:  -webkit-linear-gradient(top,#fff,#f2f4f2);
+	position: absolute;
+	box-shadow: 0px 0px 11px -3px;
+	left: 40px;
+	top: 0px;
 }
 
 /* formatting styles */
@@ -43,7 +63,9 @@ div.twitter {
 	right: 0;
 }
 
-
+.shadow{
+	box-shadow: 0px 0px 11px -3px;
+}
 
 /* border Classes */
 .borderRed{

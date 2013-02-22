@@ -126,7 +126,9 @@ public class HtmlGenerator {
 					+ "<div class='clear'></div>"
 					+ "<div class='content'>" 
 						+ content 
-						+ "<br><hr>"
+						+ "<br>"
+						+ "<button class='expand'>Show Less</button>"
+						+"<hr>"
 						+"<div class='fb-comments' data-href='"+ shorturl +"' data-num-posts='7' data-width='400'></div>"
 					+ "</div>";
 			}
