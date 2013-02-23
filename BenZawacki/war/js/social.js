@@ -15,6 +15,23 @@ $(document).ready(function(){
 		$("#tagsDIV").toggle("slide");
 	});
 	
+	$("#articlesDIV, #socialSidebar").click(function(){
+		if ($("#tagsDIV").is(":visible")){			
+			$("#filterBtn").click();			
+		}
+	});
+	
+	$("button.btn-navbar").click(function(){
+		
+		if (!$("div.nav-collapse").hasClass("in")){
+//			$("#toolbar").css("top", $("div.nav-collapse.collapse").height());
+			$("#toolbar").addClass("in");
+		}else{
+//			$("#toolbar").css("top", "");
+			$("#toolbar").removeClass("in");
+		}
+	});
+	
 }); //end document ready function
 
 function getArticles(){

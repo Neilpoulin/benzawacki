@@ -394,12 +394,6 @@ function getArticles(){
 				pos = "last";
 				
 				$("#listArticlesDIV ol li:" + pos +" button")
-					.button({
-			            icons: {
-							primary: "ui-icon-trash"
-			            },
-						text: false
-					})
 					.click(function(){	
 						var article = $(this).parent().find("div.articleData").text().trim()
 						article = JSON.parse(article);
@@ -410,7 +404,7 @@ function getArticles(){
 								$(this).remove();
 							});
 						}	//end click function
-				});	
+				}).addClass("btn").append("<i class='icon-trash'></i>");	
 				tags(data[i].tags);
 			}// end for loop	
 			if (slide){
@@ -571,15 +565,15 @@ function select($target, sel, multi, type, index){
 
 
 function setWidth($parent, elm, factor){ //set parent width based on width of child elements
-	var $elms = $parent.find(elm);
-	var totalW = 0;
-	
-	for (var i=0; i< $elms.length; i++){
-		var w = $elms.eq(i).outerWidth();
-		totalW += w*1.25/factor;
-	}
-	$parent.css("width", totalW);
-	return totalW;
+//	var $elms = $parent.find(elm);
+//	var totalW = 0;
+//	
+//	for (var i=0; i< $elms.length; i++){
+//		var w = $elms.eq(i).outerWidth();
+//		totalW += w*1.25/factor;
+//	}
+//	$parent.css("width", totalW);
+//	return totalW;
 }
 
 
@@ -603,26 +597,26 @@ function sortArray(array, field, reverse, primer){
 }	
 
 function formatPage(){
-	var $listDIV = $("#listArticlesDIV");
-	var $entryDIV = $("#articleBin");
-	var winWidth = $(window).width();
-	var $imgDIV = $("#imgSelected");
-	
-	$listDIV.width("30%");
-	$entryDIV.width(winWidth - $listDIV.outerWidth() - 100).css({ marginRight: "15px"});
-	$listDIV.css({marginRight: 0});
-	
-	if ($entryDIV.width() < 400){
-		$listDIV.width(winWidth*.90);
-		$entryDIV.width(winWidth*.90);
-	}
-	
-	var imgAdj = $entryDIV.width()-$imgDIV.outerWidth()-20;
-	$("#articleSummary").width(imgAdj);
-	$("#articleTitle").width(imgAdj);
-	$("#articlePostDate").width("8em");
-	$("#articleLocation").width(imgAdj - $("#articlePostDate").width() - 9);
-	
+//	var $listDIV = $("#listArticlesDIV");
+//	var $entryDIV = $("#articleBin");
+//	var winWidth = $(window).width();
+//	var $imgDIV = $("#imgSelected");
+//	
+//	$listDIV.width("30%");
+//	$entryDIV.width(winWidth - $listDIV.outerWidth() - 100).css({ marginRight: "15px"});
+//	$listDIV.css({marginRight: 0});
+//	
+//	if ($entryDIV.width() < 400){
+//		$listDIV.width(winWidth*.90);
+//		$entryDIV.width(winWidth*.90);
+//	}
+//	
+//	var imgAdj = $entryDIV.width()-$imgDIV.outerWidth()-20;
+//	$("#articleSummary").width(imgAdj);
+//	$("#articleTitle").width(imgAdj);
+//	$("#articlePostDate").width("8em");
+//	$("#articleLocation").width(imgAdj - $("#articlePostDate").width() - 9);
+//	
 }
 
 

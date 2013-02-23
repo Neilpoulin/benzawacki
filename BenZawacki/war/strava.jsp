@@ -39,8 +39,7 @@
 	<jsp:include page="header.jsp" />
 
 	<body>	
-		<h1>Strava</h1>
-		<h2>Check out my latest activity on Strava</h2>
+		<h1>Strava Activity</h1>
 		<div id="stravaSocialDIV">
 			<div id="socialDIV">
 				<div class="container-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.benzawacki.com/strava.jsp" data-text="Check out this article from Ben Zawacki\'s website" data-via="BenZawacki" data-size="medium">Tweet</a></div>

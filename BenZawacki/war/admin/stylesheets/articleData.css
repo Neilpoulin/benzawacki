@@ -51,7 +51,6 @@ DIV.thumb.selected {
 
 #articleSummary {
 	height: 170px;
-	max-width: 100%;
 	
 }
 
@@ -62,20 +61,17 @@ DIV.thumb.selected {
 }
 
 #articleTitle{
-	font-size: 2em;
+	/* font-size: 2em;
+	heigth: 2.2em; */
 }
-
-#articlePostDate, #articleLocation{
-	font-size: 1.5em;
+ 
+#articleLocation{
+	margin-left: 40px;
 }
 
 #articleShortUrl{
 	display: none;
 }
-div.main{
-float: left;
-}
-
 
 #imgGallery{
 	max-width: 98%;
@@ -99,7 +95,6 @@ float: left;
 
 #imgSelected{
 	float: left;
-	margin-right: 1em;
 	text-align: center;
 	
 }
@@ -113,21 +108,22 @@ float: left;
 }
 
 
+
 #articleBin{
-	border: 2px solid black;
 	border-radius: 10px;
-	margin: 0 -2px 1em -2px;
 	padding: 1em;
+	box-shadow: 0px 0px 11px -3px;
+	background-image:  -webkit-linear-gradient(top,#fff,#f2f4f2);
 }
 
-#listArticlesDIV{
+/* #listArticlesDIV{
 	float: left;
 	border: 2px solid black;
 	margin: -2px;
 	border-radius: 10px;
 	padding: 1em;
 	
-}
+} */
 #listArticlesDIV h3 {
 	padding-top: 0em;
 	margin-top: 0em;
@@ -151,6 +147,7 @@ float: left;
 
 DIV.imgTagsDIV {
 	float: right;
+	overflow: auto;
 }
 
 DIV.imgTagsDIV ul {
@@ -181,6 +178,10 @@ DIV.imgTagsDIV ul li:last-child {
 }	
 
 #intro{
+	
+}
+
+#intro p{
 	padding-bottom: 0;
 	padding-top: 1em;
 	margin: 0;
@@ -189,6 +190,8 @@ DIV.imgTagsDIV ul li:last-child {
 
 #imageSteps{
 	padding-top: 0;
-	margin: 0 0 0 .5em;
 	font-size: 1.3em;
+	padding-left: 15px;
+	padding-top: 10px;
+	padding-bottom: 15px;
 }

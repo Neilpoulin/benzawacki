@@ -1,0 +1,40 @@
+@import "/css/common.less";
+
+@partners-width: 767px;
+
+#partners{
+	margin-top: 20px;
+	width: 767px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#partners li{
+	width: @partners-width/4 - 30;
+	box-sizing: border-box;
+	height: 84px;
+	margin: 0 10px 10px 0;
+	float: left;
+	background-image:  linear-gradient(top,#fff,#f2f4f2);
+	.box-shadow;
+	text-align: center;
+}
+
+#partners li a{
+	height: 100%;
+	width: 100%;
+	display: block;
+}
+
+#partners li a img{
+	max-height: 100%;
+	max-width: 100%;	
+	margin-left: auto;
+	margin-right: auto;
+	display:block;
+}
+
+
+#partners li a:hover{
+	background-image: linear-gradient(top, #fff-9, #f2f4f2-9);
+}

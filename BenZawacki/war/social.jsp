@@ -65,8 +65,7 @@
 		
 		<div id="navSidebar" class="span3">
 			<div id="toolbar" class="btn-group btn-group-vertical" data-offset-top="90">
-				<button class="btn" id="filterBtn" data-toggle="button"><i class="icon-filter"></i></button>
-				<button class="btn" id="filterBtn"><i class="icon-share-alt"></i></button>
+				<button class="btn" id="filterBtn" data-toggle="button"><i class="icon-filter"></i></button>				
 			</div>	
 			<div class="" id="tagsDIV">
 				<b>Filter by tag:</b><br>

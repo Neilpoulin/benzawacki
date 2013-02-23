@@ -1,3 +1,5 @@
+@import "/css/common.less";
+
 /* global display classes */
 .hidden{
 	display: none;
@@ -12,6 +14,7 @@
 	position: fixed;
 	top: 45px;
 	left: -5px;
+	z-index: 5;
 }
 
 #socialSidebar, #navSidebar, #articlesDIV{
@@ -20,7 +23,7 @@
 }
 
 div.twitter, #tagsDIV, #articlesDIV DIV.article{
-	box-shadow: 0px 0px 11px -3px;
+	.box-shadow;
 	border-radius: 6px;
 }
 
@@ -39,14 +42,11 @@ div.twitter {
 
 /* navSidebar sub-styles */
 
-#tagsDIV{
-	display: inline-block;
-	width: 100%;	
+#tagsDIV{	
 	padding: 5px;
-	box-sizing:border-box;
 	background-image:  -webkit-linear-gradient(top,#fff,#f2f4f2);
 	position: absolute;
-	box-shadow: 0px 0px 11px -3px;
+	.box-shadow;
 	left: 40px;
 	top: 0px;
 }
@@ -61,10 +61,6 @@ div.twitter {
 	top: 50%;
 	left: 0;
 	right: 0;
-}
-
-.shadow{
-	box-shadow: 0px 0px 11px -3px;
 }
 
 /* border Classes */
@@ -96,4 +92,30 @@ div.twitter {
 
 .borderDashed{
 	border-style: dashed;
+}
+
+#toolbar.in{
+	top: 295px;
+}
+
+@media (max-width: 767px){
+	#articlesDIV{
+		padding-left: 15px;
+	}
+	
+	#tagsDIV{
+		/* right: 10px; */
+	}
+	
+	#socialSidebar{
+		padding-left: 15px;
+	}
+	
+	div.article{
+		margin-right: -10px !important;
+	}
+	
+	#toolbar{
+		top: 24px;
+	}
 }

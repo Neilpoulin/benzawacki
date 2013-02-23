@@ -65,9 +65,5 @@
 		<h3>Content below carousel</h3>
 
 	</div><!-- /.container -->
-
-	<!-- <script type="text/javascript" src="/lib/jquery.js"></script>
-	<script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script> -->
-	<script type="text/javascript" src="/lib/less.js"></script>
 </body>
 </html>

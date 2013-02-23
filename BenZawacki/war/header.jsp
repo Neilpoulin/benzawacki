@@ -8,6 +8,7 @@
 		<link type="text/css" rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"/>
 		<link type="text/css" rel="stylesheet" href="/lib/bootstrap/css/bootstrap-responsive.min.css"/>	
 		<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-active/jquery-ui.css" />
+		<link type="stylesheet/less" rel="stylesheet" href="/css/common.less"/>
 	</head>
 <%
    	UserService userService = UserServiceFactory.getUserService();
@@ -56,7 +57,8 @@
 									<li><a href="/admin/articles">Articles</a></li>	
 									<li class="nav-header">Test Pages</li>
 	                    			<li><a href="/pages/main.jsp">New Home Page</a></li>	
-	                    			<li><a href="/writings">Writings</a></li>					
+	                    			<li><a href="/writings">Writings</a></li>	
+	                    			<li><a href="/partners">Partners</a></li>				
 								</ul>
 							</li>
 <%						

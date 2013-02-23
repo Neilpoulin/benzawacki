@@ -10,6 +10,10 @@ div.clear {
 	text-decoration: none;
 }
 
+div.nav-collapse{
+	z-index: 10;
+}
+
 .hidden{
 	display: none;	
 }

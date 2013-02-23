@@ -5,7 +5,6 @@
 		<link rel="apple-touch-icon" href="/data/images/logo-114x114.png"/>
 		<link rel="stylesheet" type="text/css" href="/stylesheets/header.css" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/contact.css" />
-		<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-active/jquery-ui.css" />
 		<script type="text/javascript"> //Google Analytics
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-31500940-1']);

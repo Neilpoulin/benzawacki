@@ -96,6 +96,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+	    <servlet-name>partners</servlet-name>
+	    <jsp-file>/pages/partners.jsp</jsp-file>
+	  </servlet>
+ 	  <servlet-mapping>
+	    <servlet-name>partners</servlet-name>
+	    <url-pattern>/partners</url-pattern>
+	  </servlet-mapping>
+	
+	<servlet>
 	    <servlet-name>contact</servlet-name>
 	    <jsp-file>/contact.jsp</jsp-file>
 	  </servlet>
