@@ -30,4 +30,8 @@
 			mainSummary: Handlebars.compile($("#articles_mainSummaryTemplate").html() )
 		}
 	};
+	
+	Handlebars.registerHelper('toHtml', function(string) {
+		  return new Handlebars.SafeString(string);
+		});
 </script>
