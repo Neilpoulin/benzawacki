@@ -1,0 +1,28 @@
+<div class="mainArticleSummary">	
+	<h2><a href="{{shortUrl}}">{{title}}</a></h2> 
+	
+	{{#if blobKey}}
+		<img class="thumb pull-left" alt="" src="/serve?blobKey={{blobKey}}"/>
+	{{/if}}
+	
+	<p><b>Post Date:</b> {{postDate}}</p>  
+	<p><b>Location:</b> {{location}}</p> 
+	 
+	{{#if tags}}
+		<p><b>Tags:</b> <i>{{tags}}</i></p>	
+	{{/if}}
+	
+	<p><b></b> {{summary}}</p>	
+</div>
+
+<!-- Data format:
+{
+	"title":"Test 2",
+	"content":"blahb lah blah blah blah blah blah blah blah ",
+	"summary":"blah blah blah blah ",
+	"blobKey":"","tags":"tag1, tag2, tag3, tag4, tag5",
+	"postDate":"2013-02-21","uploadDate":"Thu Feb 21 17:50:13 MST 2013",
+	"index":"1",
+	"shortUrl":"http://goo.gl/7Y4GQ",
+	"location":"Denver, CO"
+} -->

@@ -1,5 +1,6 @@
 <!-- Stylesheets for templates -->
 <link rel="stylesheet/less" href="/templates/articles/listSummary.less" />
+<link rel="stylesheet/less" href="/templates/articles/mainSummary.less" />
 <link rel="stylesheet/less" href="/templates/articles/selectedImagesButtonSet.less" />
 
 <!-- Include Template Files, makek them hidden -->
@@ -13,13 +14,20 @@
 	<jsp:include page="articles/selectedImagesButtonSet.html"/>
 </div>
 
+<div id="articles_mainSummaryTemplate" class="hidden">
+	<jsp:include page="articles/mainSummary.html"/>
+</div>
+
+
+
 <!-- Include any libraries templates are dependent on and JS Accessor object -->
 <script type="text/javascript" src="/lib/handlebars.js"></script>
 <script>
 	window.templates = {
 		articles: {
 			listSummary: Handlebars.compile($("#articles_listSummaryTemplate").html()),
-			selectedImagesButtonSet: Handlebars.compile( $("#articles_selectedImagesButtonSetTemplate").html() )
+			selectedImagesButtonSet: Handlebars.compile( $("#articles_selectedImagesButtonSetTemplate").html() ),
+			mainSummary: Handlebars.compile($("#articles_mainSummaryTemplate").html() )
 		}
 	};
 </script>
