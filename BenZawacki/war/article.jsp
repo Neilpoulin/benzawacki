@@ -4,7 +4,7 @@
 	<head>
 		<title>Ben Zawacki | Article</title>
 		<script type="text/javascript" src="/js/jquery.js"></script>
-		<link rel="stylesheet" href="/stylesheets/article.css" />
+		<link rel="stylesheet" href="/stylesheets/article.less" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/buildArticle.css" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/header.css" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-active/jquery-ui.css" />
@@ -37,12 +37,8 @@
 	</head>
 		<jsp:include page="/header.jsp"/>
 	<body>				
-		<div id="header">
-			
-		</div>
-		
-		<div id="mainDIV">
-			<div id="articlesDIV"></div>
+		<div id="mainDIV" class="container">
+			<div id="articlesDIV" class="content-div"></div>
 		</div>
 		<div id="tagsDIV" class="hidden">
 			<ul id="tagsUL">
@@ -55,13 +51,10 @@
 		
 		<div id="fb-root"></div>	
 		
-		<script type="text/javascript" src="/js/ui/jquery-ui-1.8.18.custom.min.js"></script>	
-		<script type="text/javascript" src="/js/buildArticle.js"></script>
 		<script type="text/javascript" src="/js/waitForImages.js"></script>
-		<script type="text/javascript" src="/js/socialWidgets.js"></script>
-		<script type="text/javascript" src="/js/article.js"></script>
-		<script type="text/javascript" src="/js/header.js"></script>		
-		<script type="text/javascript" src="/js/prefix-free.js"></script>	
+		<script type="text/javascript" src="/js/buildArticle.js"></script>		
+		<!-- <script type="text/javascript" src="/js/socialWidgets.js"></script> -->
+		<script type="text/javascript" src="/js/article.js"></script>			
 		
 	</body>
 	

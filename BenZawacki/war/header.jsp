@@ -43,7 +43,7 @@
 						<ul class="nav">
 							<li><a href="/home">Home</a></li>						
 							<li><a href="/contact">Contact</a></li>
-							<li><a href="/strava">Strava</a></li>
+							<!-- <li><a href="/strava">Strava</a></li> -->
 							<li><a href="/races">Races</a></li>						
 <%
 	//If the user is an admin, show the admin menu options, otherwise dont show it. 							

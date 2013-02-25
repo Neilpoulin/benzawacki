@@ -8,11 +8,11 @@ $(document).ready(function(){
 		req[temp[0]] = temp[1];
 	}
 	console.log(req);
-	formatPage();
-	getArticle(req.index, req.num, req.dir);
+//	formatPage();
+	getArticle(req.index, req.num, req.dir, req.id);
 	
 	$(window).resize(function(){
-		formatPage();
+//		formatPage();
 		buildArticle(false, $("#articlesDIV"), true, 500, function(){
 			$("#articlesDIV").css({ opacity: 1 });
 		});
@@ -43,13 +43,14 @@ $(document).ready(function(){
 	
 }); //end document ready function
 
-function getArticle(index, num, dir){
+function getArticle(index, num, dir, id){
 	$.ajax({
 		url: "/articleServlet",
 		data: {
 			num: num,
 			start: index,
-			direction: dir
+			direction: dir,
+			id: id
 		},
 		type: "GET",
 		dataType: "json",

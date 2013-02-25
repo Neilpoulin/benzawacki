@@ -21,8 +21,8 @@
 	          <img src="/data/carousel/headshot700.jpg" alt="headshot">
 	          <div class="container">
 	            <div class="carousel-caption">
-	              <h1>Example headline.</h1>
-	              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+	              <h1>Welcome</h1>
+	              <p class="lead">to BenZawacki.com </p>
 	              <a class="btn btn-large btn-primary" href="#">Sign up today</a>
 	            </div>
 	          </div>

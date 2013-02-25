@@ -37,7 +37,7 @@ public class ArticleServlet extends HttpServlet{
 		String location = req.getParameter("location");
 		Text contentText = new Text(content);
 		String shortUrl = req.getParameter("shortUrl");
-		String articleId = req.getParameter("articleId");
+		String articleId = req.getParameter("articleId").replaceAll(" ", "").replaceAll(":", "");
 		String tags = req.getParameter("tags");
 		String postDate = req.getParameter("postDate");
 		
@@ -57,7 +57,7 @@ public class ArticleServlet extends HttpServlet{
 		String sCount = Integer.toString(count);
 		if (action.equals("add")){
 //			System.out.println("content: " + content);
-			Entity article = new Entity("Articles", title+uploadDateString);
+			Entity article = new Entity("Articles", (title+uploadDateString).replaceAll(" ", "").replaceAll(":", ""));
 				article.setProperty("blobKey", blobKey);
 				article.setProperty("title", title);
 				article.setProperty("summary", summary);
@@ -68,16 +68,16 @@ public class ArticleServlet extends HttpServlet{
 				article.setProperty("location", location);
 				article.setProperty("index", sCount);
 				article.setProperty("shortUrl", shortUrl);
-				article.setProperty("articleId", title+uploadDateString);
+				article.setProperty("articleId", (title+uploadDateString).replaceAll(" ", "").replaceAll(":", ""));
 				
 				datastore.put(article);					
 				
 		} else if(action.equals("delete")){
-			Key getKey = KeyFactory.createKey("Articles", title+req.getParameter("uploadDate"));			
+			String k = (title+req.getParameter("uploadDate")).replaceAll(" ", "").replaceAll(":", "");
+			Key getKey = KeyFactory.createKey("Articles", k);			
 			try {
+				@SuppressWarnings("unused")
 				Entity get = datastore.get(getKey);
-				String getTitle = (String)get.getProperty("title");
-//				System.out.println("deleteing article: " + getTitle);
 				datastore.delete(getKey);	
 			} catch (EntityNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -105,15 +105,20 @@ public class ArticleServlet extends HttpServlet{
 		}
 	} //end doPost
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String num = req.getParameter("num");
-		String start = req.getParameter("start");
-		String direction = req.getParameter("direction");
-		direction = direction.toLowerCase();
-		
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {	
+		String id = req.getParameter("id");
 		HtmlGenerator htmlGenerator = new HtmlGenerator();
-		String json = htmlGenerator.generateHtml(num, start, direction);
-//		System.out.println(json);
+		String json = null;
+		if (id != null && id != "" && id!="undefined"){
+			json = htmlGenerator.generateHtml(id);
+		}else{
+			String num = req.getParameter("num");
+			String start = req.getParameter("start");
+			String direction = req.getParameter("direction");
+			direction = direction.toLowerCase();
+			json = htmlGenerator.generateHtml(num, start, direction);
+		}
+				
 		resp.getWriter().println(json);
 		
 	} //end doGet	

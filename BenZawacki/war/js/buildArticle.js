@@ -38,7 +38,7 @@ function buildArticle(setup, $container, hideInitial, time, callback){
 							refreshArticles();
 						});
 					});
-					loadSocial();
+//					loadSocial();
 					callback();	
 				});	//end wait for images
 			} else{

@@ -105,6 +105,8 @@ $(document).ready(function(){
 		$(".article").each(function(){
 			$(this).trigger("keyup");
 		});
+		
+		
 		var blobKey = $("#articleKey").val();
 		var title = $("#htmlTitle").val();
 		var summary = $("#htmlSummary").val();
@@ -112,10 +114,11 @@ $(document).ready(function(){
 		var date = $("#articlePostDate").val();
 		var tags = $("#articleTags").val().toLowerCase();
 		var location = $("#htmlLocation").val();
-		var shortUrl = $("#articleShortUrl").val();
+		
 		var index = $("#articleIndex").val();
 		var articleId = $("#articleId").val();
-		
+		getShortUrl("http://www.benzawacki.com/article.jsp?id=" + articleId, $("#articleShortUrl"));
+		var shortUrl = $("#articleShortUrl").val();
 		var article = {
 			"blobKey": blobKey,
 			"postDate": date,
@@ -445,7 +448,7 @@ function getArticles(){
 				});
 				
 				$("#listArticlesDIV ol li:" + pos +" button.edit").attr("data-articleId", i).click(function(){
-					var article = articles[Number($(this).attr("data-articleId"))];
+					var article = articles[Number($(this).attr("data-articleId")) - 1];
 					console.log(article);
 					$("#articleKey").val(article.blobKey);
 					$("#articleTitle").val(article.title);
@@ -477,7 +480,9 @@ function getArticles(){
 			}
 			autoComplete();	
 			var newIndex = $("#listArticlesDIV li").length;
-			getShortUrl("http://www.benzawacki.com/article.jsp?num=1&index=" + newIndex + "&dir=ascending", $("#articleShortUrl"));
+			if (article != undefined){
+				getShortUrl("http://www.benzawacki.com/article.jsp?id=" + article.articleId, $("#articleShortUrl"));
+			}
 		} //end success function
 	}); //end ajax call	
 }
