@@ -448,7 +448,8 @@ function getArticles(){
 				});
 				
 				$("#listArticlesDIV ol li:" + pos +" button.edit").attr("data-articleId", i).click(function(){
-					var article = articles[Number($(this).attr("data-articleId")) - 1];
+					//TODO: look into how the article ID is being applied - this used to be the attribute minus one. 
+					var article = articles[Number($(this).attr("data-articleId"))];
 					console.log(article);
 					$("#articleKey").val(article.blobKey);
 					$("#articleTitle").val(article.title);
