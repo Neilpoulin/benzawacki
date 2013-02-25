@@ -1,7 +1,7 @@
-
+@import "../../css/common.less";
 
 .hidden {
-	display: none;
+	display: none !important;
 }
 div.clear{
 	clear: both;
@@ -60,10 +60,6 @@ DIV.thumb.selected {
 	max-width: 100%;
 }
 
-#articleTitle{
-	/* font-size: 2em;
-	heigth: 2.2em; */
-}
  
 #articleLocation{
 	margin-left: 40px;
@@ -107,42 +103,33 @@ DIV.thumb.selected {
 	max-width: 100%;
 }
 
-
-
 #articleBin{
-	border-radius: 10px;
-	padding: 1em;
-	box-shadow: 0px 0px 11px -3px;
-	background-image:  -webkit-linear-gradient(top,#fff,#f2f4f2);
+	.content-div;	
 }
 
-/* #listArticlesDIV{
-	float: left;
-	border: 2px solid black;
-	margin: -2px;
-	border-radius: 10px;
-	padding: 1em;
-	
-} */
-#listArticlesDIV h3 {
-	padding-top: 0em;
-	margin-top: 0em;
-
-}
-#listArticlesDIV button {
-	float: right;
-	height: 2em;
-}
-#listArticlesDIV h3 {
-	display: inline;
-	padding: 0;
-	margin-bottom: .5em;
+#summaryBin{
+	margin-left: 10px;
 }
 
-#listArticlesDIV li {
-	margin-bottom: .5em;
-	padding: 0 .5em .5em .5em;
-	border-bottom: 1px dotted black;
+#addPicDialog{
+	z-index: 2;
+}
+
+#listArticlesDIV{
+	.content-div;
+	padding: 15px;	
+	h1, h2, h3{
+		margin-top: 0px;
+	}
+}
+
+#listArticlesDIV ol li{
+	border-bottom: 1px solid gray;
+	margin-bottom: 10px;
+}
+
+#listArticlesDIV ol li:last-child{
+	border-bottom: 0px;
 }
 
 DIV.imgTagsDIV {
@@ -178,7 +165,17 @@ DIV.imgTagsDIV ul li:last-child {
 }	
 
 #intro{
-	
+	margin-top: 20px;
+	margin-bottom: 20px;
+	h1,h2,h3,h4{
+		position: relative;
+	}
+}
+
+#help-btn{
+	position: relative;
+	left: 10px;
+	top: -5px;
 }
 
 #intro p{
@@ -189,9 +186,23 @@ DIV.imgTagsDIV ul li:last-child {
 }
 
 #imageSteps{
-	padding-top: 0;
 	font-size: 1.3em;
 	padding-left: 15px;
 	padding-top: 10px;
 	padding-bottom: 15px;
+}
+
+img.full{
+	width: 100%;
+	float: none !important;
+}
+
+#imageOptions{
+	list-style: none;
+	margin: 0px;
+	margin-top: 10px;	
+}
+
+.ui-dialog{
+	z-index: 3;
 }

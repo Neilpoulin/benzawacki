@@ -66,7 +66,7 @@ public class HtmlGenerator {
 			String location = (String) article.getProperty("location");
 			String articleIndex = (String) article.getProperty("index");
 			String shortUrl = (String) article.getProperty("shortUrl");
-			
+			String articleId = (String) article.getProperty("articleId");
 			entry = "{"
 					+ "\"title\" : " + "\"" + title + "\", " 
 					+ "\"content\" : " + "\"" + content + "\", "
@@ -77,7 +77,8 @@ public class HtmlGenerator {
 					+ "\"uploadDate\" : " + "\"" + uploadDate + "\","
 					+ "\"index\" : " + "\"" + articleIndex + "\","
 					+ "\"shortUrl\" : " + "\"" + shortUrl + "\","
-					+ "\"location\" : " + "\"" + location + "\""
+					+ "\"location\" : " + "\"" + location + "\","
+					+ "\"articleId\" : " + "\"" + articleId + "\""
 					+ "}";
 			
 			String taghtml = "";
@@ -125,9 +126,9 @@ public class HtmlGenerator {
 					+ "<button class='expand'>Toggle Content</button>"
 					+ "<div class='clear'></div>"
 					+ "<div class='content'>" 
-						+ content 
+						+ "<div class='clearfix'>" + content + "</div>" 
 						+ "<br>"
-						+ "<button class='expand'>Show Less</button>"
+						+ "<button class='expand clearfix'>Show Less</button>"
 						+"<hr>"
 						+"<div class='fb-comments' data-href='"+ shorturl +"' data-num-posts='7' data-width='400'></div>"
 					+ "</div>";

@@ -38,7 +38,7 @@ $(document).ready(function(){
 		defaultDate: 0,
 		duration: "fast",	
 	});
-	$('textarea[maxlength]').live('keyup blur', function() {
+	$('textarea[maxlength]').on('keyup', function() {
         // Store the maxlength and value of the field.
         var maxlength = $(this).attr('maxlength');
         var val = $(this).val();
@@ -52,16 +52,16 @@ $(document).ready(function(){
 	window.imgArray = [];
 	window.imgArrayCt = 0;
 	
-	$("#articleTags").live('blur change', function(){
+	$("#articleTags").on('blur change', function(){
 		var content = $(this).val().toLowerCase();
 		content = content.replace(/"/gm, "");
 		$(this).val(content);
 	});
 	
-	$("#articleSummary, #articleContent, #articleTitle, #articleLocation").live('keyup blur change', function(){
+	$("#articleSummary, #articleContent, #articleTitle, #articleLocation").on('keyup', function(){
 		var content = $(this).val();
 		content = content.replace(/(\r\n|\n|\r)/gm,"<br>");
-		content = content.replace(/(\t|^t)/gm, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+//		content = content.replace(/(\t|^t)/gm, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 		content = content.replace(/"/gm, '\\\"');
 		
 		var imgStr = "$<img";
@@ -77,15 +77,15 @@ $(document).ready(function(){
 				for (var j=0; j< imgArray.length; j++){
 					if (match[i] == "<" + imgArray[j].tag + ">"){
 						pos = j;
+						break;
 					}
 				}
-				var newStr;
+				var newStr = "<img";
 				if (imgArray[pos] != null){
 					newStr = imgArray[pos].html;
-					content = content.replace(match[i], newStr);	
+//					content = content.replace(match[i], newStr);	
 				} else {
 					alert("Image <img" + req + "> is not a vaild reference to a selected image.");
-					newStr = "<img";
 					var tmp = $(this).val();
 					tmp = tmp.replace(match[i], newStr);
 					$(this).val(tmp);
@@ -95,11 +95,16 @@ $(document).ready(function(){
 		}
 		var index = content.indexOf(imgStr);
 		$("#html" + $(this).attr("id").split("article")[1]).val(content);
+//		$("#preview").html(content);
+		refreshPreview();
 	});
 	//getArticles();
 	
 	$("#thumbsBinDIV").hide();
 	$("#submitArticle").button().click(function(){
+		$(".article").each(function(){
+			$(this).trigger("keyup");
+		});
 		var blobKey = $("#articleKey").val();
 		var title = $("#htmlTitle").val();
 		var summary = $("#htmlSummary").val();
@@ -108,23 +113,33 @@ $(document).ready(function(){
 		var tags = $("#articleTags").val().toLowerCase();
 		var location = $("#htmlLocation").val();
 		var shortUrl = $("#articleShortUrl").val();
+		var index = $("#articleIndex").val();
+		var articleId = $("#articleId").val();
+		
+		var article = {
+			"blobKey": blobKey,
+			"postDate": date,
+			"content": content,
+			"summary": summary,
+			"title": title,
+			"location": location,
+			"tags":tags, 
+			"shortUrl": shortUrl,
+			"articleId": articleId
+		}
+		
+		if (articleId != ""){
+			article.action = "update";
+		}else{
+			article.action = "add";
+		}
 		
 		$.ajax({
 			url: "/articleServlet",
-			data: {
-				"action": "add",
-				"blobKey": blobKey,
-				"postDate": date,
-				"content": content,
-				"summary": summary,
-				"title": title,
-				"location": location,
-				"tags":tags, 
-				"shortUrl": shortUrl
-			},
+			data: article,
 			type: "POST",
 			success: function(){
-				$(".article").val("");
+				$(".article").val("").trigger("keyup");
 				$("#articleImgSel").find(".selected").click();
 				$("#articleImgSel, #imgGallery").animate({width: "0%"}, 1500, function(){
 					if ($("#chkArticleImg").is(":checked")){
@@ -132,7 +147,6 @@ $(document).ready(function(){
 					}
 					getArticles();
 				});
-				
 			}
 		}); //end ajax call
 		
@@ -142,7 +156,7 @@ $(document).ready(function(){
 	
 	
 	$("#btnArticleImg").button().add("#articleImg").click(function(){
-		buildImgPicker($("#articleImgSel"), "articleChooseImg", setTitleImgBinds, false);
+		buildImgPicker($("#imgGallery"), "articleChooseImg", setTitleImgBinds, false);
 		$("#imgGallery").dialog("open");
 		
 	});	
@@ -152,17 +166,63 @@ $(document).ready(function(){
 		$("#addPicDialog").dialog("open");
 	});
 	
-	formatPage();
-	$(window).resize(function(){
-		formatPage();
+	window.articles = {};	
+	
+	$("#link-modal").on("hidden", function(){
+		$("input").each(function(){
+			$(this).val("");
+		});
 	});
-		
-		
-		
-		
-		
+	
+	$("#link-submit").click(function(){
+		insertLink();		
+	});
+	
+	$("#link-address").on("blur", function(){
+		var address = $("#link-address").val();
+		if (address.indexOf("http://") != 0 && address.indexOf("www.") != 0){
+			address = "http://www." + address;
+		}else if (address.indexOf("http://") != 0 && address.indexOf("www.") == 0){
+			address = "http://" + address;
+		}
+		$(this).val(address);
+	});
 }); // end document.ready()
 
+
+function insertLink(){
+	var address = $("#link-address").val();
+	var text = $("#link-text").val();
+	var html = linkify(address);	
+	html = $(html).html(text)[0].outerHTML;
+	console.log(html[0].outerHTML);
+	$("#articleContent").val($("#articleContent").val() + html).trigger("keyup");
+	$("#link-modal").modal("hide");
+}
+
+function linkify(inputText) {
+    var replacedText, replacePattern1, replacePattern2, replacePattern3;
+
+    //URLs starting with http://, https://, or ftp://
+    replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+    replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+
+    //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+    replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
+
+    //Change email addresses to mailto:: links.
+    replacePattern3 = /(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})/gim;
+    replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
+
+    return replacedText;
+}
+
+function refreshPreview(){
+	$("#htmlTitle").val() != "" ? $("#preview").html( "<h4>" + $("#htmlTitle").val() + "</h4>") : $("#preview").html("");
+	$("#htmlSummary").val() != "" ? $("#preview").append( $("#htmlSummary").val() + "<br/><br/>") : $("#preview").append("");
+	$("#htmlContent").val() != "" ? $("#preview").append( $("#htmlContent").val() ) : $("#preview").append("");
+}
 
 function autoComplete(){
 	var availableTags = tags();
@@ -214,8 +274,6 @@ function autoComplete(){
 	});
 }
 
-
-
 function buildImgPicker($target, newId, callback, multi){	
 	var $picsDIVbin = $target;
 	if ($picsDIVbin.find("img").length != $("#thumbsDIV").find("img").length){
@@ -238,7 +296,6 @@ function buildImgPicker($target, newId, callback, multi){
 	}
 }
 
-
 function insertImgBinds(id){
 	$("#"+ id + "> div").click(function(){
 		var src = $(this).find("img").attr("src");
@@ -254,23 +311,29 @@ function insertImgBinds(id){
 		if($(this).hasClass("selected")){
 			imgArrayCt++;
 			var imghtml =  "<img src='" + src + "' class='small right' />";
-			imgArray.push({"html" : imghtml, "sizeClass" : "thumb", "posClass": "right", "blobKey": blobKey, "count": imgArrayCt, "tag": "img" + imgArrayCt, "filename": filename });
+			imgArray.push({"html" : imghtml, 
+				"sizeClass" : "small", 
+				"posClass": "right", 
+				"blobKey": blobKey, 
+				"count": imgArrayCt, 
+				"tag": "img" + imgArrayCt, 
+				"filename": filename 
+			});
 			$(this).append("<br><span>");
 			$(this).find("span:last").html("&lt;img" + imgArrayCt + "&gt;");
 			
 		} else {
 			for (var i=0; i<imgArray.length; i++){
-				if (imgArray[i].blobKey == blobKey){
-					
+				if (imgArray[i].blobKey == blobKey){			
 					var re = "\u003Cimg" + imgArray[i].count +  "\u003E";
 					var imgReg = new RegExp(re);
 					var content = $content.val();
-					var summary = $summary.val();
-					
+					var summary = $summary.val();					
 					var count = 0;
 					var cMatch = content.match(imgReg);
 					var sMatch = summary.match(imgReg);
 					var newStr = "";
+					
 					if (cMatch != null){
 						for (var c = 0; c< cMatch.length; c++){
 							content = content.replace(cMatch[c], newStr);
@@ -283,14 +346,14 @@ function insertImgBinds(id){
 					}
 					
 					if (sMatch != null || cMatch != null){
-						var conf = confirm("This image appears in your article. Removing it will delete all references to it. This can not be undone. Are you sure you want to continue?");
+						var conf = confirm("This image appears in your article. Removing it will delete all references to it. "
+							+"This can not be undone. Are you sure you want to continue?");
 						if (conf){
 							$content.val(content);
 							$summary.val(summary);
 							imgArray.splice(i, 1);
-							$summary.trigger("blur");
-							$content.trigger("blur");
-							
+							$summary.trigger("keyup");
+							$content.trigger("keyup");
 						}
 					} else {
 						imgArray.splice(i, 1);
@@ -301,49 +364,30 @@ function insertImgBinds(id){
 		} //end else
 		var $imgTagsDIV = $(".imgTagsDIV");
 		$imgTagsDIV.find("ul").empty();
+		$("#imageOptions").empty();
 		for (var i=0; i< imgArray.length; i++){
-			$imgTagsDIV.find("ul").append("<li>");
-			$imgTagsDIV.find("li:last").html( "&lt;" + imgArray[i].tag + "&gt; - " + imgArray[i].filename);
+			$("#imageOptions").append(templates.articles.selectedImagesButtonSet(imgArray[i]));
 
-			$("#buttonSet").clone().removeClass("hidden").attr("id", "btnSet"+i).prependTo($imgTagsDIV.find("li:last")).find("input:radio").each(function(index, elm){
-				var id = Number(i).toString() + Number(index).toString();
-				$elm = $(elm);
-				
-				if ($elm.next().text().toLowerCase=="small" || $elm.next().text().toLowerCase()=="right"){
-					$elm.attr("checked", "checked").next().addClass("ui-state-active ");
-				} else {
-					$elm.attr("checked", "");
-				}
-				$elm.attr("id", "radio_" + id);
-				$elm.next().attr("for", "radio_" + id);
-				$elm.click(function(){
-					var p = 0;
-					if ($(this).attr("name").indexOf("size") == 0){
-						for (var j=0; j<imgArray.length; j++){
-							if ($(this).parent().parent().parent().text().indexOf(imgArray[j].tag) != -1  && $(this).parent().parent().parent().text().indexOf(imgArray[j].filename) != -1 ){
-								imgArray[j].sizeClass = $(this).next().text().trim().toLowerCase();
-								p = j;
-							}
-						}
-					} else if ($(this).attr("name").indexOf("pos") == 0){
-						for (var j=0; j<imgArray.length; j++){
-							if ($(this).parent().parent().parent().text().indexOf(imgArray[j].tag) != -1  && $(this).parent().parent().parent().text().indexOf(imgArray[j].filename) != -1 ){
-								imgArray[j].posClass = $(this).next().text().trim().toLowerCase();
-								p=j;
-							}
-						}
+			$("#selected_" + imgArray[i].tag + " button").each(function(index, obj){
+				$btn = $(obj);
+				$btn.click(function(){
+					var j = Number($(this).attr("data-tag").split("img")[1]) - 1 ;
+					
+					if ($(this).parent().hasClass("img-size")){
+						var size = $(this).val();
+						imgArray[j].sizeClass = size;
+					}else{
+						var position = $(this).val();
+						imgArray[j].posClass = position;
 					}
 					
-					imgArray[p].html = "<img src='/serve?blobKey=" + imgArray[p].blobKey + "' class='" + imgArray[p].posClass +  " " + imgArray[p].sizeClass + "' />";
-					$("#articleSummary").trigger("blur");
-					$("#articleContent").trigger("blur");
+					imgArray[j].html = "<img src='/serve?blobKey=" + imgArray[j].blobKey + "' class='" + imgArray[j].sizeClass +  " " + imgArray[j].posClass + "' />";
+					$("#articleSummary").trigger("keyup");
+					$("#articleContent").trigger("keyup");
 				});
-			}).end().find("input[name^='size']").attr("name", "size_" + i).end().find("input[name^='pos']").attr("name", "pos_" + i);
-			$("#btnSet"+i + " div").buttonset().css({"float": "left"});
+			});
 		}	
 	});
-	
-	
 }
 
 function setTitleImgBinds(){	
@@ -371,6 +415,7 @@ function getArticles(){
 		success: function(data){
 			console.log(data);
 			data = data.info; //sortArray(data.info, "uploadDate", true);
+			articles = data;
 			var slide, pos;
 			if ( $("#listArticlesDIV ol li").length > 0 ){
 
@@ -381,22 +426,15 @@ function getArticles(){
 			$("#listArticlesDIV ol").empty();
 			
 			for (var i=0; i < data.length; i++){
-				var article = data[i];
-				var html = 					
-					"<h3>"+data[i].title + "</h3>" + "<button></button>" 
-					+ "<br>POST DATE: " + data[i].postDate  
-					+ "<br>" +"TAGS: <i>" + data[i].tags + "</i>"
-					+ "<br><br>SUMMARY: "+ data[i].summary + "" 
-					+ "<span>ShortUrl: " + data[i].shorturl + "</span>"
-					+ "<div class='hidden articleData'>" + JSON.stringify(article) + "</div>";
+				var article = data[i];				
+				var html = templates.articles.listSummary(data[i]);
 				
-				$("#listArticlesDIV ol").append($("<li>").html(html));
+				$("#listArticlesDIV ol").append($("<li>").html(html).attr("data-articleId", i));
 				pos = "last";
 				
-				$("#listArticlesDIV ol li:" + pos +" button")
+				$("#listArticlesDIV ol li:" + pos +" button.delete").attr("data-articleId", i)
 					.click(function(){	
-						var article = $(this).parent().find("div.articleData").text().trim()
-						article = JSON.parse(article);
+						var article = articles[Number($(this).attr("data-articleId"))];
 						var r = confirm("Are you sure you want to delete '" + article.title + "'?");
 						if (r){	
 							deleteArticle(article);
@@ -404,7 +442,31 @@ function getArticles(){
 								$(this).remove();
 							});
 						}	//end click function
-				}).addClass("btn").append("<i class='icon-trash'></i>");	
+				});
+				
+				$("#listArticlesDIV ol li:" + pos +" button.edit").attr("data-articleId", i).click(function(){
+					var article = articles[Number($(this).attr("data-articleId"))];
+					console.log(article);
+					$("#articleKey").val(article.blobKey);
+					$("#articleTitle").val(article.title);
+					$("#articleSummary").val(article.summary);
+					$("#articleContent").val(article.content);
+					$("#articlePostDate").val(article.postDate);
+					$("#articleTags").val().toLowerCase(article.tags);
+					$("#articleLocation").val(article.location);
+					$("#articleShortUrl").val(article.shortUrl);
+					$("#articleIndex").val(article.index);
+					$("#articleId").val(article.articleId);
+					
+					if (article.blobKey != "" && article.blobKey != undefined){
+						$("#articleImg img").attr("id", article.blobKey).attr("src", "/serve?blobKey=" + article.blobKey);
+					}else{
+						$("#articleImg").empty();
+						$("#tempImg img").clone().appendTo("#articleImg").removeClass("hidden");
+					}
+					$(".article").trigger("keyup");
+				});
+				
 				tags(data[i].tags);
 			}// end for loop	
 			if (slide){
@@ -427,10 +489,20 @@ function deleteArticle(article){
 			data: article,
 			type: "POST",
 			success: function(data){
-			}
-		
+			}		
 		});	
 		
+}
+
+function updateArticle(article){
+	article["action"] = "update";
+	$.ajax({
+		url: "/articleServlet",
+		data: article,
+		type: "POST",
+		success: function(data){
+		}		
+	});
 }
 
 
@@ -565,15 +637,15 @@ function select($target, sel, multi, type, index){
 
 
 function setWidth($parent, elm, factor){ //set parent width based on width of child elements
-//	var $elms = $parent.find(elm);
-//	var totalW = 0;
-//	
-//	for (var i=0; i< $elms.length; i++){
-//		var w = $elms.eq(i).outerWidth();
-//		totalW += w*1.25/factor;
-//	}
-//	$parent.css("width", totalW);
-//	return totalW;
+	var $elms = $parent.find(elm);
+	var totalW = 0;
+	
+	for (var i=0; i< $elms.length; i++){
+		var w = $elms.eq(i).outerWidth();
+		totalW += w*1.25/factor;
+	}
+	$parent.css("width", totalW);
+	return totalW;
 }
 
 
@@ -595,30 +667,6 @@ function sortArray(array, field, reverse, primer){
 	array.sort(sort_by(field, reverse, primer));
 	return array;
 }	
-
-function formatPage(){
-//	var $listDIV = $("#listArticlesDIV");
-//	var $entryDIV = $("#articleBin");
-//	var winWidth = $(window).width();
-//	var $imgDIV = $("#imgSelected");
-//	
-//	$listDIV.width("30%");
-//	$entryDIV.width(winWidth - $listDIV.outerWidth() - 100).css({ marginRight: "15px"});
-//	$listDIV.css({marginRight: 0});
-//	
-//	if ($entryDIV.width() < 400){
-//		$listDIV.width(winWidth*.90);
-//		$entryDIV.width(winWidth*.90);
-//	}
-//	
-//	var imgAdj = $entryDIV.width()-$imgDIV.outerWidth()-20;
-//	$("#articleSummary").width(imgAdj);
-//	$("#articleTitle").width(imgAdj);
-//	$("#articlePostDate").width("8em");
-//	$("#articleLocation").width(imgAdj - $("#articlePostDate").width() - 9);
-//	
-}
-
 
 function getShortUrl(input, $target){
 	var apiKey = 'AIzaSyCcXfh_zwxQ-jGFLum6DI2SrtPvP8XmSug';

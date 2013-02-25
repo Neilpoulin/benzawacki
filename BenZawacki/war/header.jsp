@@ -82,11 +82,19 @@
 			</div><!-- /.navbar-inner -->
 		</div><!-- /.navbar -->				
 
+
+		<!-- Libraries -->
 		<script type="text/javascript" src="/lib/jquery.js"></script>
-		<script type="text/javascript" src="/lib/jquery-ui.js"></script>		
-		<script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>		
-		<script type="text/javascript" src="/js/header.js"></script>	
-		<script type="text/javascript" src="/js/prefix-free.js" ></script>
+		<script type="text/javascript" src="/lib/jquery-ui.js"></script>				
+		<script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/prefix-free.js" ></script>		
+		<!-- Template Includes -->
+		<jsp:include page="/templates/_templates.jsp"/>		
+		
+		<!-- Less.js needs to come after all styles are added to the page -->
 		<script type="text/javascript" src="/lib/less.js"></script>
+		
+		<!-- Page-specific JS files -->
+		<script type="text/javascript" src="/js/header.js"></script>					
 </body>
 </html>

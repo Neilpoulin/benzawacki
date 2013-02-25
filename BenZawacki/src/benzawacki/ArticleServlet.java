@@ -37,7 +37,7 @@ public class ArticleServlet extends HttpServlet{
 		String location = req.getParameter("location");
 		Text contentText = new Text(content);
 		String shortUrl = req.getParameter("shortUrl");
-		
+		String articleId = req.getParameter("articleId");
 		String tags = req.getParameter("tags");
 		String postDate = req.getParameter("postDate");
 		
@@ -68,6 +68,7 @@ public class ArticleServlet extends HttpServlet{
 				article.setProperty("location", location);
 				article.setProperty("index", sCount);
 				article.setProperty("shortUrl", shortUrl);
+				article.setProperty("articleId", title+uploadDateString);
 				
 				datastore.put(article);					
 				
@@ -82,7 +83,26 @@ public class ArticleServlet extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}	
+		} else if (action.equals("update")){
+			Key key = KeyFactory.createKey("Articles", articleId);
+			try {
+				Entity article = datastore.get(key);	
+				article.setProperty("blobKey", blobKey);
+				article.setProperty("title", title);
+				article.setProperty("summary", summary);
+				article.setProperty("content", contentText);
+				article.setProperty("tags", tags);
+				article.setProperty("postDate", postDate);
+				article.setProperty("uploadDate", uploadDateString);
+				article.setProperty("location", location);
+				article.setProperty("index", sCount);
+				article.setProperty("shortUrl", shortUrl);
+				datastore.put(article);	
+			} catch (EntityNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	} //end doPost
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

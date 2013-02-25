@@ -1,0 +1,40 @@
+<div class="listArticleSummary">	
+	<div class="btn-group btn-group-vertical">
+		<button class='btn delete'><i class='icon-trash'></i></button>
+		<button class='btn edit'><i class='icon-edit'></i></button>
+	</div> 
+	
+	<h3>{{title}}</h3> 
+	
+	{{#if blobKey}}
+		<img class="thumb pull-left" alt="" src="/serve?blobKey={{blobKey}}"/>
+	{{/if}}
+	
+	<p><b>Date:</b> {{postDate}}</p>  
+	<p><b>Location:</b> {{location}}</p> 
+	
+	
+	
+	<p><b>Tags:</b> 
+	{{#if tags}}
+		<i>{{tags}}</i>
+	{{else}}
+		<i>--</i>
+	{{/if}}
+	</p>
+	
+	<p><b>Summary:</b> {{summary}}</p>
+	<p><b>ShortUrl:</b> <a href="{{shortUrl}}">{{shortUrl}}</a></p>
+</div>
+
+<!-- Data format:
+{
+	"title":"Test 2",
+	"content":"blahb lah blah blah blah blah blah blah blah ",
+	"summary":"blah blah blah blah ",
+	"blobKey":"","tags":"tag1, tag2, tag3, tag4, tag5",
+	"postDate":"2013-02-21","uploadDate":"Thu Feb 21 17:50:13 MST 2013",
+	"index":"1",
+	"shortUrl":"http://goo.gl/7Y4GQ",
+	"location":"Denver, CO"
+} -->
