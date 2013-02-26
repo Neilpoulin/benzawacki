@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import benzawacki.dao.Article;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -40,69 +42,72 @@ public class ArticleServlet extends HttpServlet{
 		String articleId = req.getParameter("articleId").replaceAll(" ", "").replaceAll(":", "");
 		String tags = req.getParameter("tags");
 		String postDate = req.getParameter("postDate");
+
+		Article article = new Article(title, summary, content, tags, blobKey);
+		article.save();
 		
-		Date uploadDate = new Date();
-		String uploadDateString = uploadDate.toString();
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(uploadDate);
-		DateFormat df = new SimpleDateFormat("yyy-MM-dd@HH:mm:ss.SSS");
-		
-		@SuppressWarnings("unused")
-		String formattedDate = df.format(uploadDate);
-		
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query("Articles").setKeysOnly();
-		PreparedQuery pq = datastore.prepare(query);
-		int count = pq.countEntities(FetchOptions.Builder.withDefaults());
-		String sCount = Integer.toString(count);
-		if (action.equals("add")){
-//			System.out.println("content: " + content);
-			Entity article = new Entity("Articles", (title+uploadDateString).replaceAll(" ", "").replaceAll(":", ""));
-				article.setProperty("blobKey", blobKey);
-				article.setProperty("title", title);
-				article.setProperty("summary", summary);
-				article.setProperty("content", contentText);
-				article.setProperty("tags", tags);
-				article.setProperty("postDate", postDate);
-				article.setProperty("uploadDate", uploadDateString);
-				article.setProperty("location", location);
-				article.setProperty("index", sCount);
-				article.setProperty("shortUrl", shortUrl);
-				article.setProperty("articleId", (title+uploadDateString).replaceAll(" ", "").replaceAll(":", ""));
-				
-				datastore.put(article);					
-				
-		} else if(action.equals("delete")){
-			String k = (title+req.getParameter("uploadDate")).replaceAll(" ", "").replaceAll(":", "");
-			Key getKey = KeyFactory.createKey("Articles", k);			
-			try {
-				@SuppressWarnings("unused")
-				Entity get = datastore.get(getKey);
-				datastore.delete(getKey);	
-			} catch (EntityNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else if (action.equals("update")){
-			Key key = KeyFactory.createKey("Articles", articleId);
-			try {
-				Entity article = datastore.get(key);	
-				article.setProperty("blobKey", blobKey);
-				article.setProperty("title", title);
-				article.setProperty("summary", summary);
-				article.setProperty("content", contentText);
-				article.setProperty("tags", tags);
-				article.setProperty("postDate", postDate);
-				article.setProperty("uploadDate", uploadDateString);
-				article.setProperty("location", location);
-				article.setProperty("index", sCount);
-				article.setProperty("shortUrl", shortUrl);
-				datastore.put(article);	
-			} catch (EntityNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+//		Date uploadDate = new Date();
+//		String uploadDateString = uploadDate.toString();
+//		Calendar calendar = Calendar.getInstance();
+//		calendar.setTime(uploadDate);
+//		DateFormat df = new SimpleDateFormat("yyy-MM-dd@HH:mm:ss.SSS");
+//		
+//		@SuppressWarnings("unused")
+//		String formattedDate = df.format(uploadDate);
+//		
+//		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+//		Query query = new Query("Articles").setKeysOnly();
+//		PreparedQuery pq = datastore.prepare(query);
+//		int count = pq.countEntities(FetchOptions.Builder.withDefaults());
+//		String sCount = Integer.toString(count);
+//		if (action.equals("add")){
+////			System.out.println("content: " + content);
+//			Entity article = new Entity("Articles", (title+uploadDateString).replaceAll(" ", "").replaceAll(":", ""));
+//				article.setProperty("blobKey", blobKey);
+//				article.setProperty("title", title);
+//				article.setProperty("summary", summary);
+//				article.setProperty("content", contentText);
+//				article.setProperty("tags", tags);
+//				article.setProperty("postDate", postDate);
+//				article.setProperty("uploadDate", uploadDateString);
+//				article.setProperty("location", location);
+//				article.setProperty("index", sCount);
+//				article.setProperty("shortUrl", shortUrl);
+//				article.setProperty("articleId", (title+uploadDateString).replaceAll(" ", "").replaceAll(":", ""));
+//				
+//				datastore.put(article);					
+//				
+//		} else if(action.equals("delete")){
+//			String k = (title+req.getParameter("uploadDate")).replaceAll(" ", "").replaceAll(":", "");
+//			Key getKey = KeyFactory.createKey("Articles", k);			
+//			try {
+//				@SuppressWarnings("unused")
+//				Entity get = datastore.get(getKey);
+//				datastore.delete(getKey);	
+//			} catch (EntityNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} else if (action.equals("update")){
+//			Key key = KeyFactory.createKey("Articles", articleId);
+//			try {
+//				Entity article = datastore.get(key);	
+//				article.setProperty("blobKey", blobKey);
+//				article.setProperty("title", title);
+//				article.setProperty("summary", summary);
+//				article.setProperty("content", contentText);
+//				article.setProperty("tags", tags);
+//				article.setProperty("postDate", postDate);
+//				article.setProperty("uploadDate", uploadDateString);
+//				article.setProperty("location", location);
+//				article.setProperty("index", sCount);
+//				article.setProperty("shortUrl", shortUrl);
+//				datastore.put(article);	
+//			} catch (EntityNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
 	} //end doPost
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {	

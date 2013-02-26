@@ -7,7 +7,7 @@
 </head>
 <body>
 	<jsp:include page="/header.jsp"/>
-	<div class="container">
+	<div class="">
 	    <!-- Carousel  ================================================== -->
 	    <div id="mainCarousel" class="carousel slide">
 	      <ol class="carousel-indicators bottom">
@@ -18,9 +18,9 @@
 	      </ol>
 	      <div class="carousel-inner">
 	        <div class="item active">
-	          <img src="/data/carousel/headshot700.jpg" alt="headshot">
-	          <div class="container">
-	            <div class="carousel-caption">
+	          <img src="/data/carousel/headshot700.jpg" alt="headshot">	          
+	           <div class="carousel-caption ">
+	            <div class="container">
 	              <h1>Welcome</h1>
 	              <p class="lead">to BenZawacki.com </p>
 	              <a class="btn btn-large btn-primary" href="#">Sign up today</a>
@@ -28,9 +28,9 @@
 	          </div>
 	        </div>
 	        <div class="item">
-	          <img src="/data/carousel/DelRayBeach.jpg" alt="">
-	          <div class="container">
-	            <div class="carousel-caption">
+	          <img src="/data/carousel/DelRayBeach.jpg" alt="">	          
+	          <div class="carousel-caption">
+	          	<div class="container">
 	              <h1>Another example headline.</h1>
 	              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 	              <a class="btn btn-large btn-primary" href="#">Learn more</a>
@@ -38,9 +38,9 @@
 	          </div>
 	        </div>
 	        <div class="item">
-	          <img src="/data/carousel/Charlotte.jpg" alt="">
-	          <div class="container">
-	            <div class="carousel-caption">
+	          <img src="/data/carousel/Charlotte.jpg" alt="">	        
+           	  <div class="carousel-caption">
+           	  	<div class="container">
 	              <h1>One more for good measure.</h1>
 	              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 	              <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
@@ -48,9 +48,9 @@
 	          </div>
 	        </div>
 	        <div class="item">
-	          <img src="/data/carousel/Podium.jpg" alt="">
-	          <div class="container">
-	            <div class="carousel-caption">
+	          <img src="/data/carousel/Podium.jpg" alt="">	          
+	          <div class="carousel-caption">
+	            <div class="container">
 	              <h1>One more for good measure.</h1>
 	              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 	              <a class="btn btn-large btn-primary" href="#">Browse gallery</a>

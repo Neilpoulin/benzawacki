@@ -149,7 +149,7 @@ public class QueryBlobs extends HttpServlet{
 					while (blobInfoList.hasNext()){
 						index++;
 					}
-					System.out.println("REFRESH: num blobs =" + index);
+//					System.out.println("REFRESH: num blobs =" + index);
 					break;
 					
 			}
@@ -165,7 +165,7 @@ public class QueryBlobs extends HttpServlet{
 			res.getWriter().println(json);
 			
 			if (num.equals("yes")){
-				System.out.println("Number of Blobs: " + index );
+//				System.out.println("Number of Blobs: " + index );
 				res.getWriter().println("\n\nNumber of Blobs: " + index );
 			}
 

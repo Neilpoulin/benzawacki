@@ -40,7 +40,7 @@ public class ServeBlob extends HttpServlet{
 	        if (match){
 	        	blobstoreService.serve(blobKey, res); 	
 	        } else{
-	        	System.out.println("fail");
+
 	        }
 	        
 	    }

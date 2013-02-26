@@ -13,7 +13,6 @@ public class RaceJsonServlet extends HttpServlet {
 		String raceSeason = req.getParameter("raceSeason");		
 		String raceJSON = req.getParameter("raceJSON");
 		Text raceJSONText = new Text(raceJSON);
-		System.out.println(raceJSON);
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Key raceDataKey = KeyFactory.createKey("RaceDataKey", raceSeason);
 		Query query = new Query("Schedule", raceDataKey);
@@ -23,11 +22,9 @@ public class RaceJsonServlet extends HttpServlet {
 			Entity race = new Entity("Schedule", raceDataKey);		
 			race.setProperty("raceJSON", raceJSONText);
 			datastore.put(race);	
-			System.out.println("added new race entity." );
 		}else{
 			raceEntity.setProperty("raceJSON", raceJSONText);
 			datastore.put(raceEntity);
-			System.out.println("updated race entity." );
 		}	
 	}
 
@@ -42,10 +39,8 @@ public class RaceJsonServlet extends HttpServlet {
 		
 		if (raceEntity == null){
 			resp.getWriter().println("{\"fail\":\"entity does not exist\"}");
-			System.out.println("No race entity." );
 		}else{
 			String raceJSON = ((Text)raceEntity.getProperty("raceJSON")).getValue();	
-			System.out.println("Got race entity." );
 			resp.getWriter().println(raceJSON);
 		}	
 	}

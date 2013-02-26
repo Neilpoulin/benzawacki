@@ -179,16 +179,13 @@ span.highlight{
 
 body{
 	/*background-image: radial-gradient(center top, circle closest-corner, #FFFFFF 0%, #F5F6FF 100%);*/
-	background-image: url("/data/images/gray-paper2.png");
-	text-shadow: 0 1px 0 #fff;
+	background-image: url("/data/images/gray-paper2.png");	
 	margin: 0;
 	margin: 1em;
 	box-sizing: border-box;
 	padding-top: 45px;
 	padding-left: 10px;
 	padding-right: 10px;
-}
-	
 }
 
 

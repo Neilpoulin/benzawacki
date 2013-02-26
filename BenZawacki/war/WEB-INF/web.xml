@@ -68,15 +68,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <url-pattern>/articleServlet</url-pattern>
 	  </servlet-mapping>
 	
-	  <servlet>
-	    <servlet-name>TwitterServlet</servlet-name>
-	    <servlet-class>benzawacki.Twitter</servlet-class>
-	  </servlet>
-		  <servlet-mapping>
-	    <servlet-name>TwitterServlet</servlet-name>
-	    <url-pattern>/twitter</url-pattern>
-	  </servlet-mapping>
-	
 	<servlet>
 		<servlet-name>social</servlet-name>
 	    <jsp-file>/social.jsp</jsp-file>
@@ -167,6 +158,25 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <url-pattern>/admin/images</url-pattern>
 	  </servlet-mapping>
 	  
+	
+	<servlet>
+		<servlet-name>Jersey</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>benzawacki.rest</param-value>
+		</init-param>
+		<!-- <init-param>
+			<param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
+			<param-value>lka.wine.filter.Filter</param-value>
+		</init-param> -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Jersey</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
 	
 	
 	<!-- <security-constraint>
