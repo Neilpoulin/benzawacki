@@ -8,6 +8,5 @@ import benzawacki.dao.Image;
 public class Images extends RestDatastore<Image> {
 	public Images(){
 		super(Image.class, Image.KIND);
-	}
-	
+	}	
 }

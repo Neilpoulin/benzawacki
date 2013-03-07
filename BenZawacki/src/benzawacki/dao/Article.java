@@ -19,7 +19,7 @@ public class Article extends AbstractDatastore<Article>{
 	
 	public Article(){
 		super(Article.class, KIND);
-		setAuthor();
+//		setAuthor();
 	}
 
 	public Article(String title, String summary, String content, String tags, String titleImageKey){
