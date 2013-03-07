@@ -15,7 +15,7 @@
     <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
   </system-properties>
 
-  <threadsafe>false</threadsafe> 
+  <threadsafe>true</threadsafe> 
   <async-session-persistence enabled="false" /> 
 
   <precompilation-enabled>false</precompilation-enabled>
