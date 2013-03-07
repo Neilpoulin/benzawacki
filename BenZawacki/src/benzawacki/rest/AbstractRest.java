@@ -103,7 +103,7 @@ public class AbstractRest<T extends AbstractDAO<T>> {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String get(@PathParam("id") Long id) throws ServletException{
+	public String get(@PathParam("id") String id) throws ServletException{
 		String json = null;
 		try{
 			json = gson.toJson( dao.fetch(id));

@@ -3,7 +3,7 @@ package benzawacki.dao;
 import com.google.appengine.api.users.User;
 import com.google.gson.annotations.Expose;
 
-public class Article extends AbstractDatastore<Article> implements IKind<Article>{
+public class Article extends AbstractDatastore<Article>{
 	
 	public static final String KIND = "Articles";
 	

@@ -26,17 +26,9 @@ public class AbstractDatastore<T extends AbstractDAO<T>> extends AbstractDAO<T>{
 	public String getKind(){
 		return KIND;
 	}
-	
-	public Key getKey(Long id){
-		return KeyFactory.createKey(getKind(), id);
-	}
-	
+
 	public Key getKey(String id){
 		return KeyFactory.createKey(getKind(), id);
-	}
-	
-	public void delete(Long id){
-		delete(String.valueOf(id));		
 	}
 	
 	public void delete(String id){
@@ -49,10 +41,6 @@ public class AbstractDatastore<T extends AbstractDAO<T>> extends AbstractDAO<T>{
 			entity = datastore.get(getKey(id));			
 		} catch (EntityNotFoundException e) {}
 		return entity;
-	}
-	
-	public Entity fetchEntity(Long id){
-		return fetchEntity(String.valueOf(id));
 	}
 	
 	@SuppressWarnings("unchecked")
