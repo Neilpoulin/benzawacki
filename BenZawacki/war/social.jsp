@@ -78,8 +78,8 @@
 		<div id="fb-root"></div>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		<script type="text/javascript" src="/js/socialWidgets.js"></script>
-		<script type="text/javascript" src="js/social.js"></script>
-		<script type="text/javascript" src="js/waitForImages.js"></script>
-		<script type="text/javascript" src="js/buildArticle.js"></script>	
+		<script type="text/javascript" src="/js/social.js"></script>
+		<script type="text/javascript" src="/js/waitForImages.js"></script>
+		<script type="text/javascript" src="/js/buildArticle.js"></script>	
 	</body>
 </html>

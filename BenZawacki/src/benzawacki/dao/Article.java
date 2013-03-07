@@ -1,28 +1,29 @@
 package benzawacki.dao;
 
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
+import com.google.gson.annotations.Expose;
 
-public class Article extends AbstractDAO<Article>{
+public class Article extends AbstractDatastore<Article> implements IKind<Article>{
 	
-	private String authorName = "";
-	private User author;	
-	private String displayDate = "";
-	private String title;
-	private String summary;
-	private String content;
-	private String tags;
-	private String titleImageKey;
+	public static final String KIND = "Articles";
+	
+	@Expose private String authorName = "";
+	@Expose private User author;	
+	@Expose private String displayDate = "";
+	@Expose private String title;
+	@Expose private String summary;
+	@Expose private String content;
+	@Expose private String tags;
+	@Expose private String titleImageKey;
 	
 	
 	public Article(){
-		super("Articles", Article.class);
+		super(Article.class, KIND);
 		setAuthor();
 	}
 
 	public Article(String title, String summary, String content, String tags, String titleImageKey){
-		super("Articles", Article.class);
+		super(Article.class, KIND);
 		this.title = title;
 		this.summary = summary;
 		this.content = content;
@@ -32,7 +33,7 @@ public class Article extends AbstractDAO<Article>{
 	}
 	
 	public Article(String title, String summary, String content, String tags, String titleImageKey, String authorName){		
-		super("Articles", Article.class);
+		super(Article.class, KIND);
 		this.title = title;
 		this.summary = summary;
 		this.content = content;
@@ -57,7 +58,7 @@ public class Article extends AbstractDAO<Article>{
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
-
+	
 	public User getAuthor() {
 		return author;
 	}
@@ -114,8 +115,7 @@ public class Article extends AbstractDAO<Article>{
 		this.displayDate = displayDate;		
 	}
 
-	public static Key getKey(String id){
-		return KeyFactory.createKey("Articles", id);
-	}
-
+//	public Key getKey(String id){
+//		return KeyFactory.createKey("Articles", id);
+//	}
 }

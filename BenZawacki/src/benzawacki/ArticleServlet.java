@@ -1,10 +1,6 @@
 package benzawacki;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,15 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import benzawacki.dao.Article;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.EntityNotFoundException;
-import com.google.appengine.api.datastore.FetchOptions;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.datastore.PreparedQuery;
-import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Text;
 //import javax.servlet.ServletException;
 
@@ -28,6 +15,7 @@ import com.google.appengine.api.datastore.Text;
 public class ArticleServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
+	@SuppressWarnings("unused")
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 		throws IOException {
 		
