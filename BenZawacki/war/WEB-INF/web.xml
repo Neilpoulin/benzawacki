@@ -149,11 +149,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<init-param>
 			<param-name>com.sun.jersey.config.property.packages</param-name>
 			<param-value>benzawacki.rest</param-value>
-		</init-param>
-		<!-- <init-param>
-			<param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-			<param-value>benzawacki.rest.UploadFilter</param-value>
-		</init-param> -->
+		</init-param>		
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
