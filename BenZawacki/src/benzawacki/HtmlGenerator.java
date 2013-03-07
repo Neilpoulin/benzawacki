@@ -37,6 +37,7 @@ public class HtmlGenerator {
 	}
 	
 
+	@SuppressWarnings("deprecation")
 	public  String generateHtml(String num, String start, String direction){
 		String html = "[";
 		

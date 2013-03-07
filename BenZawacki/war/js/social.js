@@ -36,30 +36,18 @@ $(document).ready(function(){
 
 function getArticles(){
 	$.ajax({
-		url: "/articleServlet",
-		data: {num: "all", start: "0", direction: "descending" },
+		url: "/api/articles",
 		type: "GET",
 		dataType: "json",
-		success: function(data){
-			console.log(data);
-			sortArray(data.info, "postDate", true);
-			$("#pageWrapper").css({opacity: 0});
-			for (var i=0; i < data.info.length; i++){
-				$("head > title").html("Ben Zawacki | " + data.info[i].title);
-				$("head meta[itemprop='name']").attr("content", "\"Ben Zawacki | " + data.info[i].title + "\"");
-				$("#articlesDIV").append($("<div>").addClass("article").attr("id", "article_" + i ).html( data.html[i] ));
-				tags(data.info[i].tags);
-			} //end for loop	
-			$("head > title").html("Ben Zawacki | News");
-				$("div.content").addClass("hiding");
-				buildArticle(true, $("#articlesDIV"), true, 1000, function(){
-					$("#pageWrapper").animate({ opacity: 1 }, 500);
-					
-				});	
-				$("#articlesDIV button").addClass("btn");	
-				refreshArticles();
-		} //end success function
-	});	//end ajax call
+		success: function(resp){
+			console.log(resp);
+			$("#articlesDIV").empty();
+			for (var i=0; i<resp.length; i++){
+				$("#articlesDIV").append( templates.articles.article(resp[i]) );
+			}
+			loadSocial();			
+		}
+	});
 }
 
 function sortArray(array, field, reverse, primer){

@@ -23,23 +23,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/raceJSON</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
-	    <servlet-name>Upload</servlet-name>
-	    <servlet-class>benzawacki.UploadBlob</servlet-class>
-	  </servlet>
-	  <servlet-mapping>
-	    <servlet-name>Upload</servlet-name>
-	    <url-pattern>/upload</url-pattern>
-	  </servlet-mapping>
-	  
-	  <servlet>
-	    <servlet-name>Serve</servlet-name>
-	    <servlet-class>benzawacki.ServeBlob</servlet-class>
-	  </servlet>
-	  <servlet-mapping>
-	    <servlet-name>Serve</servlet-name>
-	    <url-pattern>/serve</url-pattern>
-	  </servlet-mapping>
+	
 	
 	  <servlet>
 	    <servlet-name>QueryBlobs</servlet-name>
@@ -168,7 +152,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		</init-param>
 		<!-- <init-param>
 			<param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-			<param-value>lka.wine.filter.Filter</param-value>
+			<param-value>benzawacki.rest.UploadFilter</param-value>
 		</init-param> -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -178,6 +162,25 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
 	
+	
+	
+	<servlet>
+	    <servlet-name>Upload</servlet-name>
+	    <servlet-class>benzawacki.UploadBlob</servlet-class>
+	  </servlet>
+	  <servlet-mapping>
+	    <servlet-name>Upload</servlet-name>
+	    <url-pattern>/upload</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>Serve</servlet-name>
+	    <servlet-class>benzawacki.ServeBlob</servlet-class>
+	  </servlet>
+	  <servlet-mapping>
+	    <servlet-name>Serve</servlet-name>
+	    <url-pattern>/serve</url-pattern>
+	  </servlet-mapping>
 	
 	<!-- <security-constraint>
 		<web-resource-collection>

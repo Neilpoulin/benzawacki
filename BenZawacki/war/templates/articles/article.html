@@ -1,4 +1,59 @@
-
+<div class="article" id="{{id}}" style="cursor: default;">
+	{{#if titleImgKey}}
+		<!-- <img class="thumb article title" src="/api/images/{{titleImgKey}}" /> -->
+	{{/if}}
+	<h2>{{toHtml title}}</h2>
+	
+	<p class="date">	
+		{{#if displayDate}}
+			{{displayDate}}
+		{{else}}
+			{{createdDate}}
+		{{/if}}
+	</p>
+	
+	<p class="tag">{{tags}}</p>
+	
+	<div class="summary clearfix">
+		{{toHtml summary}}
+	</div>
+	{{#if content}}
+		<button class="expand btn clearfix">Show More</button>
+		<div class="content hiding" style="height: 0px;">
+			<div class="clearfix full main">
+				{{toHtml content}}
+				<p class="authorContact">
+					Contact the <a href="mailto:{{author.email}}">author</a>.
+				</p>
+			</div>
+			<div class="fb-comments clearfix" data-href="/articles/{{id}}" data-num-posts="7" data-width="400"></div>
+		</div>
+	{{else}}
+		<div class="content nodisplay hiding" style="display: block; height: 0px;"></div>
+		<div class="fb-comments clearfix" data-href="/articles/{{id}}" data-num-posts="7" data-width="400"></div>
+	{{/if}}
+			
+	
+	
+	<div class="socialDIV">
+		<div class="container-tweet">
+			<a
+				href="https://twitter.com/share?url=/articles/{{id}}&amp;text="
+				check="" out="" this="" article="" from="" ben="" zawacki's=""
+				website&via="benzawacki'" class="twitter-share-button"
+				data-url="http://goo.gl/7Y4GQ"
+				data-text="Check out this article from Ben Zawacki" s=""
+				website'="" data-via="BenZawacki" data-size="medium" data-lang="en"
+				data-counturl="http://www.benzawacki.com/article.jsp?num=1&amp;index=1&amp;dir=descending">Tweet</a>
+		</div>
+		<div class="container-plusone">
+			<div class="g-plusone" data-size="medium"
+				data-href="/articles{{id}}"></div>
+		</div>
+		<div class="fb-like" data-href="/articles/{{id}}" data-send="true"
+			data-layout="button_count" data-width="150" data-show-faces="false"></div>
+	</div>
+</div>
 
 
 <!-- Article Data Format
