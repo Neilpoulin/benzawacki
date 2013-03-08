@@ -1,7 +1,7 @@
 <div class="listArticleSummary">	
 	<div class="btn-group btn-group-vertical">
 		<button class='btn delete'><i class='icon-trash'></i></button>
-		<button class='btn edit'><i class='icon-edit'></i></button>
+		<button class='btn edit' data-id={{id}}><i class='icon-edit'></i></button>
 	</div> 
 	
 	<h3>{{title}}</h3> 
@@ -10,7 +10,7 @@
 		<img class="thumb pull-left" alt="" src="/serve?blobKey={{blobKey}}"/>
 	{{/if}}
 	
-	<p><b>Date:</b> {{postDate}}</p>  
+	<p><b>Date:</b> {{displayDate}}</p>  
 	<p><b>Location:</b> {{location}}</p> 
 	
 	

@@ -29,8 +29,8 @@
 			</div>
 			
 			<div class="row">
-				<div class="span8">
-					<div id="articleBin" class="main">
+				<div class="span8" id="editArticle">
+					<!-- <div id="articleBin" class="main">
 						<div class="row">
 							<div id="imgSelected" class="main imgSel span2">
 								<div id="articleImg" class="article"></div>
@@ -39,7 +39,7 @@
 							</div>
 							<div id="summaryBin" class="span6">
 								<input type="text" class="article span6" id="articleTitle" placeholder="Article Title"/><br>
-								<input type="text" class="article span2" id="articlePostDate" placeholder="Date" readonly="readonly"/>
+								<input type="text" class="article span2 datepicker date" id="articlePostDate" placeholder="Date" readonly="readonly"/>
 								<input type="text" class="article span4" id="articleLocation" placeholder="location"/>
 								<input type="text" class="article" id="articleShortUrl" readonly="readonly" class="hidden"/>
 								<input type="text" class="article hidden" id="articleIndex" />
@@ -71,7 +71,7 @@
 					<div class="clearfix content-div">
 						<h4>Preview</h4>
 						<div id="preview" class="well clearfix"></div>
-					</div>
+					</div> -->
 				</div>
 				<div id="listArticlesDIV" class="span3">
 					<h2>Current Articles</h2>
@@ -85,7 +85,7 @@
 		</div>	
 			
 		<div id="tagsDIV" class="hidden"><ul></ul></div>
-		<input type="text" id="articleKey" class="article hidden">
+		<!-- <input type="text" id="articleKey" class="article hidden"> -->
 		<div id="tempImg" class="prev hidden"><img class = "thumb" src="../data/images/img-placeholder.jpg"></div>
 		
 		<div id="addPicDialog">

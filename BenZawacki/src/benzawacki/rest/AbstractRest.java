@@ -1,6 +1,5 @@
 package benzawacki.rest;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.util.List;
 
@@ -21,7 +20,6 @@ import javax.ws.rs.core.MediaType;
 
 import benzawacki.dao.AbstractDAO;
 
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -65,30 +63,19 @@ public class AbstractRest<T extends AbstractDAO<T>> {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String post(String json) throws ServletException{
-		String id = null;
+		String result = null;
 		try{
 			T obj = gson.fromJson(json, clazz);
-			obj.initialize();
-			id = obj.getId();
+			obj.initialize();			
+			obj.save();
+			result = gson.toJson(obj);
 		}catch(Exception e){
 			throw new ServletException(e);
 		}
 		
-		return id;
+		return result;
 	}
 	
-	@POST
-	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	public void postData(String arg){
-		String uploadURL = BlobstoreServiceFactory.getBlobstoreService().createUploadUrl("/upload");
-		System.out.println(uploadURL);
-		try {
-			_currentResponse.sendRedirect(uploadURL);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	@DELETE
 	@Path("{id}")
