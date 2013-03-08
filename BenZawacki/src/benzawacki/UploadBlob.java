@@ -2,6 +2,7 @@ package benzawacki;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -34,10 +35,13 @@ public class UploadBlob extends HttpServlet{
 	    	List<BlobKey> imageBlobs = blobs.get("articleImg");
 	    	List<Image> images = new ArrayList<Image>();
 	        if (images != null){
-	        	for (BlobKey key : imageBlobs){
-	        		Image img = new Image(key);		        		
+	        	int i = 0;
+	        	for (BlobKey key : imageBlobs){	        		
+	        		Image img = new Image(key);
+	        		img.setId(String.valueOf(new Date().getTime() + i));
 	        		img.save();
 	        		images.add(img);
+	        		i++;
 	        	}
 	        }
 	    	res.getWriter().println(AbstractDAO.toJson(images));

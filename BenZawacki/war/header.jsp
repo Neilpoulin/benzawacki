@@ -87,7 +87,9 @@
 		<script type="text/javascript" src="/lib/jquery.js"></script>
 		<script type="text/javascript" src="/lib/jquery-ui.js"></script>				
 		<script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/js/prefix-free.js" ></script>		
+		<script type="text/javascript" src="/js/prefix-free.js" ></script>	
+		<script type="text/javascript" src="/lib/underscore-min.js"></script>	
+		<script type="text/javascript" src="/lib/backbone-min.js"></script>
 		<!-- Template Includes -->
 		<jsp:include page="/templates/_templates.jsp"/>		
 		
@@ -95,6 +97,14 @@
 		<script type="text/javascript" src="/lib/less.js"></script>
 		
 		<!-- Page-specific JS files -->
-		<script type="text/javascript" src="/js/header.js"></script>					
+		<script type="text/javascript" src="/js/header.js"></script>
+		<script type="text/javascript" src="/js/Models/Article.js"></script>
+		<script type="text/javascript" src="/js/Models/Race.js"></script>
+		<script type="text/javascript" src="/js/Models/Image.js"></script>
+		
+		<script type="text/javascript" src="/js/Views/ArticleSummaryList.js"></script>
+		<script type="text/javascript" src="/js/Views/ArticleSummary.js"></script>
+		<script type="text/javascript" src="/js/Views/EditArticle.js"></script>
+							
 </body>
 </html>

@@ -1,6 +1,5 @@
 package benzawacki.dao;
 
-import com.google.appengine.api.users.User;
 import com.google.gson.annotations.Expose;
 
 public class Article extends AbstractDatastore<Article>{
@@ -8,18 +7,19 @@ public class Article extends AbstractDatastore<Article>{
 	public static final String KIND = "Articles";
 	
 	@Expose private String authorName = "";
-	@Expose private User author;	
+	@Expose private Person author;	
 	@Expose private String displayDate = "";
 	@Expose private String title;
 	@Expose private String summary;
 	@Expose private String content;
 	@Expose private String tags;
 	@Expose private String titleImageKey;
+	@Expose private String location;
 	
 	
 	public Article(){
 		super(Article.class, KIND);
-//		setAuthor();
+		setAuthor();
 	}
 
 	public Article(String title, String summary, String content, String tags, String titleImageKey){
@@ -45,10 +45,12 @@ public class Article extends AbstractDatastore<Article>{
 	
 	
 	public void setAuthor(){		
-		this.author = this.createdBy;
-		if (this.authorName.isEmpty()){
-			this.authorName = this.author.getNickname().split("@")[0];
-		}
+		if (this.createdBy != null){
+			this.author = this.createdBy;
+			if (this.authorName.isEmpty()){
+				this.authorName = this.author.getNickname().split("@")[0];
+			}
+		}		
 	}
 	
 	public String getAuthorName() {
@@ -59,11 +61,11 @@ public class Article extends AbstractDatastore<Article>{
 		this.authorName = authorName;
 	}
 	
-	public User getAuthor() {
+	public Person getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(User author) {
+	public void setAuthor(Person author) {
 		this.author = author;
 	}
 
@@ -113,6 +115,14 @@ public class Article extends AbstractDatastore<Article>{
 
 	public void setDisplayDate(String displayDate) {
 		this.displayDate = displayDate;		
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 //	public Key getKey(String id){

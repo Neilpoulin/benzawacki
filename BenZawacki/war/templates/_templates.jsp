@@ -3,8 +3,9 @@
 <link rel="stylesheet/less" href="/templates/articles/listSummary.less" />
 <link rel="stylesheet/less" href="/templates/articles/mainSummary.less" />
 <link rel="stylesheet/less" href="/templates/articles/selectedImagesButtonSet.less" />
+<link rel="stylesheet/less" href="/templates/articles/editArticle.less"/>
 
-<!-- Include Template Files, makek them hidden -->
+<!-- Include Template Files, make them hidden -->
 
 <div id="articles_listSummaryTemplate" class="hidden">
 	<jsp:include page="articles/listSummary.html" />
@@ -23,6 +24,9 @@
 	<jsp:include page="articles/article.html"/>
 </div>
 
+<div id="articles_editArticleTemplate" class="hidden">
+	<jsp:include page="articles/editArticle.html"/>
+</div>
 
 <!-- Include any libraries templates are dependent on and JS Accessor object -->
 <script type="text/javascript" src="/lib/handlebars.js"></script>
@@ -32,7 +36,8 @@
 			listSummary: Handlebars.compile($("#articles_listSummaryTemplate").html()),
 			selectedImagesButtonSet: Handlebars.compile( $("#articles_selectedImagesButtonSetTemplate").html() ),
 			mainSummary: Handlebars.compile($("#articles_mainSummaryTemplate").html() ),
-			article:  Handlebars.compile($("#articles_articleTemplate").html())
+			article:  Handlebars.compile($("#articles_articleTemplate").html()),
+			editArticle: Handlebars.compile($("#articles_editArticleTemplate").html())
 		}
 	};
 	

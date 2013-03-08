@@ -1,5 +1,15 @@
 $(document).ready(function(){
 	
+	window.articleCollection = new ArticleCollection();
+	window.editArticleView = new EditArticle({model: new Article(), el: "#editArticle", collection: articleCollection});
+	window.articleListView = new ArticleSummaryList({model: articleCollection, el: "#listArticlesDIV ol", editView: editArticleView });
+	
+	
+	editArticleView.render();
+	articleListView.render();
+	articleCollection.fetch({update: true});
+	
+	
 	var $thumbsDIV = $("#thumbsDIV");
 	getAllThumbs($thumbsDIV, "thumb");	
 
@@ -32,31 +42,21 @@ $(document).ready(function(){
 			}]
 	});
 	
-	$("#articlePostDate").datepicker({
-		closeText: "Cancel",
-		dateFormat: "yy-mm-dd",
-		defaultDate: 0,
-		duration: "fast",	
-	});
-	$('textarea[maxlength]').on('keyup', function() {
-        // Store the maxlength and value of the field.
-        var maxlength = $(this).attr('maxlength');
-        var val = $(this).val();
-
-        // Trim the field if it has content over the maxlength.
-        if (val.length > maxlength) {
-            $(this).val(val.slice(0, maxlength));
-        }
-    });
+//	$("#articlePostDate").datepicker({
+//		closeText: "Cancel",
+//		dateFormat: "yy-mm-dd",
+//		defaultDate: 0,
+//		duration: "fast",	
+//	});
 	
 	window.imgArray = [];
 	window.imgArrayCt = 0;
 	
-	$("#articleTags").on('blur change', function(){
-		var content = $(this).val().toLowerCase();
-		content = content.replace(/"/gm, "");
-		$(this).val(content);
-	});
+//	$("#articleTags").on('blur change', function(){
+//		var content = $(this).val().toLowerCase();
+//		content = content.replace(/"/gm, "");
+//		$(this).val(content);
+//	});
 	
 	$("#articleSummary, #articleContent, #articleTitle, #articleLocation").on('keyup', function(){
 		var content = $(this).val();
@@ -107,51 +107,65 @@ $(document).ready(function(){
 		});
 		
 		
-		var blobKey = $("#articleKey").val();
-		var title = $("#htmlTitle").val();
-		var summary = $("#htmlSummary").val();
-		var content = $("#htmlContent").val();
-		var date = $("#articlePostDate").val();
-		var tags = $("#articleTags").val().toLowerCase();
-		var location = $("#htmlLocation").val();
+//		var blobKey = $("#articleKey").val();
+//		var title = $("#htmlTitle").val();
+//		var summary = $("#htmlSummary").val();
+//		var content = $("#htmlContent").val();
+//		var date = $("#articlePostDate").val();
+//		var tags = $("#articleTags").val().toLowerCase();
+//		var location = $("#htmlLocation").val();
+//		
+//		var index = $("#articleIndex").val();
+//		var articleId = $("#articleId").val();
+//		getShortUrl("http://www.benzawacki.com/article.jsp?id=" + articleId, $("#articleShortUrl"));
+//		var shortUrl = $("#articleShortUrl").val();
+//		var article = {
+//			"blobKey": blobKey,
+//			"postDate": date,
+//			"content": content,
+//			"summary": summary,
+//			"title": title,
+//			"location": location,
+//			"tags":tags, 
+//			"shortUrl": shortUrl,
+//			"articleId": articleId
+//		}
+//		
+//		if (articleId != ""){
+//			article.action = "update";
+//		}else{
+//			article.action = "add";
+//		}
 		
-		var index = $("#articleIndex").val();
-		var articleId = $("#articleId").val();
-		getShortUrl("http://www.benzawacki.com/article.jsp?id=" + articleId, $("#articleShortUrl"));
-		var shortUrl = $("#articleShortUrl").val();
-		var article = {
-			"blobKey": blobKey,
-			"postDate": date,
-			"content": content,
-			"summary": summary,
-			"title": title,
-			"location": location,
-			"tags":tags, 
-			"shortUrl": shortUrl,
-			"articleId": articleId
-		}
+//		article = new Article({
+//			"blobKey": blobKey,
+//			"postDate": date,
+//			"content": content,
+//			"summary": summary,
+//			"title": title,
+//			"location": location,
+//			"tags":tags, 
+//			"shortUrl": shortUrl,
+//			"articleId": articleId
+//		});
+//		articleCollection.add(article);		
+//		article.save();
 		
-		if (articleId != ""){
-			article.action = "update";
-		}else{
-			article.action = "add";
-		}
-		
-		$.ajax({
-			url: "/articleServlet",
-			data: article,
-			type: "POST",
-			success: function(){
-				$(".article").val("").trigger("keyup");
-				$("#articleImgSel").find(".selected").click();
-				$("#articleImgSel, #imgGallery").animate({width: "0%"}, 1500, function(){
-					if ($("#chkArticleImg").is(":checked")){
-						$("#chkArticleImg").click();
-					}
-					getArticles();
-				});
-			}
-		}); //end ajax call
+//		$.ajax({
+//			url: "/articleServlet",
+//			data: article,
+//			type: "POST",
+//			success: function(){
+//				$(".article").val("").trigger("keyup");
+//				$("#articleImgSel").find(".selected").click();
+//				$("#articleImgSel, #imgGallery").animate({width: "0%"}, 1500, function(){
+//					if ($("#chkArticleImg").is(":checked")){
+//						$("#chkArticleImg").click();
+//					}
+////					getArticles();
+//				});
+//			}
+//		}); //end ajax call
 		
 	});
 	$("#tempImg").clone().appendTo("#articleImg").removeClass("hidden");
@@ -409,7 +423,7 @@ function setTitleImgBinds(){
 
 
 
-function getArticles(){
+/*function getArticles(){
 	$.ajax({
 		url: "/articleServlet",
 		data: {num: "all", start: "0", direction: "descending"},
@@ -426,7 +440,7 @@ function getArticles(){
 			} else {
 				slide = false;
 			}
-			$("#listArticlesDIV ol").empty();
+//			$("#listArticlesDIV ol").empty();
 			
 			for (var i=0; i < data.length; i++){
 				var article = data[i];				
@@ -487,18 +501,19 @@ function getArticles(){
 		} //end success function
 	}); //end ajax call	
 }
+*/
 
-function deleteArticle(article){	
-		article["action"] = "delete";
-		$.ajax({
-			url: "/articleServlet",
-			data: article,
-			type: "POST",
-			success: function(data){
-			}		
-		});	
-		
-}
+//function deleteArticle(article){	
+//		article["action"] = "delete";
+//		$.ajax({
+//			url: "/articleServlet",
+//			data: article,
+//			type: "POST",
+//			success: function(data){
+//			}		
+//		});	
+//		
+//}
 
 function updateArticle(article){
 	article["action"] = "update";

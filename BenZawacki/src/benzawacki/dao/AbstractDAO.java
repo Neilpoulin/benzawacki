@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Transient;
+
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
@@ -15,10 +17,10 @@ public abstract class AbstractDAO<T extends AbstractDAO<T>> {
 	@Expose public String id;
 	@Expose public Date createdDate;
 	@Expose public Date updatedDate;
-	@Expose public User createdBy;
-	@Expose public User updatedBy;
+	@Expose public Person createdBy;
+	@Expose public Person updatedBy;
 	
-	protected Class<?> clazz;
+	@Transient protected transient Class<?> clazz;
 	
 	protected static Gson gson = new GsonBuilder()
 		.setDateFormat(DateFormat.LONG)
@@ -30,19 +32,24 @@ public abstract class AbstractDAO<T extends AbstractDAO<T>> {
 		initialize();
 		this.clazz = clazz;
 	}
+	
 	public AbstractDAO(){
 		
 	}
-	
 	
 	public void initialize(){
 		Date date = new Date();
 		User user = UserServiceFactory.getUserService().getCurrentUser();
 		this.createdDate = date;
 		this.updatedDate = date;
-		this.createdBy = user;
-		this.updatedBy = user;
+		this.createdBy = new Person(user);
+		this.updatedBy = new Person(user);
 		this.id = String.valueOf(date.getTime());
+	}
+	
+	public void update(){
+		User user = UserServiceFactory.getUserService().getCurrentUser();
+		this.updatedBy = new Person(user);
 	}
 	
 	public String getId() {
@@ -69,19 +76,19 @@ public abstract class AbstractDAO<T extends AbstractDAO<T>> {
 		this.updatedDate = updatedDate;
 	}
 
-	public User getCreatedBy() {
+	public Person getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(User createdBy) {
+	public void setCreatedBy(Person createdBy) {
 		this.createdBy = createdBy;
 	}
 
-	public User getUpdatedBy() {
+	public Person getUpdatedBy() {
 		return updatedBy;
 	}
 
-	public void setUpdatedBy(User updatedBy) {
+	public void setUpdatedBy(Person updatedBy) {
 		this.updatedBy = updatedBy;
 	}
 	

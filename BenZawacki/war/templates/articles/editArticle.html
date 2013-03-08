@@ -1,0 +1,57 @@
+<div id="articleBin" class="main">
+	<div class="row">
+		<div id="imgSelected" class="main imgSel span2">
+			<div id="articleImg" class="article"></div>
+			<div class="clear"></div>
+			<button id="btnArticleImg" class="article btn"><i class="icon-picture"></i> Title Image</button>
+		</div>
+		<div id="summaryBin" class="span6">
+			<input type="text" class="article span6 title" data-type="title" placeholder="Article Title" value="{{title}}"/><br>
+			<input type="text" class="article span2 displayDate datepicker" data-type="displayDate" placeholder="Date" readonly="readonly" value="{{displayDate}}"/>
+			<input type="text" class="article span4 location" data-type="location" placeholder="location" value="{{location}}"/>
+			<input type="text" class="article shortUrl hidden" data-type="shortUrl" readonly="readonly" value="{{shortUrl}}"/>
+			<input type="text" class="article hidden index" data-type="index"/>
+			{{#if id}}			
+				<input type="text" class="article id" data-type="id" value="{{id}}"/>
+			{{else}}
+				<input type="text" class="article id" data-type="id"/>
+			{{/if}}
+			<br>
+			<textarea id="articleSummary" class="article summary span6" data-type="summary" placeholder="Article summary goes here">{{summary}}</textarea>
+			<br><br>
+		</div>
+	</div>
+	<textarea id="articleContent" class="article content" data-type="content" placeholder="Article content goes here">{{content}}</textarea>		
+	<div>
+		<input type="text" class="article tags" placeholder="tag 1, tag 2, tag 3" value="{{tags}}"/>
+	</div>
+	
+	<button id="btnAddPic" class="btn"><i class="icon-picture"></i> Select Images</button>
+	<a id="insert-link" href="#link-modal" class="btn" data-toggle="modal"><i class="icon-share"></i> Insert Link</a>
+	
+	<button id="submitArticle" class="btn pull-right submit"><i class="icon-ok"></i> Submit Article</button>
+	
+	<hr/>
+	
+	<ul id="imageOptions" class="clearfix"></ul>			
+	
+	<div class="convertedInputs hidden">
+		<textarea class="converted summary" readonly="readyonly"></textarea>
+		<textarea class="converted content" readonly="readyonly"></textarea>
+		<input type="text" class="converted title" />
+		<input type="text" class="converted location" />
+		<input type="text" class="article hidden blobKey">
+	</div>
+</div>
+	
+<div class="clearfix content-div">
+	<h4>Preview</h4>
+	<div class="well clearfix preview">
+		<h3 class="title"></h3>
+		<div class="displayDate"></div>
+		<div class="location italic"></div>
+		<div class="summary"></div>
+		<div class="content"></div>
+		<div class="tags"></div>
+	</div>
+</div>

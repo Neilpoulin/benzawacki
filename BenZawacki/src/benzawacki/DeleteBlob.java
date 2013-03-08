@@ -15,11 +15,9 @@ public class DeleteBlob  extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 	    throws IOException {
 	        BlobKey blobKey = new BlobKey(req.getParameter("blobKey"));
-	        BlobInfoFactory blobInfoFactory = new BlobInfoFactory();
-	        BlobInfo blobInfo = blobInfoFactory.loadBlobInfo(blobKey);
-	       
-	        
-	        System.out.println("DELETING: " + req.getParameter("blobKey") + " (" + blobInfo.getFilename().toString() + ")");
+//	        BlobInfoFactory blobInfoFactory = new BlobInfoFactory();
+//	        BlobInfo blobInfo = blobInfoFactory.loadBlobInfo(blobKey);
+	       	        
 	        if (req.getParameter("blobKey") != ""){
 	        	blobstoreService.delete(blobKey); 	
 	        }

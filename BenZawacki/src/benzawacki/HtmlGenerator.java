@@ -13,6 +13,7 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Text;
 
+@Deprecated
 public class HtmlGenerator {
 	
 	static int count = 0;
