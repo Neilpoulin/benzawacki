@@ -7,7 +7,7 @@ $(document).ready(function(){
 	articlesCollection.on("add", function(model){
 		$("#articlesDIV").append( templates.articles.article(model.toJSON()) );
 	});
-	articlesCollection.fetch();
+	articlesCollection.fetch({update: true});
 	
 	$(window).load(function(){		
 		$("#articlesDIV").fadeIn("fast");
