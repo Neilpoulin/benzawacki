@@ -1,6 +1,13 @@
 $(document).ready(function(){
-	getArticle();
+	//getArticle();
+	window.articles = new ArticleCollection();
+	articles.on("add", displayLatest);
+	articles.fetch({update: true});
 });
+
+function displayLatest(){
+	$("#article div.article").html(templates.articles.mainSummary(articles.toJSON()[0]);
+}
 
 function getArticle(){
 	$.ajax({
