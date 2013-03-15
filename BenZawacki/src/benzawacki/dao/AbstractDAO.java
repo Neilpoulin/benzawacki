@@ -40,10 +40,13 @@ public abstract class AbstractDAO<T extends AbstractDAO<T>> {
 	public void initialize(){
 		Date date = new Date();
 		User user = UserServiceFactory.getUserService().getCurrentUser();
+		if (user != null){
+			this.createdBy = new Person(user);
+			this.updatedBy = new Person(user);
+		}
 		this.createdDate = date;
 		this.updatedDate = date;
-		this.createdBy = new Person(user);
-		this.updatedBy = new Person(user);
+		
 		this.id = String.valueOf(date.getTime());
 	}
 	
