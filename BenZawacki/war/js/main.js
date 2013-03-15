@@ -6,7 +6,7 @@ $(document).ready(function(){
 });
 
 function displayLatest(){
-	$("#article div.article").html(templates.articles.mainSummary(articles.toJSON()[0]);
+	$("#article div.article").html(templates.articles.mainSummary(articles.toJSON()[0]));
 }
 
 function getArticle(){
