@@ -12,9 +12,23 @@ var ImageGallery = Backbone.View.extend({
 	},
 	render: function(){
 		var $el = this.$el;
+		var view = this;
+		var model = this.model;
 		var data = this.model.toJSON();
 		data = this.sort(data, "id", true);
 		$el.html( this.template(data) );
+		$el.find("button.delete").on("click", function(){
+			var c = confirm("Are you sure you want to delete this image?");
+			if (c){
+				model.get($(this).attr("data-id")).destroy();
+				var parent = $(this).parent();				
+				parent.animate({width: 0, opacity: 0, height: 0, marginLeft: -30}, "slow", function(){
+					parent.hide();
+//					view.render();
+				});
+				
+			}			
+		});
 	},
 	sort: function (array, field, reverse, primer){
 		var sort_by = function(field, reverse, primer){
