@@ -2,7 +2,13 @@ $("#articlesDIV").hide();
 $("#socialSidebar").hide();
 $("#navSidebar").hide();
 $(document).ready(function(){
-	getArticles();	
+	//getArticles();
+	window.articlesCollection = new ArticleCollection();
+	articlesCollection.on("add", appendArticle(model){
+		$("#articlesDIV").append( templates.articles.article(model.toJSON()) );
+	});
+	articlesCollection.fetch();
+	
 	$(window).load(function(){		
 		$("#articlesDIV").fadeIn("fast");
 		$("#socialSidebar").fadeIn("fast");
