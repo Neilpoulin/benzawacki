@@ -20,11 +20,14 @@ public class Person {
 	}
 
 	public Person(User user, String name){
-		this.email = user.getEmail();
-		this.nickname = user.getNickname();
-		this.userId = user.getUserId();
-		this.federatedId = user.getFederatedIdentity();
-		this.authDomain = user.getAuthDomain();
+		if (user != null){
+			this.email = user.getEmail();
+			this.nickname = user.getNickname();
+			this.userId = user.getUserId();
+			this.federatedId = user.getFederatedIdentity();
+			this.authDomain = user.getAuthDomain();
+		}
+		
 		this.name = name;
 	}
 	
