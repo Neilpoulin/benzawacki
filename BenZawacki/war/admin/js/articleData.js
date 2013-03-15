@@ -57,47 +57,47 @@ $(document).ready(function(){
 //		content = content.replace(/"/gm, "");
 //		$(this).val(content);
 //	});
-	
-	$("#articleSummary, #articleContent, #articleTitle, #articleLocation").on('keyup', function(){
-		var content = $(this).val();
-		content = content.replace(/(\r\n|\n|\r)/gm,"<br>");
-//		content = content.replace(/(\t|^t)/gm, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-		content = content.replace(/"/gm, '\\\"');
-		
-		var imgStr = "$<img";
-		var imgReg = /\u003Cimg(\d|\d\d)\u003E/mg;
-		var count = 0;
-		var match = content.match(imgReg);
-		if (match!= null){	
-			for (var i =0; i< match.length; i++){
-				var req = match[i].split("<img")[1];
-				req = req.split(">")[0];
-				req = Number(req);
-				var pos;
-				for (var j=0; j< imgArray.length; j++){
-					if (match[i] == "<" + imgArray[j].tag + ">"){
-						pos = j;
-						break;
-					}
-				}
-				var newStr = "<img";
-				if (imgArray[pos] != null){
-					newStr = imgArray[pos].html;
-//					content = content.replace(match[i], newStr);	
-				} else {
-					alert("Image <img" + req + "> is not a vaild reference to a selected image.");
-					var tmp = $(this).val();
-					tmp = tmp.replace(match[i], newStr);
-					$(this).val(tmp);
-				}
-				content = content.replace(match[i], newStr);
-			}
-		}
-		var index = content.indexOf(imgStr);
-		$("#html" + $(this).attr("id").split("article")[1]).val(content);
-//		$("#preview").html(content);
-		refreshPreview();
-	});
+//	
+//	$("#articleSummary, #articleContent, #articleTitle, #articleLocation").on('keyup', function(){
+//		var content = $(this).val();
+//		content = content.replace(/(\r\n|\n|\r)/gm,"<br>");
+////		content = content.replace(/(\t|^t)/gm, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+//		content = content.replace(/"/gm, '\\\"');
+//		
+//		var imgStr = "$<img";
+//		var imgReg = /\u003Cimg(\d|\d\d)\u003E/mg;
+//		var count = 0;
+//		var match = content.match(imgReg);
+//		if (match!= null){	
+//			for (var i =0; i< match.length; i++){
+//				var req = match[i].split("<img")[1];
+//				req = req.split(">")[0];
+//				req = Number(req);
+//				var pos;
+//				for (var j=0; j< imgArray.length; j++){
+//					if (match[i] == "<" + imgArray[j].tag + ">"){
+//						pos = j;
+//						break;
+//					}
+//				}
+//				var newStr = "<img";
+//				if (imgArray[pos] != null){
+//					newStr = imgArray[pos].html;
+////					content = content.replace(match[i], newStr);	
+//				} else {
+//					alert("Image <img" + req + "> is not a vaild reference to a selected image.");
+//					var tmp = $(this).val();
+//					tmp = tmp.replace(match[i], newStr);
+//					$(this).val(tmp);
+//				}
+//				content = content.replace(match[i], newStr);
+//			}
+//		}
+//		var index = content.indexOf(imgStr);
+//		$("#html" + $(this).attr("id").split("article")[1]).val(content);
+////		$("#preview").html(content);
+//		refreshPreview();
+//	});
 	//getArticles();
 	
 	$("#thumbsBinDIV").hide();
@@ -178,10 +178,10 @@ $(document).ready(function(){
 		
 	});	
 	
-	$("#btnAddPic").button().click(function(){
-		buildImgPicker($("#addPicDialog"), "insertImg", insertImgBinds, true);
-		$("#addPicDialog").dialog("open");
-	});
+//	$("#btnAddPic").button().click(function(){
+//		buildImgPicker($("#addPicDialog"), "insertImg", insertImgBinds, true);
+//		$("#addPicDialog").dialog("open");
+//	});
 	
 	window.articles = {};	
 	
@@ -213,7 +213,7 @@ function insertLink(){
 	var html = linkify(address);	
 	html = $(html).html(text)[0].outerHTML;
 	console.log(html[0].outerHTML);
-	$("#articleContent").val($("#articleContent").val() + html).trigger("keyup");
+	$(".active .article.content").val($(".active .article.content").val() + html).trigger("keyup");
 	$("#link-modal").modal("hide");
 }
 
@@ -383,7 +383,7 @@ function insertImgBinds(id){
 		$imgTagsDIV.find("ul").empty();
 		$("#imageOptions").empty();
 		for (var i=0; i< imgArray.length; i++){
-			$("#imageOptions").append(templates.articles.selectedImagesButtonSet(imgArray[i]));
+			$(".imageOptions").append(templates.articles.selectedImagesButtonSet(imgArray[i]));
 
 			$("#selected_" + imgArray[i].tag + " button").each(function(index, obj){
 				$btn = $(obj);

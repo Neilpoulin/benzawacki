@@ -4,29 +4,40 @@
 <link rel="stylesheet/less" href="/templates/articles/mainSummary.less" />
 <link rel="stylesheet/less" href="/templates/articles/selectedImagesButtonSet.less" />
 <link rel="stylesheet/less" href="/templates/articles/editArticle.less"/>
+<link rel="stylesheet/less" href="/templates/images/preview.less"/>
+<link rel="stylesheet/less" href="/templates/images/gallery.less"/>
 
 <!-- Include Template Files, make them hidden -->
 
-<div id="articles_listSummaryTemplate" class="hidden">
+<!---------- ARTICLES ----------->
+<script type="text/x-handlebars-template" id="articles_listSummaryTemplate" class="hidden">
 	<jsp:include page="articles/listSummary.html" />
-</div>	
+</script>	
 
-
-<div id="articles_selectedImagesButtonSetTemplate" class="hidden">
+<script type="text/x-handlebars-template" id="articles_selectedImagesButtonSetTemplate" class="hidden">
 	<jsp:include page="articles/selectedImagesButtonSet.html"/>
-</div>
+</script>
 
-<div id="articles_mainSummaryTemplate" class="hidden">
+<script type="text/x-handlebars-template" id="articles_mainSummaryTemplate" class="hidden">
 	<jsp:include page="articles/mainSummary.html"/>
-</div>
+</script>
 
-<div id="articles_articleTemplate" class="hidden">
+<script type="text/x-handlebars-template" id="articles_articleTemplate" class="hidden">
 	<jsp:include page="articles/article.html"/>
-</div>
+</script>
 
-<div id="articles_editArticleTemplate" class="hidden">
+<script type="text/x-handlebars-template" id="articles_editArticleTemplate" class="hidden">
 	<jsp:include page="articles/editArticle.html"/>
-</div>
+</script>
+
+<!---------- IMAGES ----------->
+<script type="text/x-handlebars-template" id="images_galleryTemplate" class="hidden">
+	<jsp:include page="images/gallery.html"/>
+</script>
+
+<script type="text/x-handlebars-template" id="images_previewTemplate" class="hidden">
+	<jsp:include page="images/preview.html"></jsp:include>
+</script>
 
 <!-- Include any libraries templates are dependent on and JS Accessor object -->
 <script type="text/javascript" src="/lib/handlebars.js"></script>
@@ -38,10 +49,22 @@
 			mainSummary: Handlebars.compile($("#articles_mainSummaryTemplate").html() ),
 			article:  Handlebars.compile($("#articles_articleTemplate").html()),
 			editArticle: Handlebars.compile($("#articles_editArticleTemplate").html())
+		},
+		images: {
+			gallery: Handlebars.compile($("#images_galleryTemplate").html()),
+			preview: Handlebars.compile($("#images_previewTemplate").html())
 		}
 	};
 	
 	Handlebars.registerHelper('toHtml', function(string) {
 		  return new Handlebars.SafeString(string);
-		});
+	});
+	
+	Handlebars.registerHelper('boolean', function(value){
+		var out = "";
+		if (value != "false" && value != "" && value != null){
+			out = value;
+		}
+		return value;
+	});
 </script>
