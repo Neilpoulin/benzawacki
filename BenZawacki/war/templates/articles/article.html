@@ -1,6 +1,6 @@
 <div class="article" id="{{id}}" style="cursor: default;">
-	{{#if titleImgKey}}
-		<!-- <img class="thumb article title" src="/api/images/{{titleImgKey}}" /> -->
+	{{#if titleImageKey}}
+		<img class="thumb article title" src="/serve?blobKey={{titleImgKey}}" />
 	{{/if}}
 	<h2>{{toHtml title}}</h2>
 	
