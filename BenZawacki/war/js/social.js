@@ -4,7 +4,7 @@ $("#navSidebar").hide();
 $(document).ready(function(){
 	//getArticles();
 	window.articlesCollection = new ArticleCollection();
-	articlesCollection.on("add", appendArticle(model){
+	articlesCollection.on("add", function(model){
 		$("#articlesDIV").append( templates.articles.article(model.toJSON()) );
 	});
 	articlesCollection.fetch();
