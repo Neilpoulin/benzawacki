@@ -1,5 +1,6 @@
 li.preview{
 //	height: 265px;
+	position: relative;
 	.imgContainer{
 		text-align: center;
 		height: 100px;
@@ -23,5 +24,17 @@ li.preview{
 	}
 	textarea{
 		max-width: 100%;
+	}
+	button.delete{
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		display:none;
+	}
+}
+
+li.preview:hover{
+	button.delete{
+		display:inline;
 	}
 }

@@ -11,11 +11,11 @@
 	        <div class="row">
 		        <div id="addPicDIV" class="span4">
 					<div class = "" id="imgPreview">
-						<img class="imgPreview input" src="/data/images/img-placeholder.jpg">
+						<img class="imgPreview input img-polaroid" src="/data/images/img-placeholder.jpg">
 					</div>
 					<p class="" id="fileInfo"></p>
 					<button class="btn" id="btnChooseFile">Choose File</button>
-			    	<button class="input btn btn-primary" id="btnSubmit">Submit Image</button>					
+			    	<button class="input btn btn-primary" data-loading-text="uploading..." id="btnSubmit">Submit Image</button>					
 			    </div>
 			</div>      
 	        <hr/>       

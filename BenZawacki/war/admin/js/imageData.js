@@ -10,13 +10,8 @@ $(document).ready(function(){
 	});
 	
 	$("#btnSubmit").click(function(){
-		$("#blobSubmitBtn").click();
-		$("#spanFile").html("");
-		$("#btnSubmit").hide();		
-		$("#imgPreview img").attr("src", "/data/images/img-placeholder.jpg");
-		console.log("submit button clicked");
-//		setCursorByID("body", "wait");
-//		getBlobKey(); //ensures blobstore is returned + get image by calling getServerImages("add")
+		$("#blobSubmitBtn").click();		
+		$("#btnSubmit").button("loading");		
 		checkForUpdates();
 	});
 	
@@ -74,6 +69,10 @@ function checkForUpdates(){
 			$("#fileInput").val("");
 			imgCollection.add(JSON.parse(contents));
 			getUploadUrl();
+			$("#btnSubmit").button("reset");		
+			$("#btnSubmit").hide();		
+			$("#fileInfo").html("");
+			$("#imgPreview img").attr("src", "/data/images/img-placeholder.jpg");
 		}
 		
 		if (n >= 5000){
