@@ -1,8 +1,9 @@
 var EditArticle = Backbone.View.extend({
-	template: templates.articles.editArticle,
+	template: templates.articles.editArticle,	
 	initialize: function(){
 		this.collection = this.options.collection;
 		this.listView = this.options.listView;
+		this.$el.addClass("active");
 	},
 	edit: function(model){
 		this.model = model;
@@ -26,7 +27,45 @@ var EditArticle = Backbone.View.extend({
 			article.convertInput($(this)); 
 		});
 		$(".article").trigger("keyup");
+		
+		this.$el.find(".btn.addContentImg").button().click(function(){
+			buildImgPicker($("#addPicDialog"), "insertImg", this.addImages, true);
+			$("#addPicDialog").dialog("open");
+		});
+		
+		this.$el.find(".btn.addTitleImg").button().click(function(){
+			buildImgPicker($("#imgGallery"), "articleChooseImg", this.addImages, false);
+			$("#imgGallery").dialog("open");
+		});
+		
 	},
+	addTitleImage: function(){
+		
+	},
+	addImages: function(){
+		for (var i=0; i< imgArray.length; i++){
+			this.$el.find(".availableImages").append(templates.articles.selectedImagesButtonSet(imgArray[i]));
+
+			$("#selected_" + imgArray[i].tag + " button").each(function(index, obj){
+				$btn = $(obj);
+				$btn.click(function(){
+					var j = Number($(this).attr("data-tag").split("img")[1]) - 1 ;
+					
+					if ($(this).parent().hasClass("img-size")){
+						var size = $(this).val();
+						imgArray[j].sizeClass = size;
+					}else{
+						var position = $(this).val();
+						imgArray[j].posClass = position;
+					}
+					
+					imgArray[j].html = "<img src='/serve?blobKey=" + imgArray[j].blobKey + "' class='" + imgArray[j].sizeClass +  " " + imgArray[j].posClass + "' />";
+					$("#articleSummary").trigger("keyup");
+					$("#articleContent").trigger("keyup");
+				});
+			});
+		}	
+	},	
 	submit: function(){
 		$el = this.$el;
 		var articleId = $el.find(".article.id").val();

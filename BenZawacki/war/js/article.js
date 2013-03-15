@@ -8,11 +8,9 @@ $(document).ready(function(){
 		req[temp[0]] = temp[1];
 	}
 	console.log(req);
-//	formatPage();
 	getArticle(req.index, req.num, req.dir, req.id);
 	
 	$(window).resize(function(){
-//		formatPage();
 		buildArticle(false, $("#articlesDIV"), true, 500, function(){
 			$("#articlesDIV").css({ opacity: 1 });
 		});
@@ -31,8 +29,6 @@ $(document).ready(function(){
 	
 	var t = 1;
 	var tm = setInterval(function(){
-		//console.log("resizing window");
-		//$(window).resize();
 		if (t > 0){
 			clearInterval(tm);
 			console.log("resizing ended");

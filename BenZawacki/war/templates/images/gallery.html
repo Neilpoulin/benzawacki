@@ -1,0 +1,51 @@
+<h2>Image Gallery</h2>
+<ul class="gallery">
+	{{#each this}}
+	<li class="well span2 pull-left preview">
+		<div class="imgContainer">
+			<img src="{{this.url}}" class="preview"/>
+		</div>		
+		<p><label>Upload Date:</label> {{this.createdDate}}</p>
+		<p><label>Uploaded By:</label> {{this.createdBy.email}}</p>
+		<p><a href="{{this.url}}" target="_blank">Image Url</a></p>
+		<hr/>
+		<label class="checkbox">
+			<input type="checkbox" class="showOnHomePage" {{#if this.showOnHomePage}}checked="checked"{{/if}} /> Use on Home Screen
+		</label>
+		<label class="checkbox">
+			<input type="checkbox" class="showInGallery" {{#if this.showInGallery}}checked="checked"{{/if}} /> Show In Gallery
+		</label>
+		
+		{{#if this.caption}}
+			<textarea class="caption" placeholder="Image Caption">{{this.caption}}</textarea>
+		{{else}}
+			<textarea class="caption" placeholder="Image Caption"></textarea>
+		{{/if}}
+	</li>
+	{{/each}}
+</ul>
+
+
+<!-- IMG DATA FORMAT 
+
+{
+	"url":"http://127.0.0.1:8888/_ah/img/3sQzzwCB7fvF6aHMkmVnqQ",
+	"showOnHomePage":false,
+	"blobKey":"3sQzzwCB7fvF6aHMkmVnqQ",
+	"id":"1363307106049","createdDate":"Mar 14, 2013 6:25:05 PM",
+	"updatedDate":"Mar 14, 2013 6:25:06 PM",
+	"createdBy":{
+		"name":"",
+		"email":"test@example.com",
+		"nickname":"test@example.com",
+		"userId":"18580476422013912411",
+		"federatedId":null,
+		"authDomain":"gmail.com"
+	},
+	"updatedBy":{
+		"name":"","email":"test@example.com","nickname":"test@example.com","userId":"18580476422013912411","federatedId":null,"authDomain":"gmail.com"
+	}
+}
+
+
+ -->

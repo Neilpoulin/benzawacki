@@ -105,6 +105,7 @@
 		<script type="text/javascript" src="/js/Views/ArticleSummaryList.js"></script>
 		<script type="text/javascript" src="/js/Views/ArticleSummary.js"></script>
 		<script type="text/javascript" src="/js/Views/EditArticle.js"></script>
+		<script type="text/javascript" src="/js/Views/ImageGallery.js"></script>
 							
 </body>
 </html>
