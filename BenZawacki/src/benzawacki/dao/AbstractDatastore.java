@@ -12,10 +12,12 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Text;
 
 public class AbstractDatastore<T extends AbstractDAO<T>> extends AbstractDAO<T>{
-	private static final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+	protected static final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	protected static String KIND;
 	
 	public AbstractDatastore(Class<T> clazz, String kind) {
@@ -53,7 +55,7 @@ public class AbstractDatastore<T extends AbstractDAO<T>> extends AbstractDAO<T>{
 		}
 		 
 		return obj;
-	}
+	}	
 	
 	@SuppressWarnings("unchecked")
 	public List<T> fetchAll(){
@@ -80,6 +82,22 @@ public class AbstractDatastore<T extends AbstractDAO<T>> extends AbstractDAO<T>{
 							
 		entity.setProperty("json", new Text(this.toJson()));
 		datastore.put(entity);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> fetchByAttribute(String property, Object value) {
+		List<T> objects = new ArrayList<T>();
+		Query query = new Query(getKind());
+		query.setFilter(new Query.FilterPredicate(property, FilterOperator.EQUAL, value));
+//		query.setFilter
+		PreparedQuery pq = datastore.prepare(query);
+		for (Entity result : pq.asIterable()){
+			if (result != null && result.getProperty("json") != null){
+				objects.add((T) gson.fromJson(((Text)result.getProperty("json")).getValue(), clazz));
+			}
+		}
+		return objects;
 	}
 
 }

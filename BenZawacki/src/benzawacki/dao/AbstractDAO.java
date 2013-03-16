@@ -121,6 +121,8 @@ public abstract class AbstractDAO<T extends AbstractDAO<T>> {
 		return fetch(String.valueOf(id));
 	}
 	
+	public abstract List<T> fetchByAttribute(String property, Object value);
+	
 	public abstract List<T> fetchAll();
 	
 	public void delete(){

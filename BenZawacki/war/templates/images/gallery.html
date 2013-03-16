@@ -1,7 +1,7 @@
 <h2>Image Gallery</h2>
 <ul class="gallery">
 	{{#each this}}
-	<li class="well span2 pull-left preview">
+	<li class="well span2 pull-left preview" id="img{{this.id}}">		
 		<div class="imgContainer">
 			<img src="{{this.url}}" class="preview"/>
 		</div>		
@@ -10,18 +10,24 @@
 		<p><a href="{{this.url}}" target="_blank">Image Url</a></p>
 		<hr/>
 		<label class="checkbox">
-			<input type="checkbox" class="showOnHomePage" {{#if this.showOnHomePage}}checked="checked"{{/if}} /> Use on Home Screen
+			<input type="checkbox" data-field="showOnHomePage" class="attribute" {{#if this.showOnHomePage}}checked="checked"{{/if}} /> Use on Home Screen
 		</label>
 		<label class="checkbox">
-			<input type="checkbox" class="showInGallery" {{#if this.showInGallery}}checked="checked"{{/if}} /> Show In Gallery
+			<input type="checkbox" data-field="showInGallery" class="attribute" {{#if this.showInGallery}}checked="checked"{{/if}} /> Show on Photos Page
 		</label>
 		
+		<input type="text" data-field="title" class="attribute" placeholder="Title" {{#if this.title}}value="{{this.title}}"{{/if}} />
+		
 		{{#if this.caption}}
-			<textarea class="caption" placeholder="Image Caption">{{this.caption}}</textarea>
+			<textarea class="attribute" data-field="caption" placeholder="Image Caption">{{this.caption}}</textarea>
 		{{else}}
-			<textarea class="caption" placeholder="Image Caption"></textarea>
+			<textarea class="attribute" data-field="caption" placeholder="Image Caption"></textarea>
 		{{/if}}
-		<button class="btn delete" data-id="{{this.id}}"><i class="icon-trash"></i></button>
+		<div class="btn-group btn-group-vertical">
+			<button class="btn save" data-id="{{this.id}}"><i class="icon-ok"></i></button>
+			<button class="btn delete" data-id="{{this.id}}"><i class="icon-trash"></i></button>			
+		</div>
+		<div class="alert fade">Success</div>
 	</li>
 	{{/each}}
 </ul>

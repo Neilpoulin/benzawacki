@@ -29,6 +29,27 @@ var ImageGallery = Backbone.View.extend({
 				
 			}			
 		});
+		$el.find("button.save").on("click", function(){
+			var image = model.get($(this).attr("data-id"));
+			$("#img" + image.id).find(".attribute").each(function(index, obj){
+				$obj = $(obj);
+				var attr = $obj.attr("data-field");
+				var value = "";
+				if ($obj.is("[type='checkbox']")){
+					value = $obj.is(":checked");
+				}else{
+					value = $obj.val();
+				}				
+				image.set(attr, value);				
+			});
+			image.save(image.toJSON(),
+				{
+					success: function(){showAlert(image.id, "Save Successful", "alert-success");}, 
+					error: function(){showAlert(image.id, "Save Failed :(", "alert-error");} 
+				}
+			);
+		});
+		
 	},
 	sort: function (array, field, reverse, primer){
 		var sort_by = function(field, reverse, primer){
@@ -43,3 +64,16 @@ var ImageGallery = Backbone.View.extend({
 		return array;
 	}
 });
+
+function showAlert(id, message, type){
+	console.log(message);
+	var alert = $("#img" + id).find(".alert");
+	alert.addClass(type).addClass("in").html(message).show();
+	setTimeout(function(){		
+		alert.removeClass("in");		
+	}, 2000);
+	setTimeout(function(){
+		alert.hide();
+	},3000);
+	
+}
