@@ -19,4 +19,11 @@ public class Images extends RestDatastore<Image> {
 		List<Image> images = dao.fetchByAttribute("showOnHomePage", true);
 		return gson.toJson(images);
 	}
+	
+	@Path("/galleries/photoPage")
+	@GET
+	public String getPhotoGallery(){
+		List<Image> images = dao.fetchByAttribute("showInGallery", true);
+		return gson.toJson(images);
+	}
 }

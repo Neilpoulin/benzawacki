@@ -6,7 +6,7 @@
 		<option data-field="showOnHomePage" value="showOnHomePage">Carousel - Home Page</option>
 		<option data-field="showInGallery" value="showInGallery">Photos Page</option>
 		<option data-field="title" value="title">Has Title</option>
-		<option data-field="caption" value=title>Has Caption</option>
+		<option data-field="caption" value="caption">Has Caption</option>
 	</select>
 </label>
 <ul class="gallery">
@@ -20,18 +20,18 @@
 		<p><a href="{{this.url}}" target="_blank">Image Url</a></p>
 		<hr/>
 		<label class="checkbox">
-			<input type="checkbox" data-field="showOnHomePage" class="attribute" {{#if this.showOnHomePage}}checked="checked"{{/if}} /> Use on Home Screen
+			<input type="checkbox" data-id="{{this.id}}" data-field="showOnHomePage" class="attribute" {{#if this.showOnHomePage}}checked="checked"{{/if}} /> Use on Home Screen
 		</label>
 		<label class="checkbox">
-			<input type="checkbox" data-field="showInGallery" class="attribute" {{#if this.showInGallery}}checked="checked"{{/if}} /> Show on Photos Page
+			<input type="checkbox" data-id="{{this.id}}" data-field="showInGallery" class="attribute" {{#if this.showInGallery}}checked="checked"{{/if}} /> Show on Photos Page
 		</label>
 		
-		<input type="text" data-field="title" class="attribute" placeholder="Title" {{#if this.title}}value="{{this.title}}"{{/if}} />
+		<input type="text" data-field="title" data-id="{{this.id}}" class="attribute" placeholder="Title" {{#if this.title}}value="{{this.title}}"{{/if}} />
 		
 		{{#if this.caption}}
-			<textarea class="attribute" data-field="caption" placeholder="Image Caption">{{this.caption}}</textarea>
+			<textarea class="attribute" data-id="{{this.id}}" data-field="caption" placeholder="Image Caption">{{this.caption}}</textarea>
 		{{else}}
-			<textarea class="attribute" data-field="caption" placeholder="Image Caption"></textarea>
+			<textarea class="attribute" data-id="{{this.id}}" data-field="caption" placeholder="Image Caption"></textarea>
 		{{/if}}
 		<div class="btn-group btn-group-vertical">
 			<button class="btn btn-success save" data-id="{{this.id}}"><i class="icon-ok icon-white"></i></button>

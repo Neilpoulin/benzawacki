@@ -5,7 +5,8 @@
 <link rel="stylesheet/less" href="/templates/articles/selectedImagesButtonSet.less" />
 <link rel="stylesheet/less" href="/templates/articles/editArticle.less"/>
 <link rel="stylesheet/less" href="/templates/images/preview.less"/>
-<link rel="stylesheet/less" href="/templates/images/gallery.less"/>
+<link rel="stylesheet/less" href="/templates/images/adminGallery.less"/>
+<link rel="stylesheet/less" href="/templates/images/photoGallery.less"/>
 <link rel="stylesheet/less" href="/templates/carousels/home.less"/>
 
 <!-- Include Template Files, make them hidden -->
@@ -32,13 +33,18 @@
 </script>
 
 <!---------- IMAGES ----------->
-<script type="text/x-handlebars-template" id="images_galleryTemplate" class="hidden">
-	<jsp:include page="images/gallery.html"/>
+<script type="text/x-handlebars-template" id="images_adminGalleryTemplate" class="hidden">
+	<jsp:include page="images/adminGallery.html"/>
 </script>
 
 <script type="text/x-handlebars-template" id="images_previewTemplate" class="hidden">
 	<jsp:include page="images/preview.html"></jsp:include>
 </script>
+ 
+<script type="text/x-handlebars-template" id="images_photoGalleryTemplate" class="hidden">
+	<jsp:include page="images/photoGallery.html"/>
+</script>
+
 
 <!---------- CAROUSELS ----------->
 <script type="text/x-handlebars-template" id="carousels_homeTemplate" class="hidden">
@@ -48,6 +54,7 @@
 
 <!-- Include any libraries templates are dependent on and JS Accessor object -->
 <script type="text/javascript" src="/lib/handlebars.js"></script>
+<script type="text/javascript" src="/templates/images/photoGallery.js"></script>
 <script>
 	window.templates = {
 		articles: {
@@ -58,8 +65,9 @@
 			editArticle: Handlebars.compile($("#articles_editArticleTemplate").html())
 		},
 		images: {
-			gallery: Handlebars.compile($("#images_galleryTemplate").html()),
-			preview: Handlebars.compile($("#images_previewTemplate").html())
+			adminGallery: Handlebars.compile($("#images_adminGalleryTemplate").html()),
+			preview: Handlebars.compile($("#images_previewTemplate").html()),
+			photoGallery: Handlebars.compile($("#images_photoGalleryTemplate").html()),
 		},
 		carousels: {
 			home: Handlebars.compile($("#carousels_homeTemplate").html())
@@ -78,3 +86,4 @@
 		return value;
 	});
 </script>
+

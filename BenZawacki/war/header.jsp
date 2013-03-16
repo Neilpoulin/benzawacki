@@ -57,6 +57,7 @@
 									<li><a href="/admin/articles">Articles</a></li>	
 									<li class="nav-header">Test Pages</li>
 	                    			<li><a href="/pages/main.jsp">New Home Page</a></li>	
+	                    			<li><a href="/pages/photos.jsp">Photo Gallery</a></li>	
 	                    			<li><a href="/writings">Writings</a></li>	
 	                    			<li><a href="/partners">Partners</a></li>				
 								</ul>

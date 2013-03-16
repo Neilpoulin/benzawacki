@@ -1,0 +1,44 @@
+<h2>Photo Gallery</h2>
+<ul class="gallery row">
+	{{#each this}}
+	<li class=" span4 pull-left photo slideCaption" id="img{{this.id}}">		
+		<div class="imgContainer img-polaroid ">
+			<a href="{{this.url}}" target="_blank">
+				<img src="{{this.url}}" class="preview " title="{{this.title}}"/>
+				{{#if this.caption}}
+					<div class="caption slideable">
+						<h3>{{this.title}}</h3>
+						<p class="attribute" data-id="{{this.id}}">{{this.caption}}</p>
+					</div>
+				{{/if}}
+			</a>				 
+		</div>		
+		
+	</li>
+	{{/each}}
+</ul>
+
+
+<!-- IMG DATA FORMAT 
+
+{
+	"url":"http://127.0.0.1:8888/_ah/img/3sQzzwCB7fvF6aHMkmVnqQ",
+	"showOnHomePage":false,
+	"blobKey":"3sQzzwCB7fvF6aHMkmVnqQ",
+	"id":"1363307106049","createdDate":"Mar 14, 2013 6:25:05 PM",
+	"updatedDate":"Mar 14, 2013 6:25:06 PM",
+	"createdBy":{
+		"name":"",
+		"email":"test@example.com",
+		"nickname":"test@example.com",
+		"userId":"18580476422013912411",
+		"federatedId":null,
+		"authDomain":"gmail.com"
+	},
+	"updatedBy":{
+		"name":"","email":"test@example.com","nickname":"test@example.com","userId":"18580476422013912411","federatedId":null,"authDomain":"gmail.com"
+	}
+}
+
+
+ -->
