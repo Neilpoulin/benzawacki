@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	window.imgCollection = new ImageCollection();
-	window.galleryView = new ImageGallery({el: "#gallery", model: imgCollection});
+	window.galleryView = new ImageGallery({el: "#gallery", model: imgCollection, template: templates.images.adminGallery});
 	imgCollection.fetch({update: true});
 	
 	getUploadUrl();
