@@ -3,6 +3,12 @@ var Image = Backbone.Model.extend({
 });
 
 var ImageCollection = Backbone.Collection.extend({
-	url: "/api/images",
+	url: function(category, value){
+		var url = "/api/images";
+		if (category != undefined && value != undefined){
+			url = "/api/images/" + category + "/" + value;
+		}
+		return url;
+	},	
 	model: Image
 });

@@ -35,4 +35,10 @@ public class AbstractImageService<T extends AbstractDAO<T>> extends AbstractDAO<
 		return null;
 	}
 
+	@Override
+	public List<T> fetchByAttribute(String property, Object value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

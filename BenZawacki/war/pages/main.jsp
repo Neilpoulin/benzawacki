@@ -7,9 +7,9 @@
 </head>
 <body>
 	<jsp:include page="/header.jsp"/>
-	<div class="">
+	<div id="carousel" class="">
 	    <!-- Carousel  ================================================== -->
-	    <div id="mainCarousel" class="carousel slide">
+	    <!-- <div id="mainCarousel" class="carousel slide">
 	      <ol class="carousel-indicators bottom">
 	      	<li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
 	      	<li data-target="#mainCarousel" data-slide-to="1"></li>
@@ -60,7 +60,7 @@
 		</div>	            
     	<a class="left carousel-control" href="#mainCarousel" data-slide="prev">&lsaquo;</a>
     	<a class="right carousel-control" href="#mainCarousel" data-slide="next">&rsaquo;</a>
-    </div><!-- /.carousel -->	
+    </div>/.carousel -->	
 	</div><!-- /.container -->
 	
 	<div class="container" id="content-boxes">

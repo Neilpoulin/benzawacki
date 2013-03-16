@@ -6,6 +6,7 @@
 <link rel="stylesheet/less" href="/templates/articles/editArticle.less"/>
 <link rel="stylesheet/less" href="/templates/images/preview.less"/>
 <link rel="stylesheet/less" href="/templates/images/gallery.less"/>
+<link rel="stylesheet/less" href="/templates/carousels/home.less"/>
 
 <!-- Include Template Files, make them hidden -->
 
@@ -39,6 +40,12 @@
 	<jsp:include page="images/preview.html"></jsp:include>
 </script>
 
+<!---------- CAROUSELS ----------->
+<script type="text/x-handlebars-template" id="carousels_homeTemplate" class="hidden">
+	<jsp:include page="carousels/home.html"></jsp:include>
+</script>
+
+
 <!-- Include any libraries templates are dependent on and JS Accessor object -->
 <script type="text/javascript" src="/lib/handlebars.js"></script>
 <script>
@@ -53,6 +60,9 @@
 		images: {
 			gallery: Handlebars.compile($("#images_galleryTemplate").html()),
 			preview: Handlebars.compile($("#images_previewTemplate").html())
+		},
+		carousels: {
+			home: Handlebars.compile($("#carousels_homeTemplate").html())
 		}
 	};
 	
