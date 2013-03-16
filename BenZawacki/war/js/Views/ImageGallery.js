@@ -50,6 +50,31 @@ var ImageGallery = Backbone.View.extend({
 			);
 		});
 		
+		$el.find("select.filter").on("change", function(){
+			var attr = $(this).val();
+			view.$el.find("ul.gallery li").each(function(i, obj){
+				var show = false;
+				$obj = $(obj);
+				if (attr == "all"){
+					show = true;
+				} else{
+					var $field = $obj.find("[data-field='" + attr + "']");
+					if ( $field.is(":checkbox") ){					
+						if ( $field.is(":checked") ){
+							show = true;
+						}
+					}else if ($field.val() != null && $field.val() != "" ){
+						show = true;
+					}
+				}				
+				if (show){
+					$obj.show();
+				}else{
+					$obj.hide();
+				}
+			});
+		});
+		
 	},
 	sort: function (array, field, reverse, primer){
 		var sort_by = function(field, reverse, primer){

@@ -25,7 +25,7 @@
 		</div>
 		<div class="container">
 			<div id="intro">
-				<h2>Manage Articles <a id="help-btn" href="#helpModal" class="btn" data-toggle="modal"><i class="icon-info-sign"></i></a></h2>				
+				<h2>Manage Articles <a id="help-btn" href="#helpModal" class="btn btn-inverse" data-toggle="modal"><i class="icon-info-sign icon-white"></i></a></h2>				
 			</div>
 			
 			<div class="row">
