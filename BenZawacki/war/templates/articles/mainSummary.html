@@ -10,7 +10,7 @@
 	{{/if}}
 	
 	{{#if location}}
-		<p><b>Location:</b> {{location}}</p> 
+		<p><b>Location:</b> <a href="http://maps.google.com/maps?q={{encodeUri location}}" target="_blank">{{location}}</a></p> 
 	{{/if}}
 	 
 	{{#if tags}}

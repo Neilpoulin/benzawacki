@@ -84,6 +84,10 @@
 			out = value;
 		}
 		return value;
+	}); 
+	
+	Handlebars.registerHelper('encodeUri', function(string){
+		return encodeURIComponent(string);
 	});
 </script>
 

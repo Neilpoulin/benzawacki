@@ -13,8 +13,10 @@
 			<div class="span8">
 				<div class="row">
 					<div class="span8 short" id="article" >
+						<div id="latest">latest article <a id="viewAllLink" href="/home">View All Articles</a></div>
+						<hr/>
 						<div class="article clearfix"></div>
-						<a href="/home">View All Articles</a>
+						
 					</div>											
 				</div>
 				<div class="row">
