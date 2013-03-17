@@ -9,7 +9,6 @@
 		<div id="gallery"></div>
 	</div>
 	
-	<script type="text/javascript" src="/js/photos.js"></script>
-	<!-- <script type="text/javascript" src="/templates/images/photoGallery.js"></script>	 -->
+	<script type="text/javascript" src="/js/photos.js"></script>	
 </body>
 </html>
