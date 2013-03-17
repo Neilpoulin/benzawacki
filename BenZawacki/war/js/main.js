@@ -5,17 +5,37 @@ $(document).ready(function(){
 	articles.fetch({update: true});
 	
 	window.carouselImages = new ImageCollection({category: "carousels", value: "main"});
-	carouselImages.on("add", renderCarousel);
-	carouselImages.fetch({url: carouselImages.url("carousels", "main"), update: true});
+	carouselImages.on("add", renderMainCarousel);
+	setTimeout(function(){
+		carouselImages.fetch({url: carouselImages.url("carousels", "main"), update: true});
+	}, 500);
 	var initialized = false;
+	
+	window.galleryImages = new ImageCollection({category: "galleries", value: "photoPage"});
+	galleryImages.on("add", renderPhotosCarousel);
+	setTimeout(function(){
+		galleryImages.fetch({url: carouselImages.url("galleries", "photoPage"), update:true});
+	}, 1000);
 });
 
-function renderCarousel(){
-	$("#carousel").html( templates.carousels.home( carouselImages.toJSON() ) );
+function renderMainCarousel(){
+	var data = {};
+	data.images = carouselImages.toJSON();
+	data.selector = "#carousel .mainCarousel";
+	$("#carousel").html( templates.carousels.home( data ) );
 	$("#carousel div.item").first().addClass("active");
 	$("#carousel .carousel-indicators li").first().addClass("active");
-	$("#mainCarousel").carousel();
+	$("#carousel").find(".mainCarousel").carousel();
+}
 
+function renderPhotosCarousel(){
+	var data = {}
+	data.images = galleryImages.toJSON();
+	data.selector = "#photos .mainCarousel";
+	$("#photos").html( templates.carousels.home( data ) );
+	$("#photos div.item").first().addClass("active");
+	$("#photos .carousel-indicators li").first().addClass("active");
+	$("#photos").find(".mainCarousel").carousel();
 }
 
 function displayLatest(){
