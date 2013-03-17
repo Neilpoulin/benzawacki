@@ -2,9 +2,9 @@
 <ul class="gallery row">
 	{{#each this}}
 	<li class=" span4 pull-left photo slideCaption" id="img{{this.id}}">		
-		<div class="imgContainer img-polaroid ">
+		<div class="imgContainer">
 			<a href="{{this.url}}" target="_blank">
-				<img src="{{this.url}}" class="preview " title="{{this.title}}"/>
+				<img src="{{this.url}}" class="img-polaroid" title="{{this.title}}"/>
 				{{#if this.caption}}
 					<div class="caption slideable">
 						<h3>{{this.title}}</h3>

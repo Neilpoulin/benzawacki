@@ -22,8 +22,9 @@ var ImageGallery = Backbone.View.extend({
 		$el.find("button.delete").on("click", function(){
 			var c = confirm("Are you sure you want to delete this image?");
 			if (c){
-				model.get($(this).attr("data-id")).destroy();
-				var parent = $(this).parent();				
+				var id = $(this).attr("data-id");
+				model.get(id).destroy();
+				var parent = $("#img" + id);				
 				parent.animate({width: 0, opacity: 0, height: 0, marginLeft: -30}, "slow", function(){
 					parent.hide();
 //					view.render();
