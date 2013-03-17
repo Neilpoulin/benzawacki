@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.google.appengine.api.users.*" %>
+<%@ page import="com.google.gson.Gson" %>
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,7 @@
     String nickname = null;
     boolean loggedIn = false;
     boolean admin = false;
-    
+    Gson gson = new Gson();
     if (user != null) {
     	admin = userService.isUserAdmin();
     	loggedIn = true;   		
@@ -83,7 +84,12 @@
 			</div><!-- /.navbar-inner -->
 		</div><!-- /.navbar -->				
 
-
+		<script type="text/javascript">
+			window.user = <%= gson.toJson(user) %>;
+			user.isAdmin = <%= admin %>;
+			user.nickname = "<%= nickname %>";
+		</script>
+		
 		<!-- Libraries -->
 		<script type="text/javascript" src="/lib/jquery.js"></script>
 		<script type="text/javascript" src="/lib/jquery-ui.js"></script>				
@@ -107,6 +113,7 @@
 		<script type="text/javascript" src="/js/Views/ArticleSummary.js"></script>
 		<script type="text/javascript" src="/js/Views/EditArticle.js"></script>
 		<script type="text/javascript" src="/js/Views/ImageGallery.js"></script>
+		<script type="text/javascript" src="/js/Views/ImagePicker.js"></script>
 							
 </body>
 </html>
