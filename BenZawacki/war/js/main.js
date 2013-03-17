@@ -39,7 +39,8 @@ function renderPhotosCarousel(){
 }
 
 function displayLatest(){
-	$("#article div.article").html(templates.articles.mainSummary(articles.toJSON()[0]));
+	
+	$("#article div.article").html(templates.articles.mainSummary(articles.last().toJSON()));
 }
 
 function getArticle(){
