@@ -1,5 +1,6 @@
 @import "common.less";
 @box-height: 250px;
+@box-height-tall: (2 * @box-height) + 20px;
 
 body {
   	padding-bottom: 40px;
@@ -8,58 +9,12 @@ body {
 }
 
 /* ======== CAROUSEL ======== */
-#mainCarousel{
+#carousel{
 	height: 500px;
-}
-.carousel {
+	margin-bottom: 30px;
 	margin-left: -20px;
 	margin-right: -20px;
-	margin-bottom: 60px;
 }
-
-.carousel-inner{
-	height: 100%;
-}
-
-.carousel .container {
-	position: relative;
-}
-
-.carousel-control {
-	border: 3px solid black;
-}
-
-.carousel .item {
-	height: 100%;
-}
-
-.carousel img {
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.carousel-caption {
-	padding: 20px 70px 20px 70px;
-	margin-top: 200px;
-}
-.carousel-caption h1,
-.carousel-caption .lead {
-	margin: 0;
-	line-height: 1.25;
-	color: #fff;
-	text-shadow: 0 1px 1px rgba(0,0,0,.4);
-}
-.carousel-caption .btn {
-	margin-top: 10px;
-}
-
-.carousel-indicators.bottom{	
-	top: 475px;
-	right: 35px;	
-}
-
-/* ======== END CAROUSEL ======== */
 
 
 /* ======== CONTENT BOXES ======= */
@@ -67,16 +22,23 @@ body {
 	h1,h2,h3,h4{
 		text-align: center;
 	}
-	div.row > div{
-		.box-shadow;
-		margin-bottom: 20px;
-		height: @box-height;	
+//	div.row > div{
+//		.box-shadow;
+//		margin-bottom: 20px;
+//		height: @box-height;	
+//		box-sizing: border-box;
+//	}
+
+	div.short, div.tall{
 		box-sizing: border-box;
-	}
-	
-	div.row > div:not([id="twitter"]){
 		.content-div;
+		height: @box-height-tall;		
 	}
+	div.short{
+		height: @box-height;
+		.box-shadow;
+		.content-div;
+	}	
 }
 
 #strava{
@@ -99,13 +61,21 @@ body {
 		left: 0;
 		right: 0;
 		max-heigth: 100%;
-		height: @box-height !important;
+		height: @box-height-tall !important;
 	}
 }
 
 #article{
 	div.article{
 		margin-bottom: 10px;		
+	}
+}
+
+#photos{
+	position: relative;
+	padding: 0px !important;
+	.carousel-inner{
+		border-radius: 6px;
 	}
 }
 

@@ -1,23 +1,33 @@
-<div id="mainCarousel" class="carousel slide">
+<div id="{{selector}}" class="carousel slide mainCarousel">
 	<ol class="carousel-indicators bottom">
-		{{#each this}}
-			<li data-target="#mainCarousel" data-slide-to="{{@index}}" class=""></li>
+		{{#each images}}
+			<li data-target="{{selector}}" data-slide-to="{{@index}}" class=""></li>
 		{{/each}}
 	</ol>
 	<div class="carousel-inner">
-		{{#each this}}
+		{{#each images}}
 			<div class="item">
 				<img src="{{url}}" alt="{{title}}">
-				<div class="carousel-caption">
-					<div class="container">
-						<h1>{{title}}</h1>
-						<p class="lead">{{caption}}</p>
-						<!-- <a class="btn btn-large btn-primary" href="#">Sign up today</a> -->
+				{{#if caption}}
+					<div class="carousel-caption">
+						<div class="container">
+							<h1>{{title}}</h1>
+							<p class="lead">{{caption}}</p>							
+						</div>
 					</div>
-				</div>
+				{{else}}
+					{{#if title}}
+					<div class="carousel-caption">
+						<div class="container">
+							<h1>{{title}}</h1>
+						</div>
+					</div>
+					{{/if}}
+				{{/if}}
+				
 			</div>
 		{{/each}}
 	</div>
-	<a class="left carousel-control" href="#mainCarousel" data-slide="prev">&lsaquo;</a>
-   	<a class="right carousel-control" href="#mainCarousel" data-slide="next">&rsaquo;</a>
+	<a class="left carousel-control" href="{{selector}}" data-slide="prev">&lsaquo;</a>
+   	<a class="right carousel-control" href="{{selector}}" data-slide="next">&rsaquo;</a>
 </div>
