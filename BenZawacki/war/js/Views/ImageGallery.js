@@ -68,6 +68,7 @@ var ImageGallery = Backbone.View.extend({
 	},
 	submit: function(elm){
 		var image = this.model.get($(elm).attr("data-id"));
+		var view = this;
 		$("#img" + image.id).find(".attribute").each(function(index, obj){
 			$obj = $(obj);
 			var attr = $obj.attr("data-field");
@@ -81,8 +82,8 @@ var ImageGallery = Backbone.View.extend({
 		});
 		image.save(image.toJSON(),
 			{
-				success: function(){showAlert(image.id, "Save Successful", "alert-success");}, 
-				error: function(){showAlert(image.id, "Save Failed :(", "alert-error");} 
+				success: function(){view.showAlert(image.id, "Save Successful", "alert-success");}, 
+				error: function(){view.showAlert(image.id, "Save Failed :(", "alert-error");} 
 			}
 		);
 	},
@@ -97,18 +98,17 @@ var ImageGallery = Backbone.View.extend({
 			}
 		array.sort(sort_by(field, reverse, primer));
 		return array;
+	},
+	showAlert: function(id, message, type){
+		console.log(message);
+		var alert = $("#img" + id).find(".alert");
+		alert.addClass(type).addClass("in").html(message).show();
+		setTimeout(function(){		
+			alert.removeClass("in");		
+		}, 2000);
+		setTimeout(function(){
+			alert.hide();
+		},3000);
+		
 	}
 });
-
-function showAlert(id, message, type){
-	console.log(message);
-	var alert = $("#img" + id).find(".alert");
-	alert.addClass(type).addClass("in").html(message).show();
-	setTimeout(function(){		
-		alert.removeClass("in");		
-	}, 2000);
-	setTimeout(function(){
-		alert.hide();
-	},3000);
-	
-}

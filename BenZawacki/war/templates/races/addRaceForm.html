@@ -1,0 +1,57 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h3 class="dialog-title">Add a Race</h3>
+</div>
+<div class="modal-body">
+	<div class="alert fade"><div class="alert-msg"></div></div>
+	<form class="form-horizontal">				
+		<div class="control-group">
+			<label for="race" class="control-label">Race Name</label>
+			<div class="controls">
+				<input class="input-xlarge attribute" data-field="name" placeholder="Race Name" value="{{name}}"/>
+			</div>
+		</div>					
+		<div class="control-group">
+			<label class="control-label" for="date">Date</label>
+			<div class="controls">
+				<input data-field="date" class="attribute input-xlarge datepicker" placeholder="Date" value="{{date}}"/>
+			</div>
+		</div>					
+		<div class="control-group">
+			<label class="control-label" for="website">Website</label>
+			<div class="controls">
+				<input class="input-xlarge attribute" data-field="url" placeholder="Website" value="{{url}}"/>
+			</div>
+		</div>					
+		<div class="control-group">
+			<label class="control-label">Location</label>
+			<div class="controls">
+				<input  name="address" class="input-xlarge attribute" data-field="street" placeholder="Street" value="{{street}}"/>
+				<input  name="city" class="input-medium attribute" data-field="city" placeholder="City" value="{{city}}"/>
+				<input name="state" class="input-mini attribute" data-field="state" placeholder="State" value="{{state}}"/>
+				<input name="country" class="input-mini attribute" value="USA" data-field="country" placeholder="Country" value="{{country}}"/>							
+			</div>
+		</div>						
+		<div class="control-group">
+			<label class="control-label" for="length">Race Details</label>
+			<div class="controls">
+				<input class="attribute" data-field="raceType" placeholder="Type" value="{{raceType}}"/>
+				<input class="input-mini attribute" data-field="raceLength" placeholder="Length" value="{{raceLength}}"/>
+				<input class="attribute input-xlarge" data-field="description" placeholder="Race Description" value="{{description}}"/>
+			</div>
+		</div>	
+
+		<label class="hidden" for="lat">lat</label>
+		<input name="lat" id="lat" value="" readonly="" class="hidden readonly "/>
+
+		<label class="hidden" for="lng">lng</label>
+		<input name="lng" readonly="" id="lng" value="" class="hidden readonly text-short"/>
+	
+	
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+	<button class="btn btn-primary submit">Submit</button>
+</div>
+

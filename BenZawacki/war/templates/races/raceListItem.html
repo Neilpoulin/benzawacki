@@ -1,0 +1,32 @@
+<div class="raceListItem">
+	<div class="raceDetails">
+		<p> 
+			<b>{{date}} - 
+			{{#if url}}
+				<a href="{{url}}" target="_blank">{{name}}</a>
+			{{else}}
+				{{name}}
+			{{/if}}
+			</b>  
+		</p>
+		
+		<p>
+			{{city}}{{#if state}},&nbsp;{{state}}{{/if}},&nbsp;{{country}}
+		</p>	
+	</div>
+	
+	<div class="raceType">
+		{{#if description}}
+		<p>{{description}}</p>	
+		{{/if}}
+		{{#if raceType}}
+			<p>
+				{{raceType}} {{#if raceLength}}&nbsp;-&nbsp;{{raceLength}}{{/if}}
+			</p>
+		{{/if}}
+	</div>
+	
+	<div class="raceActions">
+		<a href="{{editDialogId}}" class="editRace" role="button" id="editRace{{id}}" data-toggle="modal">Edit</a>
+	</div>
+</div>

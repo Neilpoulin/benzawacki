@@ -117,7 +117,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	  
 	  <servlet>
 	    <servlet-name>adminRaces</servlet-name>
-	    <jsp-file>/admin/races_admin.jsp</jsp-file>
+	    <jsp-file>/admin/raceData.jsp</jsp-file>
 	  </servlet>
  	  <servlet-mapping>
 	    <servlet-name>adminRaces</servlet-name>

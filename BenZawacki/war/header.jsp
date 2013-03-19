@@ -114,6 +114,9 @@
 		<script type="text/javascript" src="/js/Views/EditArticle.js"></script>
 		<script type="text/javascript" src="/js/Views/ImageGallery.js"></script>
 		<script type="text/javascript" src="/js/Views/ImagePicker.js"></script>
+		<script type="text/javascript" src="/js/Views/util/SubmitDialog.js"></script>
+		<script type="text/javascript" src="/js/Views/races/RaceListView.js"></script>
+		<script type="text/javascript" src="/js/Views/races/RaceListItem.js"></script>
 							
 </body>
 </html>

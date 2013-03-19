@@ -39,7 +39,6 @@ $(document).ready(function(){
 	});
 
 	
-	
 	$("#state, #address, #city").blur(function(){
 		if (($("#address").val() != "") && ($("#city").val() != "") && ($("#state").val() != "")){
 			getLatLng(function(){

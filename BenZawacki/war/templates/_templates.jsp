@@ -8,6 +8,7 @@
 <link rel="stylesheet/less" href="/templates/images/adminGallery.less"/>
 <link rel="stylesheet/less" href="/templates/images/photoGallery.less"/>
 <link rel="stylesheet/less" href="/templates/carousels/home.less"/>
+<link rel="stylesheet/less" href="/templates/races/raceListItem.less"/>
 
 <!-- Include Template Files, make them hidden -->
 
@@ -51,6 +52,18 @@
 	<jsp:include page="carousels/home.html"></jsp:include>
 </script>
 
+<!---------- RACES ----------->
+<script type="text/x-handlebars-template" id="races_addRaceFormTemplate" class="hidden">
+	<jsp:include page="races/addRaceForm.html"></jsp:include>
+</script>
+
+<script type="text/x-handlebars-template" id="races_mapMarkerTemplate" class="hidden">
+	<jsp:include page="races/mapMarker.html"></jsp:include>
+</script>
+
+<script type="text/x-handlebars-template" id="races_raceListItemTemplate" class="hidden">
+	<jsp:include page="races/raceListItem.html"></jsp:include>
+</script>
 
 <!-- Include any libraries templates are dependent on and JS Accessor object -->
 <script type="text/javascript" src="/lib/handlebars.js"></script>
@@ -71,8 +84,15 @@
 		},
 		carousels: {
 			home: Handlebars.compile($("#carousels_homeTemplate").html())
+		},
+		races: {
+			addRaceForm: Handlebars.compile($("#races_addRaceFormTemplate").html()),
+			mapMarker: Handlebars.compile($("#races_mapMarkerTemplate").html()),
+			raceListItem: Handlebars.compile($("#races_raceListItemTemplate").html())
 		}
 	};
+	window.googleAPIkey = "AIzaSyCcXfh_zwxQ-jGFLum6DI2SrtPvP8XmSug";
+	
 	
 	Handlebars.registerHelper('toHtml', function(string) {
 		  return new Handlebars.SafeString(string);
