@@ -1,4 +1,4 @@
-<div class="raceListItem">
+<div class="">
 	<div class="raceDetails">
 		<p> 
 			<b>{{date}} - 
@@ -26,7 +26,8 @@
 		{{/if}}
 	</div>
 	
-	<div class="raceActions">
-		<a href="{{editDialogId}}" class="editRace" role="button" id="editRace{{id}}" data-toggle="modal">Edit</a>
+	<div class="raceActions top-right btn-group btn-group-vertical">
+		<button class="btn btn-danger delete"><i class="icon-trash icon-white"></i></button>
+		<a href="{{editDialogId}}" class="editRace btn" role="button" id="editRace{{id}}" data-toggle="modal"><i class="icon-pencil"></i></a>
 	</div>
 </div>
