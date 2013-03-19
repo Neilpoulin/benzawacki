@@ -7,6 +7,7 @@
 <link rel="stylesheet/less" href="/templates/images/preview.less"/>
 <link rel="stylesheet/less" href="/templates/images/adminGallery.less"/>
 <link rel="stylesheet/less" href="/templates/images/photoGallery.less"/>
+<link rel="stylesheet/less" href="/templates/images/imagePicker.less"/>
 <link rel="stylesheet/less" href="/templates/carousels/home.less"/>
 
 <!-- Include Template Files, make them hidden -->
@@ -45,6 +46,9 @@
 	<jsp:include page="images/photoGallery.html"/>
 </script>
 
+<script type="text/x-handlebars-template" id="images_imagePickerTemplate" class="hidden">
+	<jsp:include page="images/imagePicker.html"/>
+</script>
 
 <!---------- CAROUSELS ----------->
 <script type="text/x-handlebars-template" id="carousels_homeTemplate" class="hidden">
@@ -68,6 +72,7 @@
 			adminGallery: Handlebars.compile($("#images_adminGalleryTemplate").html()),
 			preview: Handlebars.compile($("#images_previewTemplate").html()),
 			photoGallery: Handlebars.compile($("#images_photoGalleryTemplate").html()),
+			imagePicker: Handlebars.compile($("#images_imagePickerTemplate").html())
 		},
 		carousels: {
 			home: Handlebars.compile($("#carousels_homeTemplate").html())
