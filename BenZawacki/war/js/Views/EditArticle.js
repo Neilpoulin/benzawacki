@@ -4,6 +4,9 @@ var EditArticle = Backbone.View.extend({
 		this.collection = this.options.collection;
 		this.listView = this.options.listView;
 		this.$el.addClass("active");
+		this.imageCollection = this.options.imageCollection;		
+		this.titleImagePicker = new ImagePicker({model: this.imageCollection});
+		this.articleImagePicker = new ImagePicker({model: this.imageCollection, multi: true});
 	},
 	edit: function(model){
 		this.model = model;
@@ -11,9 +14,15 @@ var EditArticle = Backbone.View.extend({
 	},
 	render: function(){
 		var article = this;
+		var $el = this.$el;
 		this.$el.html(this.template( this.model.toJSON() ));
 		
-		this.$el.find(".btn.submit").on("click", function(){
+		this.titleImagePicker.setElement($el.find(".titleImagePicker"));
+		this.articleImagePicker.setElement($el.find(".articleImagePicker"));
+		this.titleImagePicker.render();
+		this.articleImagePicker.render();
+		
+		$el.find(".btn.submit").on("click", function(){
 			article.submit();
 		});
 		
@@ -23,21 +32,20 @@ var EditArticle = Backbone.View.extend({
 			defaultDate: 0,
 			duration: "fast",	
 		});
+		
 		$(".article").on('keyup', function(){
 			article.convertInput($(this)); 
 		});
+		
 		$(".article").trigger("keyup");
 		
 		this.$el.find(".btn.addContentImg").button().click(function(){
-			buildImgPicker($("#addPicDialog"), "insertImg", this.addImages, true);
-			$("#addPicDialog").dialog("open");
+			$el.find(".articleImagePickerContainer").modal({show: true});
 		});
 		
 		this.$el.find(".btn.addTitleImg").button().click(function(){
-			buildImgPicker($("#imgGallery"), "articleChooseImg", this.addImages, false);
-			$("#imgGallery").dialog("open");
+			$el.find(".titleImagePickerContainer").modal({show: true});
 		});
-		
 	},
 	addTitleImage: function(){
 		

@@ -29,90 +29,17 @@
 			</div>
 			
 			<div class="row">
-				<div class="span8" id="editArticle">
-					<!-- <div id="articleBin" class="main">
-						<div class="row">
-							<div id="imgSelected" class="main imgSel span2">
-								<div id="articleImg" class="article"></div>
-								<div class="clear"></div>
-								<button id="btnArticleImg" class="article btn"><i class="icon-picture"></i> Title Image</button>
-							</div>
-							<div id="summaryBin" class="span6">
-								<input type="text" class="article span6" id="articleTitle" placeholder="Article Title"/><br>
-								<input type="text" class="article span2 datepicker date" id="articlePostDate" placeholder="Date" readonly="readonly"/>
-								<input type="text" class="article span4" id="articleLocation" placeholder="location"/>
-								<input type="text" class="article" id="articleShortUrl" readonly="readonly" class="hidden"/>
-								<input type="text" class="article hidden" id="articleIndex" />
-								<input type="text" class="article hidden" id="articleId" />
-								<br>
-								<textarea id="articleSummary" class="article span6" placeholder = "Article summary goes here (200 characeters max)" maxlength="200"></textarea> <br><br>
-							</div>
-						</div>
-						<textarea id="articleContent" class="article" placeholder="Article content goes here"></textarea>	
-						<br>
-						
-						<input type="text" class="article" id="articleTags" placeholder="tag 1, tag 2, tag 3"/> <br><br>
-						<button id="btnAddPic" class="btn"><i class="icon-picture"></i> Select Images</button>
-						<a id="insert-link" href="#link-modal" class="btn" data-toggle="modal"><i class="icon-share"></i> Insert Link</a>
-						<button id="submitArticle" class="btn pull-right"><i class="icon-ok"></i> Submit Article</button>
-						
-						<hr/>
-						
-						<ul id="imageOptions" class="clearfix"></ul>			
-						
-						<div id="htmlInputs" class="hidden">
-							<textarea id="htmlSummary" readonly="readyonly"></textarea>
-							<textarea id="htmlContent" readonly="readyonly"></textarea>
-							<input type="text" id="htmlTitle" />
-							<input type="text" id="htmlLocation" />
-						</div>
-					</div>
-						
-					<div class="clearfix content-div">
-						<h4>Preview</h4>
-						<div id="preview" class="well clearfix"></div>
-					</div> -->
-				</div>
+				<div class="span8" id="editArticle"></div>
 				<div id="listArticlesDIV" class="span3">
 					<h2>Current Articles</h2>
 					<ol></ol>
 				</div>			
 			</div>			
 		</div>	
-		
-		<div id="imgGallery">
-			<div id="articleImgSel" class="article main"></div>
-		</div>	
 			
 		<div id="tagsDIV" class="hidden"><ul></ul></div>
 		<!-- <input type="text" id="articleKey" class="article hidden"> -->
 		<div id="tempImg" class="prev hidden"><img class = "thumb" src="/data/images/img-placeholder.jpg"></div>
-		
-		<div id="addPicDialog">
-			<div class="imgTagsDIV"><ul></ul></div>
-		</div>
-		
-		<div id="link-modal" data-backdrop="static" class="modal hide fade" tabindex="1" role="dialog">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h3>Insert HyperLink</h3>
-			</div>
-			<div class="modal-body">
-				<p>
-					Link will be added to the end of the article content.
-				</p>
-				
-				<label>Address</label>
-				<input id="link-address" class="span5" type="url" required="required" placeholder="http://www.google.com"/>
-				
-				<label>Display Text</label>
-				<input id="link-text" required="required" type="text" class="span5" placeholder="Google"/>
-			</div>
-			<div class="modal-footer">
-				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-				<button class="btn btn-primary" id="link-submit">Done</button>
-			</div>
-		</div>
 		
 		<div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
@@ -142,7 +69,6 @@
 				<!--   <button class="btn btn-primary">Save changes</button> -->
 			</div>
 		</div>
-
 
 
 	<script src="http://code.jquery.com/jquery-migrate-1.1.1.js"></script>

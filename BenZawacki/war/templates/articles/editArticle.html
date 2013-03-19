@@ -27,6 +27,7 @@
 	</div>
 	
 	<button class="btn addContentImg"><i class="icon-picture"></i> Select Images</button>
+
 	<a href="#link-modal" class="btn insertLink" data-toggle="modal"><i class="icon-share"></i> Insert Link</a>
 	
 	<button id="submitArticle" class="btn btn-success pull-right submit"><i class="icon-ok icon-white"></i> Submit Article</button>
@@ -54,4 +55,42 @@
 		<div class="content"></div>
 		<div class="tags"></div>
 	</div>
+</div>
+
+<div id="link-modal" data-backdrop="static" class="modal hide fade" tabindex="1" role="dialog">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>Insert HyperLink</h3>
+			</div>
+			<div class="modal-body">
+				<p>
+					Link will be added to the end of the article content.
+				</p>
+				
+				<label>Address</label>
+				<input id="link-address" class="span5" type="url" required="required" placeholder="http://www.google.com"/>
+				
+				<label>Display Text</label>
+				<input id="link-text" required="required" type="text" class="span5" placeholder="Google"/>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+				<button class="btn btn-primary" id="link-submit">Done</button>
+			</div>
+		</div>
+
+<div class="modal hide fade titleImagePickerContainer" role="dialog" >
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	 	<h3>Title Image Picker</h3>
+	</div>
+	<div class="titleImagePicker" ></div>
+</div>
+
+<div  class="modal hide fade articleImagePickerContainer" role="dialog">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	 	<h3>Select Images</h3>
+	</div>
+	<div class="articleImagePicker"></div>
 </div>

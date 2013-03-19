@@ -1,6 +1,5 @@
 var ArticleSummaryList = Backbone.View.extend({
 	initialize: function(){
-		console.log(this);
 		this.model.on("add", this.add, this);
 		this.editView = this.options.editView;
 	},
