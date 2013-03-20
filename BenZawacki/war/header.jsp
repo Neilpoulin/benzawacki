@@ -9,7 +9,7 @@
 		<link type="text/css" rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"/>
 		<link type="text/css" rel="stylesheet" href="/lib/bootstrap/css/bootstrap-responsive.min.css"/>	
 		<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-active/jquery-ui.css" />
-		<link type="stylesheet/less" rel="stylesheet" href="/css/common.less"/>
+		<link type="stylesheet/less" rel="stylesheet" href="/css/common.less"/>		
 	</head>
 <%
    	UserService userService = UserServiceFactory.getUserService();
@@ -108,7 +108,7 @@
 		<script type="text/javascript" src="/js/Models/Article.js"></script>
 		<script type="text/javascript" src="/js/Models/Race.js"></script>
 		<script type="text/javascript" src="/js/Models/Image.js"></script>
-		
+		 
 		<script type="text/javascript" src="/js/Views/ArticleSummaryList.js"></script>
 		<script type="text/javascript" src="/js/Views/ArticleSummary.js"></script>
 		<script type="text/javascript" src="/js/Views/EditArticle.js"></script>
@@ -117,6 +117,7 @@
 		<script type="text/javascript" src="/js/Views/util/SubmitDialog.js"></script>
 		<script type="text/javascript" src="/js/Views/Races/RaceListView.js"></script>
 		<script type="text/javascript" src="/js/Views/Races/RaceListItem.js"></script>
-							
+		
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>	
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 <html>
 	<head>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<title>Races Admin Page</title>		
 		<link rel="stylesheet" href="/admin/stylesheets/raceData.less" />
 		<script type="text/javascript"> //Google Analytics
@@ -16,7 +17,7 @@
 		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		  })();
 		</script>
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCcXfh_zwxQ-jGFLum6DI2SrtPvP8XmSug&sensor=false&v=3"></script>
+		<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
 	</head>
 	
 	<body>

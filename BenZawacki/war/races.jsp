@@ -45,9 +45,6 @@
 			<div id="map_canvas"></div>
 		</div>
 		
-		
-		
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript"> //Google Analytics
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-31500940-1']);
