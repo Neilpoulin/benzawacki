@@ -23,10 +23,8 @@
 		<jsp:include page="/header.jsp" />
 		
 		<div class="container" id="content">
-			<a href="#raceDialog" role="button" class="btn pull-right" id="addRaceTrigger" data-toggle="modal"><i class="icon-plus"></i>Add Race</a>
-			<!-- <a href="#raceDialog" role="button" class="btn" id="editRaceTrigger" data-toggle="modal">edit Race</a> -->
-		
-			<div class="row">
+			<a href="#raceDialog" role="button" class="btn pull-right" id="addRaceTrigger" data-toggle="modal"><i class="icon-plus"></i>Add Race</a>		
+			<div class="row clear-both">
 				<div class="content-div span9">
 					<div id="map_canvas" class="">
 				</div>

@@ -2,6 +2,11 @@
 	height: 600px;	
 }
 
+#raceList{
+	max-height: 620px;
+	overflow: auto;
+}
+
 #content{
 	padding-top: 20px;
 }

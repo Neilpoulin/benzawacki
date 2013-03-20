@@ -29,8 +29,8 @@
 			</div>
 			
 			<div class="row">
-				<div class="span8" id="editArticle"></div>
-				<div id="listArticlesDIV" class="span3">
+				<div id="editArticle" class="span8"></div>
+				<div id="listArticlesDIV" class="span4">
 					<h2>Current Articles</h2>
 					<ol></ol>
 				</div>			
