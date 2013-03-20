@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<head>		
 		<title>Races Admin Page</title>		
 		<link rel="stylesheet" href="/admin/stylesheets/raceData.less" />
 		<script type="text/javascript"> //Google Analytics
@@ -24,7 +23,7 @@
 		<jsp:include page="/header.jsp" />
 		
 		<div class="container" id="content">
-			<a href="#raceDialog" role="button" class="btn" id="addRaceTrigger" data-toggle="modal"><i class="icon-plus"></i>Add Race</a>
+			<a href="#raceDialog" role="button" class="btn pull-right" id="addRaceTrigger" data-toggle="modal"><i class="icon-plus"></i>Add Race</a>
 			<!-- <a href="#raceDialog" role="button" class="btn" id="editRaceTrigger" data-toggle="modal">edit Race</a> -->
 		
 			<div class="row">
@@ -38,7 +37,6 @@
 		</div>	
 			
 		<div id="raceDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-		
 		
 		<script type="text/javascript" src="/admin/js/raceData.js"></script>
 	</body>

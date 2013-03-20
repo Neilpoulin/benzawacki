@@ -16,6 +16,25 @@ $(document).ready(function(){
 	setTimeout(function(){
 		galleryImages.fetch({url: carouselImages.url("galleries", "photoPage"), update:true});
 	}, 1000);
+	
+	var races = new RaceCollection();
+	
+	window.raceMapView = new RaceMapView({
+		model: races,
+		el: "#map_canvas"
+	});
+	
+	window.raceListView = new RaceListView({
+		model: races,
+		el: "#raceList",
+		mapView: raceMapView,
+		editable: false
+	});
+	
+	setTimeout(function(){
+		races.fetch({update: true});
+	}, 100);	
+	
 });
 
 function renderMainCarousel(){

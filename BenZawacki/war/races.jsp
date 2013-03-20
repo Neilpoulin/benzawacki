@@ -23,26 +23,16 @@
 	</head>
 	<body>		
 		<jsp:include page="/header.jsp" />
-		<div id="container" class="container">
-			<input type="button" class="btn" id="toggle-map" value="Hide Map"></input><br>					
-			<div id="users-contain" class="ui-widget">
-				<table id="users" class="ui-widget ui-widget-content">
-					<thead>
-						<tr class="ui-widget-header ">
-							<th>Date</th>
-							<th>Race Name</th>
-							<th>City</th>
-							<th>State</th>
-							<th>Type</th>
-							<th>Length</th>
-						</tr>
-					</thead>
-					<tbody>	
-					</tbody>
-				</table>
+		<div id="content" class="container">
+			<div class="row">
+				<div class="content-div span9">
+					<div id="map_canvas" class="">
+				</div>
+					
+				</div>
+				<ul id="raceList" class='span3 content-div'></ul>
 			</div>
-			
-			<div id="map_canvas"></div>
+		</div>
 		</div>
 		
 		<script type="text/javascript"> //Google Analytics

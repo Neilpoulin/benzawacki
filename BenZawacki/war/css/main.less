@@ -1,6 +1,7 @@
 @import "common.less";
 @box-height: 250px;
 @box-height-tall: (2 * @box-height) + 20px;
+@box-height-medium: (1.5 * @box-height) + 20px;
 
 body {
   	padding-bottom: 40px;
@@ -23,16 +24,19 @@ body {
 		text-align: center;
 	}
 
-	div.short, div.tall{
+	div.short, div.tall, div.medium{
 		box-sizing: border-box;
 		.content-div;
-		height: @box-height-tall;		
+	}
+	div.tall{
+		height: @box-height-tall;	
 	}
 	div.short{
-		height: @box-height;
-		.box-shadow;
-		.content-div;
-	}	
+		height: @box-height;		
+	}
+	div.medium{
+		height: @box-height-medium;	
+	}
 }
 
 #strava{
@@ -97,20 +101,18 @@ body {
 #map{
 	padding: 0px;
 	#raceList{
-		float: right;
-		border: 1px solid black;
+		float: right;	
 		height: 100%;
 		margin-left: 0px;
 		padding-left: 0px;
+		overflow: auto;
 	}
-	#map_canvas{
-		border: 1px solid red;
+	#map_canvas{	
 		float: left;
 		height: 100%;
 		margin-left: 0px;
 		padding-left: 0px;
 	}
-	
 }
 
 /* RESPONSIVE CSS
@@ -192,7 +194,17 @@ body {
 		width: 260px;	
 		
 	}
-}
+  }
+  
+  #map > div{
+  	height: @box-height-medium * 2 + 20px !important;
+  	#map_canvas, #raceList{
+		height: @box-height-medium !important;
+	}
+	  
+  }
+  
+  
   
 
 }

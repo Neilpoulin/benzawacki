@@ -33,9 +33,9 @@
 			</div>	
 		</div>
 		<div class="row" id="map">
-			<div class="short span12">
-				<div id="map_canvas" class="span8"><h3>MAP HERE</h3></div>
-				<div id="raceList" class="span4"><H3>RACES LIST HERE</H3></div>
+			<div class="medium span12">
+				<div id="map_canvas" class="span8"></div>
+				<div id="raceList" class="span4"></div>
 			</div>
 			
 		</div>

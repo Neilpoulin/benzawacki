@@ -117,6 +117,8 @@
 		<script type="text/javascript" src="/js/Views/util/SubmitDialog.js"></script>
 		<script type="text/javascript" src="/js/Views/Races/RaceListView.js"></script>
 		<script type="text/javascript" src="/js/Views/Races/RaceListItem.js"></script>
+		<script type="text/javascript" src="/js/Views/Races/RaceMapView.js"></script>
+		<script type="text/javascript" src="/js/Views/Races/RaceMarker.js"></script>
 		
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>	
 </body>

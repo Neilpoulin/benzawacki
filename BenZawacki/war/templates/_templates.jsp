@@ -10,6 +10,7 @@
 <link rel="stylesheet/less" href="/templates/images/imagePicker.less"/>
 <link rel="stylesheet/less" href="/templates/carousels/home.less"/>
 <link rel="stylesheet/less" href="/templates/races/raceListItem.less"/>
+<link rel="stylesheet/less" href="/templates/races/raceMarker.less"/>
 
 <!-- Include Template Files, make them hidden -->
 
@@ -61,8 +62,8 @@
 	<jsp:include page="races/addRaceForm.html"></jsp:include>
 </script>
 
-<script type="text/x-handlebars-template" id="races_mapMarkerTemplate" class="hidden">
-	<jsp:include page="races/mapMarker.html"></jsp:include>
+<script type="text/x-handlebars-template" id="races_raceMarkerTemplate" class="hidden">
+	<jsp:include page="races/raceMarker.html"></jsp:include>
 </script>
 
 <script type="text/x-handlebars-template" id="races_raceListItemTemplate" class="hidden">
@@ -93,7 +94,7 @@
 		},
 		races: {
 			addRaceForm: Handlebars.compile($("#races_addRaceFormTemplate").html()),
-			mapMarker: Handlebars.compile($("#races_mapMarkerTemplate").html()),
+			raceMarker: Handlebars.compile($("#races_raceMarkerTemplate").html()),
 			raceListItem: Handlebars.compile($("#races_raceListItemTemplate").html())
 		}
 	};
