@@ -1,7 +1,7 @@
 var Race = Backbone.Model.extend({
 	urlRoot: "/api/races",
 	initialize: function(){
-		this.on("change", this.geocode, this);
+		this.on("sync", this.geocode, this);
 	},
 	validate: function(attrs, options){
 		var valid = true;
@@ -24,7 +24,7 @@ var Race = Backbone.Model.extend({
 	geocode: function(){
 		var model = this;
 		var street = model.get("street"), city = model.get("city"), state = model.get("state"), country = model.get("country");
-		if (city != undefined && country != undefined){
+		if (model.hasChanged && city != undefined && country != undefined){
 			var request = country;
 			if (state != undefined){
 				request = state + ", " + request;
@@ -36,8 +36,8 @@ var Race = Backbone.Model.extend({
 			var geocoder = new google.maps.Geocoder();	
 			var mylat = 0;
 		    var mylng = 0;
-		    
-			geocoder.geocode({address: request}, function(results, status){
+		    		    
+	    	var callback = function(results, status){
 				if (status == google.maps.GeocoderStatus.OK) {
 			        var latLng = results[0].geometry.location;
 			        var mylat = latLng.lat();
@@ -48,7 +48,9 @@ var Race = Backbone.Model.extend({
 			    }else{
 			    	console.log(status);
 			    }
-			});
+	    	}
+	    	
+			geocoder.geocode({address: request}, callback);
 		}
 	}
 });

@@ -16,11 +16,6 @@ var RaceMarker = Backbone.View.extend({
 		
 		google.maps.event.addListener(this.marker, 'click', function(){
 			view.open();
-//			if (infoWindow){
-//				infoWindow.close();
-//			}
-//			infoWindow.setContent(view.render().$el.html());
-//			infoWindow.open(view.map, view.marker);
 		});
 	},
 	render: function(){
@@ -41,5 +36,8 @@ var RaceMarker = Backbone.View.extend({
 		}
 		this.infoWindow.setContent(this.render().$el.html());
 		this.infoWindow.open(this.map, this.marker);
+	},
+	update: function(){
+		this.marker.setPosition(new google.maps.LatLng(this.model.get("lat"), this.model.get("lng")));
 	}
 });

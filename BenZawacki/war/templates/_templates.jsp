@@ -9,6 +9,7 @@
 <link rel="stylesheet/less" href="/templates/images/photoGallery.less"/>
 <link rel="stylesheet/less" href="/templates/images/imagePicker.less"/>
 <link rel="stylesheet/less" href="/templates/carousels/home.less"/>
+<link rel="stylesheet/less" href="/templates/races/addRaceForm.less"/>
 <link rel="stylesheet/less" href="/templates/races/raceListItem.less"/>
 <link rel="stylesheet/less" href="/templates/races/raceMarker.less"/>
 

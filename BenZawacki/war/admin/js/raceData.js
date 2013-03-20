@@ -16,6 +16,7 @@ $(document).ready(function(){
 		el: "#raceDialog",
 		title: "Add new Race",
 		collection: races
+//		saveSuccess: 
 	});
 	
 	window.editRaceDialog = new SubmitDialog({

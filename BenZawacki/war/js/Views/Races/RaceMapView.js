@@ -1,11 +1,12 @@
 var RaceMapView = Backbone.View.extend({
 	
 	initialize: function(){
-		this.model.on("add sync", this.add, this);
+		this.model.on("add", this.addOne, this);
+		this.model.on("change", this.updateMarker, this);
 		this.markers = {};
 		var mapOptions = {
-	      center: new google.maps.LatLng(36.12498825809234, -95.27296937568484),
-	      zoom: 4,
+	      center: new google.maps.LatLng(28.01537947985434, -21.6530915852356),
+	      zoom: 2,
 	      mapTypeId: google.maps.MapTypeId.ROADMAP
 	    };
 		this.map = new google.maps.Map(this.el, mapOptions);
@@ -25,7 +26,7 @@ var RaceMapView = Backbone.View.extend({
 		
 		return this;
 	},
-	add: function(race){
+	addOne: function(race){
 		var marker = new RaceMarker({
 			map: this.map,
 			model: race,
@@ -33,6 +34,9 @@ var RaceMapView = Backbone.View.extend({
 		});
 		this.markers[race.id] = marker;
 	}, 
+	updateMarker: function(race){
+		this.markers[race.id].update();
+	},
 	open: function(id){
 		this.markers[id].open();
 	}

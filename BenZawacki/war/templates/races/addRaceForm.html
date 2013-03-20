@@ -6,38 +6,38 @@
 	<div class="alert fade"><div class="alert-msg"></div></div>
 	<form class="form-horizontal">				
 		<div class="control-group">
-			<label for="race" class="control-label">Race Name</label>
+			<label for="race" class="control-label">Race Name*</label>
 			<div class="controls">
-				<input class="input-xlarge attribute" data-field="name" placeholder="Race Name" value="{{name}}"/>
+				<input type="text" class="input-xlarge attribute" required data-field="name" placeholder="Race Name" value="{{name}}"/>
 			</div>
 		</div>					
 		<div class="control-group">
-			<label class="control-label" for="date">Date</label>
+			<label class="control-label" for="date">Date*</label>
 			<div class="controls">
-				<input data-field="date" class="attribute input-xlarge datepicker" placeholder="Date" value="{{date}}"/>
+				<input type="text" data-field="date" required class="attribute input-xlarge datepicker" placeholder="Date" value="{{date}}"/>
 			</div>
 		</div>					
 		<div class="control-group">
 			<label class="control-label" for="website">Website</label>
 			<div class="controls">
-				<input class="input-xlarge attribute" data-field="url" placeholder="Website" value="{{url}}"/>
+				<input type="text" class="input-xlarge attribute" data-field="url" placeholder="Website" value="{{url}}"/>
 			</div>
 		</div>					
 		<div class="control-group">
-			<label class="control-label">Location</label>
+			<label class="control-label">Location*</label>
 			<div class="controls">
-				<input  name="address" class="input-xlarge attribute" data-field="street" placeholder="Street" value="{{street}}"/>
-				<input  name="city" class="input-medium attribute" data-field="city" placeholder="City" value="{{city}}"/>
-				<input name="state" class="input-mini attribute" data-field="state" placeholder="State" value="{{state}}"/>
-				<input name="country" class="input-mini attribute" value="USA" data-field="country" placeholder="Country" value="{{country}}"/>							
+				<input  type="text" name="address" class="input-xlarge attribute" data-field="street" placeholder="Street" value="{{street}}"/>
+				<input  type="text" name="city" class="input-xlarge attribute" required="required" data-field="city" placeholder="City" value="{{city}}"/>
+				<input type="text" name="state" class="input-small attribute" data-field="state" placeholder="State" value="{{state}}"/>
+				<input type="text" name="country" class="input-medium attribute" required="required" data-field="country" placeholder="Country" value="{{#if country}}{{country}}{{else}}USA{{/if}}"/>							
 			</div>
 		</div>						
 		<div class="control-group">
 			<label class="control-label" for="length">Race Details</label>
 			<div class="controls">
-				<input class="attribute" data-field="raceType" placeholder="Type" value="{{raceType}}"/>
-				<input class="input-mini attribute" data-field="raceLength" placeholder="Length" value="{{raceLength}}"/>
-				<input class="attribute input-xlarge" data-field="description" placeholder="Race Description" value="{{description}}"/>
+				<input type="text" class="attribute" data-field="raceType" placeholder="Type" value="{{raceType}}"/>
+				<input type="text" class="input-mini attribute" data-field="raceLength" placeholder="Length" value="{{raceLength}}"/>
+				<input type="text" class="attribute input-xlarge" data-field="description" placeholder="Race Description" value="{{description}}"/>
 			</div>
 		</div>	
 
