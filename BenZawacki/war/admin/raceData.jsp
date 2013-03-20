@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 
 <html>
 	<head>
@@ -16,6 +16,7 @@
 		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		  })();
 		</script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCcXfh_zwxQ-jGFLum6DI2SrtPvP8XmSug&sensor=false&v=3"></script>
 	</head>
 	
 	<body>
@@ -37,7 +38,7 @@
 			
 		<div id="raceDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 		
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcXfh_zwxQ-jGFLum6DI2SrtPvP8XmSug&sensor=false"></script>
+		
 		<script type="text/javascript" src="/admin/js/raceData.js"></script>
 	</body>
 

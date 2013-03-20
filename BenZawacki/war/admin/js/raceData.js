@@ -35,7 +35,9 @@ $(document).ready(function(){
 		races.fetch({update: true});
 	}, 100);
 	
-	initializeMap();
+	setTimeout(function(){
+		initializeMap();
+	},100);
 	
 });
 
