@@ -7,6 +7,7 @@ var EditArticle = Backbone.View.extend({
 		this.imageCollection = this.options.imageCollection;		
 		this.titleImagePicker = new ImagePicker({model: this.imageCollection});
 		this.articleImagePicker = new ImagePicker({model: this.imageCollection, multi: true});
+		this.selectedImages = [];
 	},
 	edit: function(model){
 		this.model = model;
@@ -43,12 +44,23 @@ var EditArticle = Backbone.View.extend({
 			$el.find(".articleImagePickerContainer").modal({show: true});
 		});
 		
+		$el.find(".articleImagePickerContainer").on("hide", function(){
+			article.selectedImages = article.articleImagePicker.getSelected();			
+		});
+		
 		this.$el.find(".btn.addTitleImg").button().click(function(){
 			$el.find(".titleImagePickerContainer").modal({show: true});
 		});
-	},
-	addTitleImage: function(){
 		
+		$el.find(".titleImagePickerContainer").on("hide", function(){
+			article.addTitleImage(article.titleImagePicker.getSelected()[0]);
+		});
+	},
+	addTitleImage: function(image){
+		if (image != undefined){
+			this.model.set("titleImageKey", image.get("blobKey"));
+			this.$el.find(".articleImage img").attr("src", "/serve?blobKey=" + image.get("blobKey"));
+		}
 	},
 	addImages: function(){
 		for (var i=0; i< imgArray.length; i++){

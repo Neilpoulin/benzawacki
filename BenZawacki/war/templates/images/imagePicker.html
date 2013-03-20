@@ -1,7 +1,39 @@
 <ul class="imageList">
 	{{#each this}}
-	<li class="well span2">
-		<img src="{{url}}" />
+	<li class="well span2 preview" data-id="{{id}}">
+		<div class="imgContainer">
+			<img src="{{url}}" class="preview"/>
+		</div>
+		<p>
+			<label>Uploaded:</label>{{createdDate}} by {{createdBy.nickname}}
+		</p>
+
 	</li>
 	{{/each}}
 </ul>
+
+
+<!-- IMG DATA FORMAT 
+
+{
+	"url":"http://127.0.0.1:8888/_ah/img/3sQzzwCB7fvF6aHMkmVnqQ",
+	"showOnHomePage":false,
+	"blobKey":"3sQzzwCB7fvF6aHMkmVnqQ",
+	"id":"1363307106049",
+	"createdDate":"Mar 14, 2013 6:25:05 PM",
+	"updatedDate":"Mar 14, 2013 6:25:06 PM",
+	"createdBy":{
+		"name":"",
+		"email":"test@example.com",
+		"nickname":"test@example.com",
+		"userId":"18580476422013912411",
+		"federatedId":null,
+		"authDomain":"gmail.com"
+	},
+	"updatedBy":{
+		"name":"","email":"test@example.com","nickname":"test@example.com","userId":"18580476422013912411","federatedId":null,"authDomain":"gmail.com"
+	}
+}
+
+
+ -->

@@ -1,7 +1,13 @@
 <div id="articleBin" class="main">
 	<div class="row">
 		<div id="imgSelected" class="main imgSel span2">
-			<div id="articleImg" class="article"></div>
+			<div id="articleImg" class="article articleImage">
+				{{#if titleImageKey}}
+					<img src="/serve?blobKey={{titleImageKey}}"/>
+				{{else}}
+					<img src="/data/images/img-placeholder.jpg"/>
+				{{/if}}
+			</div>
 			<div class="clear"></div>
 			<button id="btnArticleImg" class="article btn addTitleImg"><i class="icon-picture"></i> Title Image</button>
 		</div>

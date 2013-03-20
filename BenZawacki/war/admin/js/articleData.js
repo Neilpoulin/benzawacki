@@ -245,19 +245,19 @@ function insertImgBinds(id){
 	});
 }
 
-function setTitleImgBinds(){	
-	$("#articleChooseImg > div").click(function(){
-		if ($(this).hasClass("selected")){
-			var key = $(this).find("img").attr("id");
-			$("#articleKey").val(key);
-			$("#articleImg").empty();
-			$(this).clone().appendTo("#articleImg").removeClass("selected hidden thumb");
-		} else {
-			$("#articleImg").empty();
-			$("#tempImg").clone().css("boxShadow", "").appendTo("#articleImg").removeClass("hidden thumb");
-		}		
-	});	
-}
+//function setTitleImgBinds(){	
+//	$("#articleChooseImg > div").click(function(){
+//		if ($(this).hasClass("selected")){
+//			var key = $(this).find("img").attr("id");
+//			$("#articleKey").val(key);
+//			$("#articleImg").empty();
+//			$(this).clone().appendTo("#articleImg").removeClass("selected hidden thumb");
+//		} else {
+//			$("#articleImg").empty();
+//			$("#tempImg").clone().css("boxShadow", "").appendTo("#articleImg").removeClass("hidden thumb");
+//		}		
+//	});	
+//}
 
 function tags(tags){
 	var $tagLi = $("#tagsDIV ul li");

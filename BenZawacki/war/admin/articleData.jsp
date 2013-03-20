@@ -39,7 +39,7 @@
 			
 		<div id="tagsDIV" class="hidden"><ul></ul></div>
 		<!-- <input type="text" id="articleKey" class="article hidden"> -->
-		<div id="tempImg" class="prev hidden"><img class = "thumb" src="/data/images/img-placeholder.jpg"></div>
+		<!-- <div id="tempImg" class="prev hidden"><img class = "thumb" src="/data/images/img-placeholder.jpg"></div> -->
 		
 		<div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">

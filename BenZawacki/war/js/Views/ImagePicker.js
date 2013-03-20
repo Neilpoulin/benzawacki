@@ -9,6 +9,21 @@ var ImagePicker = Backbone.View.extend({
 		var $el = this.$el;
 		var view = this;
 		$el.html(this.template( this.model.toJSON() ));
-		
+		$el.find("li").on("click", function(){
+			if (!view.multi){
+				$el.find("li").not($(this)).removeClass("selected");
+			}
+			$(this).toggleClass("selected");
+		});
+	},
+	getSelected: function(){
+		var selected = [];
+		var view = this;
+		this.$el.find("li.selected").each(function(){
+			var id = $(this).attr("data-id")
+			selected.push(view.model.get(id));
+		});
+		return selected;
 	}
+	
 });
