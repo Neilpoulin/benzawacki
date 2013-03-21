@@ -45,7 +45,8 @@ var EditArticle = Backbone.View.extend({
 		});
 		
 		$el.find(".articleImagePickerContainer").on("hide", function(){
-			article.selectedImages = article.articleImagePicker.getSelected();			
+			article.selectedImages = article.articleImagePicker.getSelected();
+			article.addImages();
 		});
 		
 		this.$el.find(".btn.addTitleImg").button().click(function(){
@@ -53,7 +54,9 @@ var EditArticle = Backbone.View.extend({
 		});
 		
 		$el.find(".titleImagePickerContainer").on("hide", function(){
-			article.addTitleImage(article.titleImagePicker.getSelected()[0]);
+			var image = article.titleImagePicker.getSelected();
+			article.addTitleImage(image);
+			article.model.set("titleImageKey", image.get("blobKey"));
 		});
 	},
 	addTitleImage: function(image){
@@ -63,23 +66,38 @@ var EditArticle = Backbone.View.extend({
 		}
 	},
 	addImages: function(){
-		for (var i=0; i< imgArray.length; i++){
-			this.$el.find(".availableImages").append(templates.articles.selectedImagesButtonSet(imgArray[i]));
-
-			$("#selected_" + imgArray[i].tag + " button").each(function(index, obj){
+		var view = this;
+		var images = this.selectedImages;
+		this.$el.find(".availableImages").empty();
+		for (var i=0; i< images.length; i++){
+			var image = images[i];
+			var data = image.toJSON();
+			data.tag = "img" + (i + 1);
+			view.$el.find(".availableImages").append(templates.articles.selectedImagesButtonSet( data ));
+			
+			console.log(view.$el.find(".availableImages li[data-id='" + image.id + "'] button"));
+			view.$el.find(".availableImages li[data-id='" + image.id + "'] button").each(function(index, obj){
 				$btn = $(obj);
-				$btn.click(function(){
-					var j = Number($(this).attr("data-tag").split("img")[1]) - 1 ;
+				$btn.off("click");
+				if ($btn.hasClass("active")){
+					if ($btn.parent().hasClass("img-size")){
+						image.set("sizeClass", $btn.val());
+					}else{
+						image.set("posClass", $btn.val());
+					}
+				}
 					
+				
+				$btn.on("click", function(){
+//					var j = Number($(this).attr("data-tag").split("img")[1]) - 1 ;					
 					if ($(this).parent().hasClass("img-size")){
 						var size = $(this).val();
-						imgArray[j].sizeClass = size;
+						image.set("sizeClass", size);
 					}else{
 						var position = $(this).val();
-						imgArray[j].posClass = position;
-					}
-					
-					imgArray[j].html = "<img src='/serve?blobKey=" + imgArray[j].blobKey + "' class='" + imgArray[j].sizeClass +  " " + imgArray[j].posClass + "' />";
+						image.set("posClass", position);
+					}					
+//					imgArray[j].html = "<img src='/serve?blobKey=" + imgArray[j].blobKey + "' class='" + imgArray[j].sizeClass +  " " + imgArray[j].posClass + "' />";
 					$("#articleSummary").trigger("keyup");
 					$("#articleContent").trigger("keyup");
 				});
@@ -116,50 +134,46 @@ var EditArticle = Backbone.View.extend({
 		var input = $obj.val();
 		var type = $obj.attr("data-type");
 		var $out = $(".converted." + type );
-		var convertedInput = getConvertedInput(input);
+		var convertedInput = this.getConvertedInput(input, $obj);
 		$out.val(convertedInput);
 		this.$el.find(".preview").find("."+type).html(convertedInput);
+	},
+	getConvertedInput: function(content, $input){	
+		content = content.replace(/(\r\n|\n|\r)/gm,"<br>");
+		content = content.replace(/"/gm, '\\\"');
+		var images = this.selectedImages;
+		var imgReg = /\u003Cimg(\d|\d\d)\u003E/mg;
+		var count = 0;
+		var match = content.match(imgReg);
+		if (match!= null){	
+			for (var i =0; i< match.length; i++){
+				var req = match[i].split("<img")[1];
+				req = req.split(">")[0];
+				req = Number(req);
+				var pos = req;
+				for (var j=1; j <= images.length + 1; j++){
+					if (match[i] == "<img" + j + ">"){
+						pos = j-1;
+						break;
+					}
+				}
+				var newStr = "<img";
+				if (images[pos] != undefined && images[pos] != null){
+					newStr = templates.articles.contentImage(images[pos].toJSON());	
+				} else {					
+					var tmp = $input.val();
+					tmp = tmp.replace(match[i], newStr);
+					$input.val(tmp);
+					content = tmp;
+					alert("Image <img" + req + "> is not a vaild reference to a selected image.");
+				}
+				content = content.replace(match[i], newStr);
+			}
+		}
+		return content;
 	}
+
 	
 });
 
 
-function getConvertedInput(content){	
-	content = content.replace(/(\r\n|\n|\r)/gm,"<br>");
-//	content = content.replace(/(\t|^t)/gm, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-	content = content.replace(/"/gm, '\\\"');
-	
-	var imgStr = "$<img";
-	var imgReg = /\u003Cimg(\d|\d\d)\u003E/mg;
-	var count = 0;
-	var match = content.match(imgReg);
-	if (match!= null){	
-		for (var i =0; i< match.length; i++){
-			var req = match[i].split("<img")[1];
-			req = req.split(">")[0];
-			req = Number(req);
-			var pos;
-			for (var j=0; j< imgArray.length; j++){
-				if (match[i] == "<" + imgArray[j].tag + ">"){
-					pos = j;
-					break;
-				}
-			}
-			var newStr = "<img";
-			if (imgArray[pos] != null){
-				newStr = imgArray[pos].html;
-//				content = content.replace(match[i], newStr);	
-			} else {
-				alert("Image <img" + req + "> is not a vaild reference to a selected image.");
-				var tmp = $(this).val();
-				tmp = tmp.replace(match[i], newStr);
-				$(this).val(tmp);
-			}
-			content = content.replace(match[i], newStr);
-		}
-	}
-	var index = content.indexOf(imgStr);
-//	$("#html" + $(this).attr("id").split("article")[1]).val(content);
-	return content;
-//	$("#preview").html(content);
-}

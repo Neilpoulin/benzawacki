@@ -4,26 +4,31 @@ var ImagePicker = Backbone.View.extend({
 		this.options.template != undefined ? this.template = this.options.template : this.template = templates.images.imagePicker;
 		this.options.multi != undefined ? this.multi = this.options.multi : this.multi = false;
 		this.model.on("add", this.render, this);
+		this.selected = [];
 	},
 	render: function(){
 		var $el = this.$el;
 		var view = this;
+		this.selected = [];
 		$el.html(this.template( this.model.toJSON() ));
 		$el.find("li").on("click", function(){
 			if (!view.multi){
 				$el.find("li").not($(this)).removeClass("selected");
 			}
 			$(this).toggleClass("selected");
+			if (view.multi){
+				if ( $(this).hasClass("selected") ){
+					view.selected.push(view.model.get($(this).attr("data-id")));
+				}
+			}else{
+				if ( $(this).hasClass("selected") ){
+					view.selected=(view.model.get($(this).attr("data-id")));
+				}
+			}
 		});
 	},
 	getSelected: function(){
-		var selected = [];
-		var view = this;
-		this.$el.find("li.selected").each(function(){
-			var id = $(this).attr("data-id")
-			selected.push(view.model.get(id));
-		});
-		return selected;
+		return this.selected;
 	}
 	
 });

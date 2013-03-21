@@ -36,6 +36,11 @@
 	<jsp:include page="articles/editArticle.html"/>
 </script>
 
+<script type="text/x-handlebars-template" id="articles_contentImageTemplate" class="hidden">
+	<jsp:include page="articles/contentImage.html"/>
+</script>
+
+
 <!---------- IMAGES ----------->
 <script type="text/x-handlebars-template" id="images_adminGalleryTemplate" class="hidden">
 	<jsp:include page="images/adminGallery.html"/>
@@ -82,7 +87,8 @@
 			selectedImagesButtonSet: Handlebars.compile( $("#articles_selectedImagesButtonSetTemplate").html() ),
 			mainSummary: Handlebars.compile($("#articles_mainSummaryTemplate").html() ),
 			article:  Handlebars.compile($("#articles_articleTemplate").html()),
-			editArticle: Handlebars.compile($("#articles_editArticleTemplate").html())
+			editArticle: Handlebars.compile($("#articles_editArticleTemplate").html()),
+			contentImage: Handlebars.compile($("#articles_contentImageTemplate").html())
 		},
 		images: {
 			adminGallery: Handlebars.compile($("#images_adminGalleryTemplate").html()),
