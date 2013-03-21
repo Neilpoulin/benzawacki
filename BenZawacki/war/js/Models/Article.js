@@ -12,5 +12,8 @@ var Article = Backbone.Model.extend({
 
 var ArticleCollection = Backbone.Collection.extend({
 	model: Article,
-	url: "/api/articles"
+	url: "/api/articles",
+	comparator: function(article){
+		return article.get("displayDate");
+	}
 })

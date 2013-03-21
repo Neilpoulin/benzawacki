@@ -46,7 +46,7 @@ p.date {
 }
 
 #articlesDIV div.summary{
-	font-variant:small-caps;
+	/* font-variant:small-caps; */
 	margin: 1em 0 1em 0;
 }
 

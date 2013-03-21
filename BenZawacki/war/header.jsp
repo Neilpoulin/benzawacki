@@ -86,8 +86,13 @@
 
 		<script type="text/javascript">
 			window.user = <%= gson.toJson(user) %>;
-			user.isAdmin = <%= admin %>;
-			user.nickname = "<%= nickname %>";
+			if (user != null){
+				user.isAdmin = <%= admin %>;
+				user.nickname = "<%= nickname %>";
+			}else{
+				user = {isAdmin: false, nickname: "Guest"};
+			}
+			
 		</script>
 		
 		<!-- Libraries -->

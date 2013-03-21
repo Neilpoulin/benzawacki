@@ -4,8 +4,10 @@ $("#navSidebar").hide();
 $(document).ready(function(){
 	//getArticles();
 	window.articlesCollection = new ArticleCollection();
-	articlesCollection.on("add", function(model){
-		$("#articlesDIV").append( templates.articles.article(model.toJSON()) );
+	articlesCollection.on("sync", function(collection){
+		collection.each(function(model, i){
+			$("#articlesDIV").prepend( templates.articles.article(model.toJSON()) );
+		});
 	});
 	articlesCollection.fetch({update: true});
 	
