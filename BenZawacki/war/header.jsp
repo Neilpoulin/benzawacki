@@ -42,10 +42,12 @@
 					<a class="brand" href="/">Ben Zawacki</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li><a href="/home">Home</a></li>						
-							<li><a href="/contact">Contact</a></li>
-							<!-- <li><a href="/strava">Strava</a></li> -->
-							<li><a href="/races">Races</a></li>						
+							<li><a href="/home">Home</a></li>													
+							<li><a href="/writings">Writings</a></li>
+							<li><a href="/races">Races</a></li>		
+							<li><a href="/photos">Photos</a></li>	
+							<li><a href="/partners">Partners</a></li>							
+							<li><a href="/contact">Contact</a></li>				
 <%
 	//If the user is an admin, show the admin menu options, otherwise dont show it. 							
 	if (admin){
@@ -55,12 +57,12 @@
 								<ul class="dropdown-menu">
 									<li><a href="/admin/races">Races</a></li>
 									<li><a href="/admin/images">Images</a></li>
-									<li><a href="/admin/articles">Articles</a></li>	
+									<li><a href="/admin/articles">Articles</a></li>										
 									<li class="nav-header">Test Pages</li>
-	                    			<li><a href="/pages/main.jsp">New Home Page</a></li>	
-	                    			<li><a href="/pages/photos.jsp">Photo Gallery</a></li>	
-	                    			<li><a href="/writings">Writings</a></li>	
-	                    			<li><a href="/partners">Partners</a></li>				
+									<li>None</li>
+	                    			<!-- <li><a href="/pages/main.jsp">New Home Page</a></li> -->		                    			
+	                    			<!-- <li><a href="/writings">Writings</a></li>	 -->
+	                    							
 								</ul>
 							</li>
 <%						
