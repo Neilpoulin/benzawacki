@@ -27,6 +27,10 @@ var EditArticle = Backbone.View.extend({
 			article.submit();
 		});
 		
+		$el.find(".btn.cancel").on("click", function(){
+			article.cancel();
+		});
+		
 		this.$el.find(".datepicker").datepicker({
 			closeText: "Cancel",
 			dateFormat: "yy-mm-dd",
@@ -74,35 +78,21 @@ var EditArticle = Backbone.View.extend({
 			var data = image.toJSON();
 			data.tag = "img" + (i + 1);
 			view.$el.find(".availableImages").append(templates.articles.selectedImagesButtonSet( data ));
-			
-			console.log(view.$el.find(".availableImages li[data-id='" + image.id + "'] button"));
-			view.$el.find(".availableImages li[data-id='" + image.id + "'] button").each(function(index, obj){
+			view.$el.find(".availableImages li[data-id='" + image.id + "'] button.active").each(function(i, obj){
 				$btn = $(obj);
-				$btn.off("click");
-				if ($btn.hasClass("active")){
-					if ($btn.parent().hasClass("img-size")){
-						image.set("sizeClass", $btn.val());
-					}else{
-						image.set("posClass", $btn.val());
-					}
-				}
-					
-				
-				$btn.on("click", function(){
-//					var j = Number($(this).attr("data-tag").split("img")[1]) - 1 ;					
-					if ($(this).parent().hasClass("img-size")){
-						var size = $(this).val();
-						image.set("sizeClass", size);
-					}else{
-						var position = $(this).val();
-						image.set("posClass", position);
-					}					
-//					imgArray[j].html = "<img src='/serve?blobKey=" + imgArray[j].blobKey + "' class='" + imgArray[j].sizeClass +  " " + imgArray[j].posClass + "' />";
-					$("#articleSummary").trigger("keyup");
-					$("#articleContent").trigger("keyup");
-				});
+				image.set($btn.attr("data-field"), $btn.val());
 			});
 		}	
+		
+		view.$el.find(".availableImages li button").each(function(index, obj){
+			$btn = $(obj);
+			var img = view.imageCollection.get($btn.attr("data-image-id"));
+			$btn.on("click", function(){				 
+				img.set($(this).attr("data-field"), $(this).val());
+				$("#articleSummary").trigger("keyup");
+				$("#articleContent").trigger("keyup");
+			});
+		});
 	},	
 	submit: function(){
 		$el = this.$el;
@@ -130,6 +120,10 @@ var EditArticle = Backbone.View.extend({
 		this.model = new Article();
 		this.render();
 	}, 
+	cancel: function(){
+		this.model = new Article();
+		this.render();
+	},	
 	convertInput: function($obj){
 		var input = $obj.val();
 		var type = $obj.attr("data-type");
