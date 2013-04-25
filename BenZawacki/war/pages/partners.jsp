@@ -11,12 +11,6 @@
 			<li><a href="http://www.hypoxico.com"><img src="/data/images/partners/hypoxico.jpeg"/></a></li>
 			<li><a href="http://www.embrocationmagazine.com"><img src="/data/images/partners/embrocation.gif"/></a></li>
 			<li><a href="http://pezcyclingnews.com"><img src="/data/images/partners/pezcyclingnews.jpg"/></a></li>
-			<li>sample</li>
-			<li>sample</li>
-			<li>sample</li>
-			<li>sample</li>
-			<li>sample</li>
-			<li>sample</li>
 		</ul>
 	</div>	
 </body>
