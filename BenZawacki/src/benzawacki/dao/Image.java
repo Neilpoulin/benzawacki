@@ -16,9 +16,11 @@ public class Image extends AbstractDatastore<Image>{
 	@Expose private String url;
 	@Expose private boolean showOnHomePage = false;
 	@Expose private boolean showInGallery = false;
+	@Expose private boolean isSponsor = false;
 	@Expose private String caption;
 	@Expose private String title;
 	@Expose private String blobKey;
+	@Expose private String hyperlink;
 	
 	private static final ImagesService imagesService = ImagesServiceFactory.getImagesService();
 	
@@ -87,6 +89,22 @@ public class Image extends AbstractDatastore<Image>{
 		this.title = title;
 	}
 
+	public boolean isSponsor() {
+		return isSponsor;
+	}
+
+	public void setSponsor(boolean isSponsor) {
+		this.isSponsor = isSponsor;
+	}
+
+	public String getHyperlink() {
+		return hyperlink;
+	}
+
+	public void setHyperlink(String hyperlink) {
+		this.hyperlink = hyperlink;
+	}
+
 	@Override
 	public void save() {
 		this.updatedDate = new Date();
@@ -98,6 +116,7 @@ public class Image extends AbstractDatastore<Image>{
 		}			
 		entity.setProperty("showOnHomePage", this.showOnHomePage);	
 		entity.setProperty("showInGallery", this.showInGallery);
+		entity.setProperty("isSponsor", this.isSponsor);
 		entity.setProperty("json", new Text(this.toJson()));
 		datastore.put(entity);
 	}

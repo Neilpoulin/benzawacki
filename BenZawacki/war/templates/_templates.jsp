@@ -58,6 +58,10 @@
 	<jsp:include page="images/imagePicker.html"/>
 </script>
 
+<script type="text/x-handlebars-template" id="images_sponsorImageTemplate" class="hidden">
+	<jsp:include page="images/sponsorImage.html"/>
+</script>
+
 <!---------- CAROUSELS ----------->
 <script type="text/x-handlebars-template" id="carousels_homeTemplate" class="hidden">
 	<jsp:include page="carousels/home.html"></jsp:include>
@@ -94,7 +98,8 @@
 			adminGallery: Handlebars.compile($("#images_adminGalleryTemplate").html()),
 			preview: Handlebars.compile($("#images_previewTemplate").html()),
 			photoGallery: Handlebars.compile($("#images_photoGalleryTemplate").html()),
-			imagePicker: Handlebars.compile($("#images_imagePickerTemplate").html())
+			imagePicker: Handlebars.compile($("#images_imagePickerTemplate").html()),
+			sponsorImage: Handlebars.compile($("#images_sponsorImageTemplate").html()),
 		},
 		carousels: {
 			home: Handlebars.compile($("#carousels_homeTemplate").html())
@@ -123,5 +128,24 @@
 	Handlebars.registerHelper('encodeUri', function(string){
 		return encodeURIComponent(string);
 	});
+	
+	Handlebars.registerHelper("linkify", function(inputText){		
+		    var replacedText, replacePattern1, replacePattern2, replacePattern3;
+			debugger;
+		    //URLs starting with http://, https://, or ftp://
+		    replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+		    replacedText = inputText.replace(replacePattern1, '$1');
+
+		    //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+		    replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+		    replacedText = replacedText.replace(replacePattern2,  'http://$2');
+
+		    //Change email addresses to mailto:: links.
+		    replacePattern3 = /(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})/gim;
+		    replacedText = replacedText.replace(replacePattern3, 'mailto:$1');
+
+		    return replacedText;		
+	});
+	
 </script>
 

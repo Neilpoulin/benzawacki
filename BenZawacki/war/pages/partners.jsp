@@ -6,11 +6,8 @@
 <body>
 	<jsp:include page="/header.jsp"/>
 	<div class="container">
-		<ul id="partners" class="unstyled">
-			<li><a href="http://www.hypoxico.com"><img src="/data/images/partners/hypoxico.jpeg"/></a></li>
-			<li><a href="http://www.embrocationmagazine.com"><img src="/data/images/partners/embrocation.gif"/></a></li>
-			<li><a href="http://pezcyclingnews.com"><img src="/data/images/partners/pezcyclingnews.jpg"/></a></li>
-		</ul>
+		<ul id="partners" class="unstyled"></ul>
 	</div>	
+	<script type="text/javascript" src="/js/partners.js"></script>
 </body>
 </html>

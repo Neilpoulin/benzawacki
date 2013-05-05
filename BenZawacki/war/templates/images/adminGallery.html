@@ -26,13 +26,19 @@
 			<input type="checkbox" data-id="{{this.id}}" data-field="showInGallery" class="attribute" {{#if this.showInGallery}}checked="checked"{{/if}} /> Show on Photos Page
 		</label>
 		
+		<label class="checkbox">
+			<input type="checkbox" data-id="{{this.id}}" data-field="isSponsor" class="attribute" {{#if this.isSponsor}}checked="checked"{{/if}} /> Sponsor Logo
+		</label>
+		
+		<input type="text" data-field="hyperlink" data-id="{{this.id}}" class="attribute" placeholder="Hyperlink" {{#if this.hyperlink}}value="{{this.hyperlink}}"{{/if}} />
+		
 		<input type="text" data-field="title" data-id="{{this.id}}" class="attribute" placeholder="Title" {{#if this.title}}value="{{this.title}}"{{/if}} />
 		
 		{{#if this.caption}}
 			<textarea class="attribute" data-id="{{this.id}}" data-field="caption" placeholder="Image Caption">{{this.caption}}</textarea>
 		{{else}}
 			<textarea class="attribute" data-id="{{this.id}}" data-field="caption" placeholder="Image Caption"></textarea>
-		{{/if}}
+		{{/if}}		
 		<div class="actions">	
 			<button class="btn delete btn-danger" data-id="{{this.id}}"><i class="icon-trash icon-white"></i></button>			
 		</div>

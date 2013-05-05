@@ -21,8 +21,6 @@ $(document).ready(function(){
 	
 });
 
-
-
 function handleFiles(files) {
 	var img = $("#imgPreview img").get()[0];
 	for (var i = 0; i < files.length; i++) {
